@@ -1,0 +1,283 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: #1B4353; /* Dark blue for primary text */
+    background-color: #FEFDFF; /* Light cream background */
+    padding-top: 80px;
+    margin: 0;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.content-container {
+    margin: 40px; /* Ajoutez une marge autour du contenu */
+}
+
+/* Styles pour le header et le footer (non modifiés) */
+header, footer {
+    background-color: #B02E0C;
+    color: #FEFDFF;
+    padding: 1em 0;
+    text-align: center;
+}
+
+#headerTitle {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+    font-size: 35px; /* Taille de la police */
+    color: #FEFDFF; /* Couleur du texte */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+header, footer {
+    background-color: #173753; /* Dark blue for header and footer */
+    color: #FEFDFF; /* White text for header and footer */
+    padding: 1em 0;
+    text-align: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Adjust the z-index as needed */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #FEFDFF; /* White text for navigation links */
+    text-decoration: none;
+}
+
+section {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button, header nav ul li a {
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+    border: none;
+    position: relative; /* Relative positioning for the ::after pseudo-element */
+    padding: 10px 20px; /* Increase padding to enlarge hover area */
+}
+
+button:hover, header nav ul li a:hover {
+    color: #2892D7; /* Dark blue text color on hover */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around; /* This will space out the items evenly */
+}
+
+header nav ul {
+    width: 100%; /* Full width */
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Even spacing */
+    align-items: center; /* Vertically align items */
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+/* Style for the language selector dropdown */
+#languageSelector {
+    padding: 5px 10px;
+    background-color: #1D70A2; /* Dark blue background */
+    color: #1B4353; /* Dark blue text */
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px; /* Adjust as needed */
+    cursor: pointer;
+}
+
+/* Style for the options in the dropdown */
+#languageSelector option {
+    padding: 5px;
+    background-color: #173753; /* Dark blue background for options */
+    color: #FEFDFF; /* White text color for options */
+}
+
+/* Additional hover effects can be added for interactivity */
+#languageSelector:hover {
+    background-color: #2892D7; /* Lighter blue highlight color when hovered */
+}
+
+
+@keyframes underline {
+    from {
+        width: 0; /* Start with no underline */
+    }
+    to {
+        width: 100%; /* Fully underline the text */
+    }
+}
+
+/* Apply the animation to button elements */
+button, header nav ul li a {
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+    border: none;
+    position: relative; /* Relative positioning for the ::after pseudo-element */
+}
+
+button::after, header nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0; /* Start with no underline */
+    height: 2px; /* Height of the underline */
+    background-color: #2892D7; /* Color of the underline */
+    transition: width 0.3s ease; /* Smooth transition for the underline width */
+}
+
+/* Add the underline animation on hover */
+button:hover::after, header nav ul li a:hover::after {
+    animation: underline 0.3s ease; /* Apply the underline animation */
+    width: 100%; /* Fully underline the text on hover */
+}
+
+#skillsList {
+    list-style: none; /* Enlève les puces de liste */
+    display: flex; /* Utilise Flexbox pour aligner les éléments horizontalement */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+    padding: 0; /* Enlève le padding par défaut */
+    justify-content: space-around; /* Répartit les éléments uniformément */
+}
+
+#skillsList li {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #FEFDFF; /* Bordure grise */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    background-color: #FEFDFF; /* Couleur de fond légère */
+}
+
+#skillsList img {
+    width: 20px; /* Taille du logo */
+    height: 20px; /* Taille du logo */
+    margin-right: 10px; /* Espace entre le logo et le texte */
+}
+
+h2 {
+    font-size: 35px;
+}
+
+#downloadCv {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #2892D7; /* Button background color */
+    color: #FEFDFF; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+    margin: 20px 0; /* Add margin for spacing */
+    text-decoration: none;
+}
+
+#downloadCv:hover {
+    background-color: #173753; /* Button background color on hover */
+}
+
+#siteLogo {
+    width: 50px; /* Adjust the width of the logo as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Add margin to create space between the logo and other header content */
+}
+
+.image-button {
+    display: inline-block;
+    text-decoration: none;
+    width: 50%; /* 50% de la largeur de la page */
+    height: 100px; /* 100px de hauteur, ajustez au besoin */
+    overflow: hidden; /* Pour s'assurer que le contenu ne dépasse pas du rectangle */
+}
+
+.image-container {
+    position: relative;
+    width: 100%; /* S'étend sur toute la largeur du conteneur */
+    height: 100%; /* S'étend sur toute la hauteur du conteneur */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%; /* Assure que l'image couvre tout le conteneur */
+    object-fit: cover; /* Garde les proportions de l'image */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: blur(10px);
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+    filter: blur(2px);
+}
+
+.text-over-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Montserrat', sans-serif; /* Appliquez la police Montserrat */
+    font-size: 1.5vw; /* Ajustez la taille de la police selon vos préférences */
+    text-align: center;
+    white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
+    font-weight: bold;
+}
+
+/* Styles pour la section "Langues parlées" */
+#languages {
+    margin-top: 20px; /* Espacement depuis la section précédente */
+}
+
+.language-list {
+    list-style: none;
+    padding: 0;
+}
+
+.language-list li {
+    margin-bottom: 20px; /* Espacement entre chaque langue */
+}
+
+.language-name {
+    display: inline-block;
+    width: 100px; /* Largeur du nom de la langue */
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 50%; /* Largeur de la barre de progression - Modifiez cette valeur pour plus de longueur */
+    height: 10px; /* Hauteur de la barre de progression */
+    background-color: #eee; /* Couleur de fond de la barre de progression */
+    border-radius: 5px; /* Coins arrondis */
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #2892D7; /* Couleur de la barre de progression */
+    transition: width 0.3s ease; /* Animation de la largeur de la barre */
+}
