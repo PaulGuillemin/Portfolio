@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Paul Guillemin</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
-    <script src="js/jsIndex.js"></script>
+    <script src="../fr/js/jsIndex.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -18,47 +19,28 @@
                 <li><a href="#skills" id="navSkills">Skills</a></li>
                 <li><a href="#contact" id="navContact">Contact</a></li>
             </ul>
-            <select id="languageSelector">
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="de">Español</option>
-            </select>
-
-            <script>
-                // Fonction pour gérer la redirection en fonction de la langue sélectionnée
-                document.getElementById("languageSelector").addEventListener("change", function () {
-                    var selectedLanguage = this.value;
-                    switch (selectedLanguage) {
-                        case "en":
-                            window.location.href = "../en/index.html";
-                            break;
-                        case "fr":
-                            window.location.href = "../fr/index.html";
-                            break;
-                        case "de":
-                            window.location.href = "../de/index.html";
-                            break;
-                        case "es":
-                            window.location.href = "../es/index.html";
-                            break;
-                        default:
-                            window.location.href = "";
-                    }
-                });
-            </script>
+            <div class="languageSelector">
+                <button id="languageButton"><img src="../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>English</span></button>
+                <div id="languageMenu" class="language-menu">
+                    <a href="../fr/index.html">Français</a>
+                    <a href="../en/index.html">English</a>
+                    <a href="../de/index.html">Deutsch</a>
+                    <a href="../es/index.html">Español</a>
+                </div>
+            </div>
+            <script src="../fr/js/jsIndex.js"></script>
         </nav>
     </header>
 
 <div class="content-container">
     <section id="about">
         <h2 id="aboutTitle">ABOUT</h2>
-            <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in its broadest sense: ranging from mechanics to electronics, and including computer science. I aspire to transform my theoretical knowledge into practical solutions, striving to apply what I learn to solve real-world problems. My goal is to leverage my skills to innovate, address challenges, and create advanced technologies. I am ready to contribute to the evolution of these fields, as exciting as they are complex!</p>
-        <a id="downloadCv" href="../dl/en/Resume_Paul_GUILLEMIN.pdf">Resume</a>
+            <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in the broadest sense: from mechanics to electronics, and including computer science. I aspire to transform my theoretical knowledge into practical solutions by striving to apply what I learn to solve concrete problems. My goal is to leverage my skills to innovate, address challenges, and create advanced technologies. I am ready to contribute to the evolution of these fields, which are as exciting as they are complex!</p>
+        <a id="downloadCv" href="../dl/Resume/Resume_Paul_GUILLEMIN.pdf">Resume</a>
     </section>
 
     <section id="languages">
-        <h2>Languages</h2>
+        <h2>LANGUAGES</h2>
         <ul class="language-list">
             <li>
                 <span class="language-name">French</span>
@@ -96,7 +78,7 @@
                 <a href="lien_vers_votre_destination.html" class="image-button">
                     <div class="image-container">
                         <img src="../img/projects/tipe/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Smart' Vitale</span>
+                        <span class="text-over-image">Smart' Vitale : Automated Disinfection of Health Insurance Cards.</span>
                     </div>
                 </a>
             </div>
@@ -106,7 +88,7 @@
                 <a href="lien_vers_votre_destination.html" class="image-button">
                     <div class="image-container">
                         <img src="../img/projects/smart_vitale/background.png" alt="Description de l'image">
-                        <span class="text-over-image">TIPE : Wireless electric vehicules charging</span>
+                        <span class="text-over-image">TIPE : Engineering Project: Automated Inductive Charging for Electric Cars</span>
                     </div>
                 </a>
             </div>
@@ -126,7 +108,6 @@
     <section id="contact">
         <h2 id="contactTitle">CONTACT</h2>
         <p>Email: <a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
-        <p>Phone: +33 6 24 48 44 00</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
         <p>GitHub: <a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
     </section>    

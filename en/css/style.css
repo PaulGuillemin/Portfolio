@@ -19,14 +19,6 @@ body {
     margin: 40px; /* Ajoutez une marge autour du contenu */
 }
 
-/* Styles pour le header et le footer (non modifiés) */
-header, footer {
-    background-color: #B02E0C;
-    color: #FEFDFF;
-    padding: 1em 0;
-    text-align: center;
-}
-
 #headerTitle {
     white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
     font-size: 35px; /* Taille de la police */
@@ -101,29 +93,70 @@ header nav ul li {
     display: inline;
 }
 
-/* Style for the language selector dropdown */
-#languageSelector {
-    padding: 5px 10px;
-    background-color: #1D70A2; /* Dark blue background */
-    color: #1B4353; /* Dark blue text */
-    border: none;
-    border-radius: 5px;
-    margin-left: 20px; /* Adjust as needed */
+.language-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.language-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.language-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.language-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.show { 
+    display: block;
+    animation: slideIn 0.5s;
+}
+
+@keyframes slideIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1; transform: translateY(0);}
+    to {opacity: 0; transform: translateY(-20px);}
+}
+
+.hide {
+    animation: fadeOut 0.5s forwards;
+}
+
+#languageButton {
+    margin-right: 20px;
+    align-items: center;
+    background: none;
+    border: 2px solid #f1f1f1; 
+    border-radius: 5px; 
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    color: white; 
 }
 
-/* Style for the options in the dropdown */
-#languageSelector option {
-    padding: 5px;
-    background-color: #173753; /* Dark blue background for options */
-    color: #FEFDFF; /* White text color for options */
+#languageButton img {
+    width: 30px; /* ou la taille souhaitée */
+    height: 30px; /* ou la taille souhaitée */
+    margin-right: 5px; /* espace entre l'icône et le texte */
+    fill: white;
 }
-
-/* Additional hover effects can be added for interactivity */
-#languageSelector:hover {
-    background-color: #2892D7; /* Lighter blue highlight color when hovered */
-}
-
 
 @keyframes underline {
     from {
@@ -174,11 +207,13 @@ button:hover::after, header nav ul li a:hover::after {
     border: 2px solid #FEFDFF; /* Bordure grise */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
     background-color: #FEFDFF; /* Couleur de fond légère */
+    font-size: 16px;
+    border-radius: 5px;
 }
 
 #skillsList img {
-    width: 20px; /* Taille du logo */
-    height: 20px; /* Taille du logo */
+    width: 40px; /* Taille du logo */
+    height: 40px; /* Taille du logo */
     margin-right: 10px; /* Espace entre le logo et le texte */
 }
 
