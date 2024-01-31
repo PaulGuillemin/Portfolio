@@ -1,6 +1,13 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts/Montserrat/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    src: url("../../../fonts/Montserrat/Montserrat-Medium.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat_light';
+    src: url('../../../fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -217,10 +224,6 @@ button:hover::after, header nav ul li a:hover::after {
     margin-right: 10px; /* Espace entre le logo et le texte */
 }
 
-h2 {
-    font-size: 35px;
-}
-
 #downloadCv {
     padding: 10px 20px; /* Adjust padding as needed */
     background-color: #2892D7; /* Button background color */
@@ -283,36 +286,51 @@ h2 {
     font-weight: bold;
 }
 
-/* Styles pour la section "Langues parlées" */
-#languages {
-    margin-top: 20px; /* Espacement depuis la section précédente */
+/************************************/
+h1 {
+    margin-top: 200px;
+    font-family: Montserrat_light, sans-serif;
+    text-align: center;
 }
 
-.language-list {
-    list-style: none;
-    padding: 0;
+h2 {
+    font-family: Montserrat_light, sans-serif;
+    text-align: center;
 }
 
-.language-list li {
-    margin-bottom: 20px; /* Espacement entre chaque langue */
+h3 {
+    margin-left: 20px;
 }
 
-.language-name {
-    display: inline-block;
-    width: 100px; /* Largeur du nom de la langue */
-    font-weight: bold;
+h4 {
+    margin-left: 40px;
 }
 
-.progress-bar {
-    width: 50%; /* Largeur de la barre de progression - Modifiez cette valeur pour plus de longueur */
-    height: 10px; /* Hauteur de la barre de progression */
-    background-color: #eee; /* Couleur de fond de la barre de progression */
-    border-radius: 5px; /* Coins arrondis */
-    overflow: hidden;
+h5 {
+    margin-left: 80px;
 }
 
-.progress {
-    height: 100%;
-    background-color: #2892D7; /* Couleur de la barre de progression */
-    transition: width 0.3s ease; /* Animation de la largeur de la barre */
+h6 {
+    font-size: 14px;
+    font-family: Montserrat_light, sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.image {
+    flex: 1;
+}
+
+.image img {
+    width: 60%; /* Ajustez cette valeur selon vos besoins */
+    height: auto;
+}
+
+.espace-titre {
+    margin-top: 100px; /* Ajustez cette valeur pour augmenter ou diminuer l'espace */
+}
+
+.presentation {
+    margin-left: 80px;
+    margin-right: 80px;
 }

@@ -277,7 +277,7 @@ h2 {
     transform: translate(-50%, -50%);
     color: white;
     font-family: 'Montserrat', sans-serif; /* Appliquez la police Montserrat */
-    font-size: 1.5vw; /* Ajustez la taille de la police selon vos préférences */
+    font-size: 1.2vw; /* Ajustez la taille de la police selon vos préférences */
     text-align: center;
     white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
     font-weight: bold;
