@@ -15,9 +15,9 @@
             <a href="../../../fr/index.html"><img src="../../../img/logo/logoAlpha.png" alt="Website Logo" id="siteLogo"></a>
             <div id="headerTitle">Paul Guillemin</div>
             <ul>
-                <li><a href="#about" id="navAbout">À propos</a></li>
+                <li><a href="#about" id="navAbout">About</a></li>
                 <li><a href="#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="#skills" id="navSkills">Compétences</a></li>
+                <li><a href="#skills" id="navSkills">Skills</a></li>
                 <li><a href="#contact" id="navContact">Contact</a></li>
             </ul>
             <div class="languageSelector">
@@ -34,164 +34,164 @@
     </header>
 
         <div class="presentation">
-    <h1>RECHARGE AUTOMATISÉE DE VEHICULES ELECTRIQUES PAR INDUCTION</h1>
-    <h2>TIPE : projet de classe préparatoire</h2>
+    <h1>AUTOMATED INDUCTION CHARGING SYSTEM FOR ELECTRIC VEHICULES</h1>
+    <h2>Preparatory Class Project for Highest French Engineering Schools</h2>
 
     <div class="espace-titre"></div>
 
     <h3>I - Introduction</h3>
 
-    <p>Avec le développement des voitures électriques au cours des dernières années, celles-ci semblent prendre de plus en plus de place dans nos villes, tout comme les bornes de recharge que l’on retrouve dans nos places de parking. Cependant, alors que la demande ne cesse d’augmenter, il paraît peu concevable d’équiper la majorité des places avec des bornes filaires, encombrantes, peu esthétiques et très peu fiables en raison du manque de soin de la part des utilisateurs. De plus, l’avènement des voitures autonomes dans quelques années nécessitera la création de dispositifs pouvant charger ces voitures sans l’implication de l’homme. 
-        Des solutions ont déjà été étudiées afin de charger de façon autonome ces voitures: certains proposent l’utilisation de bras mécaniques branchant automatiquement le chargeur à la voiture, mais ce systèmes sont encombrants, chers et encore plus complexes à entretenir que les bornes existantes, donc il est difficile d’imaginer leur implémentation en ville. 
-        D’autres proposent la recharge par induction, bien plus facile à intégrer sur les places de parking, et sans pièces mobiles, mais proposant un rendement bien plus faible ainsi qu’une vitesse de chargement limitée.
-        Ainsi, l’idéal serait un système à bon rendement et haute puissance, compact et nécessitant peu d’entretien pour la municipalité, afin d’assurer leur bon fonctionnement et leur adoption.
+    <p>
+        With the development of electric vehicles in recent years, they seem to be occupying an increasingly significant presence in our cities, along with the charging stations found in our parking spaces. However, as the demand continues to grow, it appears impractical to equip the majority of parking spaces with wired charging stations, as they are bulky, unattractive, and highly unreliable due to users' lack of care. Additionally, the advent of autonomous vehicles in a few years will require the creation of systems capable of charging these vehicles without human intervention.
+        Various solutions have already been explored to autonomously charge these vehicles. Some propose the use of mechanical arms that automatically connect the charger to the vehicle, but these systems are cumbersome, expensive, and even more complex to maintain than existing charging stations, making it challenging to envision their implementation in urban areas.
+        Others suggest inductive charging, which is much easier to integrate into parking spaces and does not involve moving parts. However, it offers a lower efficiency and limited charging speed.
+        Therefore, the ideal solution would be a high-efficiency, high-power, compact system that requires minimal maintenance for municipal authorities, ensuring their proper operation and widespread adoption.
     </p>
 
-    <h3>II - État de l’art</h3>
+    <h3>II - State of the Art</h3>
 
-    <p>Le développement de l’infrastructure liée à la démocratisation de la voiture électrique fait que l’implémentation de systèmes de recharge par induction dans nos villes devient une question pertinente. L’utilisation de bornes filaires est généralement la solution choisie, mais celle-ci présente certaines limites liées à son encombrement, son usure mécanique et son absence d’automatisation, nécessitant un opérateur humain, ce qui pourrait être problématique en particulier avec l’avènement des voitures autonomes. C’est pourquoi l’idée de l’utilisation de la recharge par induction est étudiée par l’industrie, notamment par notre contact chez Stellantis.
-        Nous nous sommes intéressés à l’influence sur la performance du positionnement des deux bobines présentes dans ce système. En tenant compte de cela, nous avons conçu un système de positionnement automatisé dans le but d’obtenir des conditions idéales pour la recharge.
+    <p>
+        The development of infrastructure related to the popularization of electric vehicles makes the implementation of induction charging systems in our cities a relevant consideration. While wired charging stations are typically the chosen solution, they come with certain limitations such as their bulkiness, mechanical wear, and lack of automation, requiring human operators. This could pose challenges, especially with the rise of autonomous vehicles. Therefore, the concept of using induction charging is being explored by the industry, including our contact at Stellantis.
+        We have focused on examining how the positioning of the two coils in this system affects its performance. Taking this into account, we have designed an automated positioning system with the aim of achieving ideal conditions for charging.
     </p>
 
-    <h3>III - La maquette</h3>
-    <h4>III.1 - Schéma synoptique</h4>
+    <h3>III - The Prototype</h3>
+    <h4>III.1 - Block Diagram</h4>
     <div class="image">
         <img src="../../../img/projects/tipe/schema.png" alt="Schema">
     </div>
-    <p>Deux bobines sont placées sur deux plans parallèles : L'une, celle sur le parking est fixe, l'autre, celle sous la voiture
-        est mobile sur deux axes perpendiculaires. Dans notre modèle, les deux axes mobiles sont des systèmes poulies-courroie dont chaque poulie
-        est entrainée par un moteur pas-à-pas.
+    <p>
+        Two coils are placed on two parallel planes: one, located in the parking area, is stationary, while the other, positioned beneath the vehicle, is mobile along two perpendicular axes. In our model, both mobile axes utilize pulley-belt systems, with each pulley driven by a stepper motor.
     </p>
     <div class="image">
         <img src="../../../img/projects/tipe/schema2.png" alt="Schema">
     </div>
-    <p>3 grandes parties se distinguent dans le projet : Le couplage des bobines, l'asservissement du positionnement des bobines et l'acquisition des différents signaux.</p>
+    <p>Three main components stand out in the project: The coupling of the coils, the control of the coil positioning, and the acquisition of various signals.</p>
+
     <ul class="listeSchemaSynoptique">
-        <li><h6>Couplage des bobines</h6><p>Dans notre modèle, la bobine fixe est soumise à une tension alternative 10 V C-C à 2,8 kHz. Selon l'équation de Maxwell-Ampère : \( \nabla \times \vec{\mathbf{B}} = \mu_0 \vec{\mathbf{j}} + \mu_0 \epsilon_0 \frac{\partial \vec{\mathbf{E}}}{\partial t} \), un champ magnétique variable est alors créé.
-            Une tension est induite dans la seconde bobine en accord avec l'équation de Maxwell-Faraday : \( \nabla \times \vec{\mathbf{E}} = - \frac{\partial \vec{\mathbf{B}}}{\partial t} \). Le flux reçu par la bobine mobile dépend fortement de sa position relative par rapport à la bobine fixe. 
-            Pour une distance donnée entre les deux centres des bobines, la tension induite est maximale lorsque les deux centres sont alignés par rapport à l'axe orthogonal aux deux bobines.
+        <li><h6>Coil Coupling</h6><p>In our model, the fixed coil is subjected to an alternating current of 10 V peak-to-peak at 2.8 kHz. According to Maxwell-Ampère's equation: \( \nabla \times \vec{\mathbf{B}} = \mu_0 \vec{\mathbf{j}} + \mu_0 \epsilon_0 \frac{\partial \vec{\mathbf{E}}}{\partial t} \), a variable magnetic field is then created.
+            A tension is induced in the second coil in accordance with Maxwell-Faraday's equation: \( \nabla \times \vec{\mathbf{E}} = - \frac{\partial \vec{\mathbf{B}}}{\partial t} \). The flux received by the mobile coil strongly depends on its relative position to the fixed coil.
+            For a given distance between the centers of the two coils, the induced voltage is maximal when the two centers are aligned relative to the both coils orthogonal axis.
         </p></li>
-        <li><h6>Asservissement</h6><p>La bobine mobile est motorisée à l'aide d'un système poulies-courroie dont la poulie est entrainée par un moteur pas-à-pas NEMA 17. La position de l'axe moteur est déterminée par une résolution de 200 pas/tour associé à une précision de ± 5%. 
-            En fonction de la tension induite dans la seconde bobine, la carte arduino contrôle le moteur afin que la tension induite soit maximale selon les deux axes de la bobines mobile. Le moteur est alimentée avec une alimentation stabilisée externe associée au driver.
+        <li><h6>Feedback control</h6><p>The mobile coil is motorized using a pulley-belt system with the pulley being driven by a NEMA 17 stepper motor. The position of the motor shaft is determined by a resolution of 200 steps per revolution with a precision of ± 5%.
+            Depending on the induced voltage in the second coil, the Arduino board controls the motor to maximize the induced voltage along the two axes of the mobile coil. The motor is powered by an external stabilized power supply connected to the driver.
              </p></li>
-        <li><h6>Acquisition des signaux</h6><p>4 éléments principaux composent la chaîne d'acquisition du système. Le signal aux bornes de la bobine réceptrice est faible (en effet, dans notre modèle la tension dans la bobine fixe est relativement faible pour des raisons de sécurité), un amplificateur non-inverseur réalisé avec un amplificateur opérationnel et une alimentation stabiliée ± 15 V permet d'amplifier le signal brut en sortie de la bobine réceptrice.
-            Un redresseur réalisé avec un pont de Graetz (pont de diodes) permet de récupérer un signal positif. Ce signal est lissé à l'aide d'un filtre passe-bas pour récupérer un signal quasi continu. Enfin, la carte Arduino récupère ce signal qui est ensuite analysé afin de positionner de façon optimale la bobine mobile.
-            Enfin, pour des raisons de simplification des analyses, la carte Arduino est controlée en python avec un ordinateur.
+        <li><h6>Signal Acquisition</h6>
+        <p>
+            The acquisition chain of the system consists of four main elements. The signal at the terminals of the receiving coil is weak (in our model, the voltage in the fixed coil is intentionally low for safety reasons). An inverting amplifier, implemented with an operational amplifier and a ±15 V stabilized power supply, is used to amplify the raw signal from the receiving coil.
+            A rectifier, constructed with a Graetz bridge (diode bridge), is employed to extract a positive signal. This signal is then smoothed using a low-pass filter to obtain a quasi-continuous signal. Subsequently, the Arduino board captures this signal, which is then analyzed to optimize the positioning of the mobile coil.
+            For the sake of simplifying analysis, the Arduino board is controlled by a computer using Python.
         </p></li>
     </ul>
-    <h4>III.2 - Couplage des bobines</h4>
-        <h5>III.2.1 - Dispositif expérimental</h5>
-        <div class="image">
-            <img src="../../../img/projects/tipe/schema3.png" alt="Schema">
-            <img src="../../../img/projects/tipe/schema4.png" alt="Schema">
-            <img src="../../../img/projects/tipe/schema5.png" alt="Schema">
-        </div>
-        <h5>III.2.2 - Modélisation</h5>
-        <div class="image">
-            <img src="../../../img/projects/tipe/graph.png" alt="Schema">
-        </div>
-        <p>On positionne les deux bobines deux façon optimale (les deux centres sont alignés). Pour différentes fréquences on mesure la tensions induite dans la bobine réceptrice. On trace alors la tension induite en fonction de la fréquence.
-            On remarque que la tension reçue est maximale pour une fréquence de 2,9 kHz, ce qui explique ce choix de fréquence pour la suite du projet. Toutefois, il est important de noter que cette fréquence dépend de nombreux facteurs intrinsèques à la construction des bobines (nombre de tours, géométrie...).
-            La fréquence optimale pour le système réelle serait donc certainement différente.
-        </p>
-        <div class="image">
-            <img src="../../../img/projects/tipe/carte.png" alt="Schema">
-        </div>
-        <h6 class="legend">Modèle Matlab Simulink</h6>
-        <div class="image">
-            <img src="../../../img/projects/tipe/simulink.png" alt="Schema">
-            <img src="../../../img/projects/tipe/courbes.png" alt="Schema">
-            <img src="../../../img/projects/tipe/courbes2.png" alt="Schema">
-        </div>
-        <p>La tension induite est maximale lorsque les deux centres des bobines sont alignés (distance correspondant à 0.00 cm). Cependant, il est intéressant de remarquer qu'au delà d'une certaine distance entre les deux centres des bobines, la tension induite dans la bobine mobile augmente à nouveau.
-             Cela est dû au repliement des lignes de champs magnétique dans la seconde bobine de facon plus optimale lorsque les bobines ne sont plus superposées.
-        </p>
-        <h5>III.2.3 - Conclusion</h5>
-        <div class="image">
-            <img src="../../../img/projects/tipe/conclu.png" alt="Schema">
-        </div>
-        <p>L'écart entre le modèle et le réel est en grande partie dû à une simplification des modèles pour la présentation.</p>
-    <h4>III.3 - Acquisition du signal</h4>
-    <p>Le 1er modèle ne comportait pas d'amplification avant le traitement du signal. Le signal s'est avéré extrèmement bruité rendant le modèle moins précis. On a donc décidé d'inclure un amplificateur non-inverseur à la sortie de la bobine réceptrice.</p>
-        <h5>III.3.1 - Dimensionnement du circuit</h5>
-        <div class="image">
-            <img src="../../../img/projects/tipe/redressement.png" alt="Schema">
-        </div>
-        <div class="image">
-            <img src="../../../img/projects/tipe/resultats.png" alt="Schema">
-        </div>
-        <h4>Implémentation d'un amplificateur</h5>
-        <p>On utilise un filtre passe-bas numérique implémenté avec la carte Arduino afin de lisser le signal.
-            Le montage finalement utilisé est alors le suivant.
-        </p>
-        <div class="image">
-            <img src="../../../img/projects/tipe/montage.png" alt="Schema">
-        </div>
-        <p>La carte Arduino exploite donc 50% de sa plage de mesure. Le signal est moins bruité avec l'amplificateur non-inverseur.</p>
-        <div class="image">
-            <img src="../../../img/projects/tipe/resultats2.png" alt="Schema">
-        </div>
-        <div class="image">
-            <img src="../../../img/projects/tipe/reducBruit.png" alt="Schema">
-        </div>
-        <p>Finalement, pour un déplacement de la bobine sur 1cm, la régression de l'évolution de la tension en fonction du déplacement est qualitativement bien plus précis.</p>
-        <div class="image">
-            <img src="../../../img/projects/tipe/regression.png" alt="Schema">
-        </div>
-    <h4>III.4 - Asservissement discret</h4>
-    <p>On a relevé la tension induite dans la bobine réceptrice en fonction de sa position dans le plan. On a alors le graphique suivant montrant la position optimale des bobines.
-        Aussi, une variation de la distance de 30 mm entre les deux bobines entraîne une variation de 27% de la tension induite ce qui montre la pertinence et l'importance du positionnement des bobines.
-    </p>
-    <div class="image">
-        <img src="../../../img/projects/tipe/importancePositionnement.png" alt="Schema">
-    </div>
-        <h5>III.4.1 - Fonctionnement théorique</h5>
-        <p>On décide d'une pente maximale (pente de la tension induite en fonction du déplacement de la bobine) : c'est la consigne pour l'asservissement. Le correcteur est dans un prémier temps un gain pur k, décidé experimentalement.
-            Le système hacheur + moteur engendre un déplacement de la bobine d en pas. Ce déplacement de la bobine réceptrice engendre une modification de la tension induite, cette tension est mesurée et traitée par le système précédemment décrit. A l'aide 
-            d'une dérivation discrète implémentée dans la carte Arduino on récupère la pente de la tension induite en fonction du déplacement de la bobine. C'est la contre-réaction du système asservi.
-        </p>
-        <div class="image">
-            <img src="../../../img/projects/tipe/schemaBloc.png" alt="Schema">
-        </div>
-        <h5>III.4.2 - Essais pratiques</h5>
-        <h5>Déroulé par étapes</h5>
-        <div class="image">
-            <img src="../../../img/projects/tipe/deroule.png" alt="Schema">
-        </div>
-       <h5>Impact du gain du correcteur sur les performances du système</h5> 
-       <div class="image">
-        <img src="../../../img/projects/tipe/rapidite.png" alt="Schema">
-        </div>
-        <div class="image">
-            <img src="../../../img/projects/tipe/precision.png" alt="Schema">
-        </div>
-
-    <h3>IV - Conclusion</h3>
-
-    <p>Ce projet, qui a en partie rythmé notre travail en classe préparatoire, nous a permis de mettre en pratique les connaissances d'une part théorique nous apprenons en cours et d'une autre part de mettre personnellement en pratique ce que nous apprennons durant les travaux pratiques.
-        Il nous a appris à gérere un projet du début à la fin, avec les complications dont il s'accompagne, qu'elles soient de l'ordre des connaissances, pratiques ou simplement de l'organisation du projet.
-    </p>
-
-    <h3>V - Timeline du projet</h3>
-    <ul class="listeTimeline">
-        <li>Mars 2022: Premières recherches sur la recharge par induction dans le domaine de l'automobile. Expérimentations sur des bobines de Helmholtz en laboratoire donnant lieu à la décision de se focaliser sur le positionnement relatif des bobines.</li>
-        <li>Juin 2022: Discussion avec des ingénieurs ayant travaillé sur le sujet, renseignant sur le contexte et les dimensions du système. Début de la conception de la maquette.</li>
-        <li>Septembre 2022: Conception des bobines utilisées dans la maquette. Premières mesures expérimentales de la tension induite en fonction de la position et de la fréquence.</li>
-        <li>Octobre-novembre: Modélisation théorique des bobines, comparaisons avec les résultats expérimentaux. Branchements de l'Arduino et des moteurs pas à pas permettant de déplacer une bobine par rapport à l'autre avec précision.</li>
-        <li>Décembre 2022: Dimensionnement et montage d’un premier redresseur, permettant de convertir le signal alternatif en un signal continu pouvant être lu par l'Arduino. Programmation d'un système de communication série entre l'Arduino et un ordinateur avec Python, facilitant les déplacements et les mesures.</li>
-        <li>Janvier - février 2023: Réalisation de plusieurs programmes tentant de positionner automatiquement les bobines, avec des résultats insatisfaisants en raison des mesures imprécises: réalisation d’un nouveau circuit redresseur utilisant un amplificateur, d'abord dimensionné sur Matlab.</li>
-        <li>Mars 2023: Réalisation du système asservi discret permettant le positionnement, et ajustements du correcteur proportionnel.</li>
-        <li>Mai 2023: Recherche de solutions alternatives pour le positionnement. Mesure de la tension induite en fonction de la position sur deux dimensions.</li>
-    </ul>
-    <h3>VI - Documents relatifs au projet</h3>
-    <ul class="dl_list">
-        <li>Datasheet Moteur NEMA 17<a id="downloadCv" href="../../../dl/doc/tipe/nema17_datasheet.pdf">Datasheet</a></li>
-        <li>Présentation au format PDF © 2023 Paul Guillemin Victor Sin Sohn<a id="downloadCv" href="../../../dl/doc/tipe/TIPE 2022 2023.pdf">Présentation</a></li>
-    </ul>
-    
-
+    <h4>III.2 - Coil Coupling</h4>
+<h5>III.2.1 - Experimental Setup</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/schema3.png" alt="Schema">
+    <img src="../../../img/projects/tipe/schema4.png" alt="Schema">
+    <img src="../../../img/projects/tipe/schema5.png" alt="Schema">
+</div>
+<h5>III.2.2 - Modeling</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/graph.png" alt="Schema">
+</div>
+<p>We position the two coils optimally (both centers are aligned). For different frequencies, we measure the induced voltage in the receiving coil. We then plot the induced voltage against the frequency.
+    It is observed that the received voltage is maximum at a frequency of 2.9 kHz, which explains the choice of this frequency for the rest of the project. However, it is important to note that this frequency depends on various intrinsic factors of coil construction (number of turns, geometry, etc.).
+    The optimal frequency for the real system would likely be different.
+</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/carte.png" alt="Schema">
+</div>
+<h6 class="legend">Matlab Simulink Model</h6>
+<div class="image">
+    <img src="../../../img/projects/tipe/simulink.png" alt="Schema">
+    <img src="../../../img/projects/tipe/courbes.png" alt="Schema">
+    <img src="../../../img/projects/tipe/courbes2.png" alt="Schema">
+</div>
+<p>The induced voltage is maximum when the two coil centers are aligned (distance corresponding to 0.00 cm). However, it is interesting to note that beyond a certain distance between the two coil centers, the induced voltage in the mobile coil increases again.
+    This is due to the folding of magnetic field lines in the second coil more optimally when the coils are no longer superimposed.
+</p>
+<h5>III.2.3 - Conclusion</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/conclu.png" alt="Schema">
+</div>
+<p>The discrepancy between the model and reality is largely due to simplifications made for presentation purposes.</p>
+<h4>III.3 - Signal Acquisition</h4>
+<p>The first model did not include amplification before signal processing. The signal turned out to be extremely noisy, making the model less accurate. Therefore, we decided to include a non-inverting amplifier at the output of the receiving coil.</p>
+<h5>III.3.1 - Circuit Sizing</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/redressement.png" alt="Schema">
+</div>
+<div class="image">
+    <img src="../../../img/projects/tipe/resultats.png" alt="Schema">
+</div>
+<h4>Amplifier Implementation</h4>
+<p>We use a digital low-pass filter implemented with the Arduino board to smooth the signal.
+    The final circuit used is as follows.
+</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/montage.png" alt="Schema">
+</div>
+<p>So, the Arduino board exploits 50% of its measurement range. The signal is less noisy with the non-inverting amplifier.</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/resultats2.png" alt="Schema">
+</div>
+<div class="image">
+    <img src="../../../img/projects/tipe/reducBruit.png" alt="Schema">
+</div>
+<p>Finally, for a coil displacement of 1 cm, the regression of the voltage change with displacement is qualitatively much more accurate.</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/regression.png" alt="Schema">
+</div>
+<h4>III.4 - Discrete Control</h4>
+<p>We measured the induced voltage in the receiving coil as a function of its position in the plane. The following graph shows the optimal coil positions.
+    Also, a variation of 30 mm in the distance between the two coils results in a 27% variation in the induced voltage, demonstrating the relevance and importance of coil positioning.
+</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/importancePositionnement.png" alt="Schema">
+</div>
+<h5>III.4.1 - Theoretical Operation</h5>
+<p>We decide on a maximum slope (slope of induced voltage versus coil displacement): this is the setpoint for control. The controller is initially a pure gain k, determined experimentally.
+    The chopper + motor system causes a coil displacement of d in steps. This displacement of the receiving coil leads to a change in the induced voltage, which is measured and processed by the previously described system. Using
+    a discrete derivative implemented in the Arduino board, we obtain the slope of the induced voltage versus coil displacement. This is the feedback of the control system.
+</p>
+<div class="image">
+    <img src="../../../img/projects/tipe/schemaBloc.png" alt="Schema">
+</div>
+<h5>III.4.2 - Practical Tests</h5>
+<h5>Step-by-Step Process</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/deroule.png" alt="Schema">
+</div>
+<h5>Impact of Controller Gain on System Performance</h5>
+<div class="image">
+    <img src="../../../img/projects/tipe/rapidite.png" alt="Schema">
+</div>
+<div class="image">
+    <img src="../../../img/projects/tipe/precision.png" alt="Schema">
 </div>
 
+<h3>IV - Conclusion</h3>
+
+<p>This project, which partly shaped our work in preparatory class, allowed us to apply theoretical knowledge we learn in class and personally put into practice what we learn during practical work.
+    It taught us how to manage a project from start to finish, with all the complications it entails, whether in terms of knowledge, practical aspects, or simply project organization.
+</p>
+
+<h3>V - Project Timeline</h3>
+<ul class="listeTimeline">
+    <li>March 2022: Initial research on induction charging in the automotive field. Experiments on Helmholtz coils in the laboratory led to the decision to focus on the relative positioning of the coils.</li>
+    <li>June 2022: Discussions with engineers who have worked on the subject, providing information on the context and dimensions of the system. Start of prototype design.</li>
+    <li>September 2022: Design of coils used in the prototype. Initial experimental measurements of induced voltage as a function of position and frequency.</li>
+    <li>October-November: Theoretical modeling of coils, comparisons with experimental results. Connections of the Arduino board and stepper motors for precise coil positioning.</li>
+    <li>December 2022: Sizing and assembly of an initial rectifier, converting the alternating signal into a continuous signal that can be read by the Arduino. Programming of a serial communication system between the Arduino and a computer using Python to facilitate movement and measurements.</li>
+    <li>January - February 2023: Development of several programs attempting to automatically position the coils, with unsatisfactory results due to imprecise measurements: creation of a new rectifier circuit using an amplifier, initially dimensioned in Matlab.</li>
+    <li>March 2023: Implementation of the discrete control system for positioning and adjustments of the proportional controller.</li>
+    <li>May 2023: Search for alternative solutions for positioning. Measurement of induced voltage as a function of position in two dimensions.</li>
+</ul>
+<h3>VI - Project-Related Documents</h3>
+<ul class="dl_list">
+    <li>NEMA 17 Motor Datasheet<a id="downloadCv" href="../../../dl/doc/tipe/nema17_datasheet.pdf">Datasheet</a></li>
+    <li>PDF Presentation © 2023 Paul Guillemin Victor Sin Sohn<a id="downloadCv" href="../../../dl/doc/tipe/TIPE 2022 2023.pdf">Presentation</a></li>
+</ul>
 <footer>
     © 2024 Paul Guillemin
 </footer>
