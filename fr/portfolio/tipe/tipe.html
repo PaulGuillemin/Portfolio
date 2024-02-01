@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style_tipe.css">
     <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
     <script src="js_tipe.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
 <body>
@@ -33,18 +34,18 @@
     </header>
 
         <div class="presentation">
-    <h1>RECHARGE AUTOMATISEE DE VEHICULES ELECTRIQUES PAR INDUCTION</h1>
+    <h1>RECHARGE AUTOMATISÉE DE VEHICULES ELECTRIQUES PAR INDUCTION</h1>
     <h2>TIPE : projet de classe préparatoire</h2>
 
     <div class="espace-titre"></div>
 
     <h3>I - Introduction</h3>
 
-    <h6>Avec le développement des voitures électriques au cours des dernières années, celles-ci semblent prendre de plus en plus de place dans nos villes, tout comme les bornes de recharge que l’on retrouve dans nos places de parking. Cependant, alors que la demande ne cesse d’augmenter, il paraît peu concevable d’équiper la majorité des places avec des bornes filaires, encombrantes, peu esthétiques et très peu fiables en raison du manque de soin de la part des utilisateurs. De plus, l’avènement des voitures autonomes dans quelques années nécessitera la création de dispositifs pouvant charger ces voitures sans l’implication de l’homme. 
+    <p>Avec le développement des voitures électriques au cours des dernières années, celles-ci semblent prendre de plus en plus de place dans nos villes, tout comme les bornes de recharge que l’on retrouve dans nos places de parking. Cependant, alors que la demande ne cesse d’augmenter, il paraît peu concevable d’équiper la majorité des places avec des bornes filaires, encombrantes, peu esthétiques et très peu fiables en raison du manque de soin de la part des utilisateurs. De plus, l’avènement des voitures autonomes dans quelques années nécessitera la création de dispositifs pouvant charger ces voitures sans l’implication de l’homme. 
         Des solutions ont déjà été étudiées afin de charger de façon autonome ces voitures: certains proposent l’utilisation de bras mécaniques branchant automatiquement le chargeur à la voiture, mais ce systèmes sont encombrants, chers et encore plus complexes à entretenir que les bornes existantes, donc il est difficile d’imaginer leur implémentation en ville. 
         D’autres proposent la recharge par induction, bien plus facile à intégrer sur les places de parking, et sans pièces mobiles, mais proposant un rendement bien plus faible ainsi qu’une vitesse de chargement limitée.
         Ainsi, l’idéal serait un système à bon rendement et haute puissance, compact et nécessitant peu d’entretien pour la municipalité, afin d’assurer leur bon fonctionnement et leur adoption.
-        </h6>
+    </p>
 
     <h3>II - État de l’art</h3>
 
@@ -53,9 +54,42 @@
     <div class="image">
         <img src="../../../img/projects/tipe/schema.png" alt="Schema">
     </div>
+    <p>Deux bobines sont placées sur deux plans parallèles : L'une, celle sur le parking est fixe, l'autre, celle sous la voiture
+        est mobile sur deux axes perpendiculaires. Dans notre modèle, les deux axes mobiles sont des systèmes poulies-courroie dont chaque poulie
+        est entrainée par un moteur pas-à-pas.
+    </p>
+    <div class="image">
+        <img src="../../../img/projects/tipe/schema2.png" alt="Schema">
+    </div>
+    <p>3 grandes parties se distinguent dans le projet : Le couplage des bobines, l'asservissement du positionnement des bobines et l'acquisition des différents signaux.</p>
+    <ul class="listeSchemaSynoptique">
+        <li><h6>Couplage des bobines</h6><p>Dans notre modèle, la bobine fixe est soumise à une tension alternative 10 V C-C à 2,8 kHz. Selon l'équation de Maxwell-Ampère : \( \nabla \times \vec{\mathbf{B}} = \mu_0 \vec{\mathbf{j}} + \mu_0 \epsilon_0 \frac{\partial \vec{\mathbf{E}}}{\partial t} \), un champ magnétique variable est alors créé.
+            Une tension est induite dans la seconde bobine en accord avec l'équation de Maxwell-Faraday : \( \nabla \times \vec{\mathbf{E}} = - \frac{\partial \vec{\mathbf{B}}}{\partial t} \). Le flux reçu par la bobine mobile dépend fortement de sa position relative par rapport à la bobine fixe. 
+            Pour une distance donnée entre les deux centres des bobines, la tension induite est maximale lorsque les deux centres sont alignés par rapport à l'axe orthogonal aux deux bobines.
+        </p></li>
+        <li><h6>Asservissement</h6><p>La bobine mobile est motorisée à l'aide d'un système poulies-courroie dont la poulie est entrainée par un moteur pas-à-pas NEMA 17. La position de l'axe moteur est déterminée par une résolution de 200 pas/tour associé à une précision de ± 5%. 
+            En fonction de la tension induite dans la seconde bobine, la carte arduino contrôle le moteur afin que la tension induite soit maximale selon les deux axes de la bobines mobile. Le moteur est alimentée avec une alimentation stabilisée externe associée au driver.
+             </p></li>
+        <li><h6>Acquisition des signaux</h6><p>4 éléments principaux composent la chaîne d'acquisition du système. Le signal aux bornes de la bobine réceptrice est faible (en effet, dans notre modèle la tension dans la bobine fixe est relativement faible pour des raisons de sécurité), un amplificateur non-inverseur réalisé avec un amplificateur opérationnel et une alimentation stabiliée ± 15 V permet d'amplifier le signal brut en sortie de la bobine réceptrice.
+            Un redresseur réalisé avec un pont de Graetz (pont de diodes) permet de récupérer un signal positif. Ce signal est lissé à l'aide d'un filtre passe-bas pour récupérer un signal quasi continu. Enfin, la carte Arduino récupère ce signal qui est ensuite analysé afin de positionner de façon optimale la bobine mobile.
+            Enfin, pour des raisons de simplification des analyses, la carte Arduino est controlée en python avec un ordinateur.
+        </p></li>
+    </ul>
     <h4>III.2 - Couplage des bobines</h4>
         <h5>III.2.1 - Dispositif expérimental</h5>
+        <div class="image">
+            <img src="../../../img/projects/tipe/schema3.png" alt="Schema">
+            <img src="../../../img/projects/tipe/schema4.png" alt="Schema">
+            <img src="../../../img/projects/tipe/schema5.png" alt="Schema">
+        </div>
         <h5>III.2.2 - Modélisation</h5>
+        <div class="image">
+            <img src="../../../img/projects/tipe/graph.png" alt="Schema">
+        </div>
+        <p>On positionne les deux bobines deux façon optimale à 5cm de distance (les deux centres sont alignés). Pour différentes fréquences on mesure la tensions induite dans la bobine réceptrice. On trace alors la tension induite en fonction de la fréquence.
+            On remarque que la tension reçue est maximale pour une fréquence de 2,9 kHz, ce qui explique ce choix de fréquence pour la suite du projet. Toutefois, il est important de noter que cette fréquence dépend de nombreux facteurs intrinsèques à la construction des bobines (nombre de tours, géométrie...).
+            La fréquence optimale pour le système réelle serait donc certainement différente.
+        </p>
         <h5>III.2.3 - Conclusion</h5>
     <h4>III.3 - Acquisition du signal</h4>
         <h5>III.3.1 - Dimensionnement du circuit</h5>
@@ -65,6 +99,24 @@
         <h5>III.4.2 - Essais pratiques</h5>
 
     <h3>IV - Conclusion</h3>
+
+    <h3>V - Timeline du projet</h3>
+    <ul class="listeTimeline">
+        <li>Mars 2022: Premières recherches sur la recharge par induction dans le domaine de l'automobile. Expérimentations sur des bobines de Helmholtz en laboratoire donnant lieu à la décision de se focaliser sur le positionnement relatif des bobines.</li>
+        <li>Juin 2022: Discussion avec des ingénieurs ayant travaillé sur le sujet, renseignant sur le contexte et les dimensions du système. Début de la conception de la maquette.</li>
+        <li>Septembre 2022: Conception des bobines utilisées dans la maquette. Premières mesures expérimentales de la tension induite en fonction de la position et de la fréquence.</li>
+        <li>Octobre-novembre: Modélisation théorique des bobines, comparaisons avec les résultats expérimentaux. Branchements de l'Arduino et des moteurs pas à pas permettant de déplacer une bobine par rapport à l'autre avec précision.</li>
+        <li>Décembre 2022: Dimensionnement et montage d’un premier redresseur, permettant de convertir le signal alternatif en un signal continu pouvant être lu par l'Arduino. Programmation d'un système de communication série entre l'Arduino et un ordinateur avec Python, facilitant les déplacements et les mesures.</li>
+        <li>Janvier - février 2023: Réalisation de plusieurs programmes tentant de positionner automatiquement les bobines, avec des résultats insatisfaisants en raison des mesures imprécises: réalisation d’un nouveau circuit redresseur utilisant un amplificateur, d'abord dimensionné sur Matlab.</li>
+        <li>Mars 2023: Réalisation du système asservi discret permettant le positionnement, et ajustements du correcteur proportionnel.</li>
+        <li>Mai 2023: Recherche de solutions alternatives pour le positionnement. Mesure de la tension induite en fonction de la position sur deux dimensions.</li>
+    </ul>
+    <h3>VI - Documents relatifs au projet</h3>
+    <ul class="dl_list">
+        <li>Datasheet Moteur NEMA 17<a id="downloadCv" href="../../../dl/doc/tipe/nema17_datasheet.pdf">Datasheet</a></li>
+        <li>Présentation au format PDF © 2023 Paul Guillemin Victor Sin Sohn<a id="downloadCv" href="../../../dl/doc/tipe/TIPE 2022 2023.pdf">Présentation</a></li>
+    </ul>
+    
 
 </div>
 

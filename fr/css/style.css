@@ -1,18 +1,16 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts/Montserrat/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    src: url('../../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #1B4353; /* Dark blue for primary text */
     background-color: #FEFDFF; /* Light cream background */
-    padding-top: 80px;
     margin: 0;
     padding: 0;
-    margin-top: 100px;
 }
 
 .content-container {
@@ -29,18 +27,24 @@ body {
 }
 
 header, footer {
-    background-color: #173753; /* Dark blue for header and footer */
     color: #FEFDFF; /* White text for header and footer */
     padding: 1em 0;
     text-align: center;
 }
 
+footer {
+    background-color: #173753;
+}
+
 header {
+    background-color: transparent;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000; /* Adjust the z-index as needed */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.5s ease;
+    font-size: 18px;
 }
 
 header nav ul {
@@ -56,6 +60,13 @@ header nav ul li {
 header nav ul li a {
     color: #FEFDFF; /* White text for navigation links */
     text-decoration: none;
+}
+
+.intro-background {
+    background-image: url("../../img/background/backgroundHeader.jpg");
+    background-size: cover; /* Assure que l'image couvre entièrement la div */
+    background-position: center; /* Centre l'image dans la div */
+    height: 100vh;
 }
 
 section {
@@ -249,12 +260,14 @@ h2 {
     width: 50%; /* 50% de la largeur de la page */
     height: 100px; /* 100px de hauteur, ajustez au besoin */
     overflow: hidden; /* Pour s'assurer que le contenu ne dépasse pas du rectangle */
+    border-radius: 5px; 
 }
 
 .image-container {
     position: relative;
     width: 100%; /* S'étend sur toute la largeur du conteneur */
     height: 100%; /* S'étend sur toute la hauteur du conteneur */
+    
 }
 
 .image-container img {
@@ -263,6 +276,7 @@ h2 {
     object-fit: cover; /* Garde les proportions de l'image */
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: blur(10px);
+    
 }
 
 .image-container:hover img {
