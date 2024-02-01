@@ -330,3 +330,7 @@ h2 {
     background-color: #2892D7; /* Couleur de la barre de progression */
     transition: width 0.3s ease; /* Animation de la largeur de la barre */
 }
+
+#aboutContent {
+    text-align: justify;
+}

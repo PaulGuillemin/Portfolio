@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
     <script src="../fr/js/jsIndex.js"></script>
+    <script src="../fr/js/headerAnimation.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <nav>
             <a href="index.html"><img src="../img/logo/logoAlpha.png" alt="Website Logo" id="siteLogo"></a>
             <div id="headerTitle">Paul Guillemin</div>
@@ -23,20 +24,23 @@
                 <button id="languageButton"><img src="../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>English</span></button>
                 <div id="languageMenu" class="language-menu">
                     <a href="../fr/index.html">Français</a>
-                    <a href="../en/index.html">English</a>
+                    <a href="../index.html">English</a>
                     <a href="../de/index.html">Deutsch</a>
                     <a href="../es/index.html">Español</a>
                 </div>
             </div>
             <script src="../fr/js/jsIndex.js"></script>
         </nav>
+        
     </header>
+
+<div class="intro-background"></div>
 
 <div class="content-container">
     <section id="about">
         <h2 id="aboutTitle">ABOUT</h2>
-            <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in the broadest sense: from mechanics to electronics, and including computer science. I aspire to transform my theoretical knowledge into practical solutions by striving to apply what I learn to solve concrete problems. My goal is to leverage my skills to innovate, address challenges, and create advanced technologies. I am ready to contribute to the evolution of these fields, which are as exciting as they are complex!</p>
-        <a id="downloadCv" href="../dl/Resume/Resume_Paul_GUILLEMIN.pdf">Resume</a>
+            <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in the broadest sense: ranging from mechanics to electronics, and including computer science. I aim to turn my theoretical knowledge into practical solutions by striving to apply what I learn to solve real-world problems. My goal is then to leverage my skills to innovate, address issues, and create advanced technologies. I am therefore ready to contribute to the evolution of these fields, as exciting as they are complex!</p>
+        <a id="downloadCv" href="../dl/fr/CV_Paul_GUILLEMIN.pdf">Resume</a>
     </section>
 
     <section id="languages">
@@ -45,25 +49,25 @@
             <li>
                 <span class="language-name">French</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 90%;"></div>
+                    <div class="progress" style="width: 100%;"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">English</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 80%;"></div>
+                    <div class="progress" style="width: 75%;"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">German</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 70%;"></div>
+                    <div class="progress" style="width: 20%;"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">Spanish</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 60%;"></div>
+                    <div class="progress" style="width: 30%;"></div>
                 </div>
             </li>
         </ul>
@@ -73,29 +77,26 @@
         <h2>PORTFOLIO</h2>
         <div class="portfolio-container">
     
-            <!-- New section for "TIPE recharge de voiture électrique par induction" -->
             <div class="portfolio-item">
-                <a href="lien_vers_votre_destination.html" class="image-button">
+                <a href="../fr/portfolio/tipe/tipe.html" class="image-button">
                     <div class="image-container">
-                        <img src="../img/projects/tipe/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Smart' Vitale : Automated Disinfection of Health Insurance Cards.</span>
+                        <img src="../img/projects/smart_vitale/background.png" alt="Description de l'image">
+                        <span class="text-over-image">Smart' Vitale : Automated disinfection of health insurance cards</span>
                     </div>
                 </a>
             </div>
     
-            <!-- New section for "Smart'Vitale" -->
             <div class="portfolio-item">
-                <a href="lien_vers_votre_destination.html" class="image-button">
+                <a href="../fr/portfolio/tipe/tipe.html" class="image-button">
                     <div class="image-container">
-                        <img src="../img/projects/smart_vitale/background.png" alt="Description de l'image">
-                        <span class="text-over-image">TIPE : Engineering Project: Automated Inductive Charging for Electric Cars</span>
+                        <img src="../img/projects/tipe/background.png" alt="Description de l'image">
+                        <span class="text-over-image">Engineering project: Automated inductive charging for electric vehicles</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
     
-
     <section id="skills">
         <h2 id="skillsTitle">SKILLS</h2>
         <ul id="skillsList">
@@ -115,5 +116,6 @@
 <footer>
     © 2024 Paul Guillemin
 </footer>
+<script src="../fr/js/headerAnimation.js"></script>
 </body>
 </html>

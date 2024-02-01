@@ -1,16 +1,25 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('../../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    src: url("../../../fonts/Montserrat/Montserrat-Medium.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat_light';
+    src: url('../../../fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     color: #1B4353; /* Dark blue for primary text */
     background-color: #FEFDFF; /* Light cream background */
+    padding-top: 80px;
     margin: 0;
     padding: 0;
+    margin-top: 100px;
 }
 
 .content-container {
@@ -27,24 +36,18 @@ body {
 }
 
 header, footer {
+    background-color: #173753; /* Dark blue for header and footer */
     color: #FEFDFF; /* White text for header and footer */
     padding: 1em 0;
     text-align: center;
 }
 
-footer {
-    background-color: #173753;
-}
-
 header {
-    background-color: transparent;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000; /* Adjust the z-index as needed */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.5s ease;
-    font-size: 18px;
 }
 
 header nav ul {
@@ -60,13 +63,6 @@ header nav ul li {
 header nav ul li a {
     color: #FEFDFF; /* White text for navigation links */
     text-decoration: none;
-}
-
-.intro-background {
-    background-image: url("../../img/background/backgroundHeader.jpg");
-    background-size: cover; /* Assure que l'image couvre entièrement la div */
-    background-position: center; /* Centre l'image dans la div */
-    height: 100vh;
 }
 
 section {
@@ -228,10 +224,6 @@ button:hover::after, header nav ul li a:hover::after {
     margin-right: 10px; /* Espace entre le logo et le texte */
 }
 
-h2 {
-    font-size: 35px;
-}
-
 #downloadCv {
     padding: 10px 20px; /* Adjust padding as needed */
     background-color: #2892D7; /* Button background color */
@@ -242,6 +234,7 @@ h2 {
     font-size: 16px; /* Adjust font size as needed */
     margin: 20px 0; /* Add margin for spacing */
     text-decoration: none;
+    margin-left: 30px;
 }
 
 #downloadCv:hover {
@@ -260,14 +253,12 @@ h2 {
     width: 50%; /* 50% de la largeur de la page */
     height: 100px; /* 100px de hauteur, ajustez au besoin */
     overflow: hidden; /* Pour s'assurer que le contenu ne dépasse pas du rectangle */
-    border-radius: 5px; 
 }
 
 .image-container {
     position: relative;
     width: 100%; /* S'étend sur toute la largeur du conteneur */
     height: 100%; /* S'étend sur toute la hauteur du conteneur */
-    
 }
 
 .image-container img {
@@ -276,7 +267,6 @@ h2 {
     object-fit: cover; /* Garde les proportions de l'image */
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: blur(10px);
-    
 }
 
 .image-container:hover img {
@@ -297,40 +287,84 @@ h2 {
     font-weight: bold;
 }
 
-/* Styles pour la section "Langues parlées" */
-#languages {
-    margin-top: 20px; /* Espacement depuis la section précédente */
+/************************************/
+h1 {
+    margin-top: 200px;
+    font-family: Montserrat_light, sans-serif;
+    text-align: center;
+    font-size: 40px;
 }
 
-.language-list {
-    list-style: none;
-    padding: 0;
+h2 {
+    font-family: Montserrat_light, sans-serif;
+    text-align: center;
+    font-size: 30px;
 }
 
-.language-list li {
-    margin-bottom: 20px; /* Espacement entre chaque langue */
+h3 {
+    margin-left: 20px;
+    text-align: center;
+    font-size: 25px;
 }
 
-.language-name {
-    display: inline-block;
-    width: 100px; /* Largeur du nom de la langue */
-    font-weight: bold;
+h4 {
+    margin-left: 40px;
+    font-size: 25px;
+    font-family: Montserrat_light, sans-serif;
 }
 
-.progress-bar {
-    width: 50%; /* Largeur de la barre de progression - Modifiez cette valeur pour plus de longueur */
-    height: 10px; /* Hauteur de la barre de progression */
-    background-color: #eee; /* Couleur de fond de la barre de progression */
-    border-radius: 5px; /* Coins arrondis */
-    overflow: hidden;
+h5 {
+    margin-left: 80px;
+    font-size: 20px;
+    font-family: Montserrat_light, sans-serif;
 }
 
-.progress {
-    height: 100%;
-    background-color: #2892D7; /* Couleur de la barre de progression */
-    transition: width 0.3s ease; /* Animation de la largeur de la barre */
-}
-
-#aboutContent {
+h6 {
+    font-size: 15px;
+    color: #2187e1;
+    font-family: Montserrat, sans-serif;
     text-align: justify;
+    line-height: 1.5;
 }
+
+.legend {
+    font-size: 15px;
+    color: #1B4353;
+    font-family: Montserrat, sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.listeTimeline {
+    line-height: 2;
+}
+
+.image {
+    flex: 1;
+}
+
+.image img {
+    width: 50%;
+    height: auto;
+}
+
+.espace-titre {
+    margin-top: 100px; /* Ajustez cette valeur pour augmenter ou diminuer l'espace */
+}
+
+.presentation {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.dl_list {
+    line-height: 60px;
+}
+
