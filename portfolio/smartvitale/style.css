@@ -51,6 +51,12 @@ header {
     font-size: 18px;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 header nav ul {
     list-style: none;
     padding: 0;

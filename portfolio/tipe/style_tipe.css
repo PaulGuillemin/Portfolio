@@ -51,19 +51,34 @@ header {
     font-size: 18px;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 header nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul li {
     display: inline;
     margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul li a {
     color: #FEFDFF; /* White text for navigation links */
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 section {

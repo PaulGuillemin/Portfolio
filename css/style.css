@@ -7,14 +7,14 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #1B4353; /* Dark blue for primary text */
-    background-color: #FEFDFF; /* Light cream background */
+    color: #1B4353;
+    background-color: #FEFDFF; 
     margin: 0;
     padding: 0;
 }
 
 .content-container {
-    margin: 40px; /* Ajoutez une marge autour du contenu */
+    margin: 40px; 
 }
 
 #headerTitle {
@@ -41,25 +41,41 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Adjust the z-index as needed */
+    z-index: 1000; 
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
     transition: background-color 0.5s ease;
     font-size: 18px;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
 header nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul li {
     display: inline;
     margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul li a {
     color: #FEFDFF; /* White text for navigation links */
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .intro-background {
