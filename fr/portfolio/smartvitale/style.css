@@ -368,8 +368,7 @@ p {
 }
 
 .presentation {
-    margin-left: 80px;
-    margin-right: 80px;
+    margin: 180px;
 }
 
 .dl_list {
