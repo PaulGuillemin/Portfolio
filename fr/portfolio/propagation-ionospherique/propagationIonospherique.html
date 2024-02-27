@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Paul Guillemin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
+    <script src="js_script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../../../fr/index.html"><img src="../../../img/logo/logoAlpha.png" alt="Website Logo" id="siteLogo"></a>
+            <div id="headerTitle">Paul Guillemin</div>
+            <ul>
+                <li><a href="/fr/index.html#about" id="navAbout">À propos</a></li>
+                <li><a href="/fr/index.html#portfolio" id="navPortfolio">Portfolio</a></li>
+                <li><a href="/fr/index.html#skills" id="navSkills">Compétences</a></li>
+                <li><a href="/fr/index.html#contact" id="navContact">Contact</a></li>
+            </ul>
+            <div class="languageSelector">
+                <button id="languageButton"><img src="../../../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
+                <div id="languageMenu" class="language-menu">
+                    <a href="#">Français</a>
+                    <a href="#">English</a>
+                    <a href="#">Deutsch</a>
+                    <a href="#">Español</a>
+                </div>
+            </div>
+            <script src="js_script.js"></script>
+        </nav>
+    </header>
+
+        <div class="presentation">
+    <h1>PROGATION ET REFLEXION DES ONDES DANS L'IONOSPHERE POUR LES TELECOMMUNICATIONS</h1>
+    <h2>Histoire de la 1ère télécommunication transatlantique</h2>
+
+    <div class="espace-titre"></div>
+
+    <h3>I - Introduction</h3>
+
+    Les premières études des plasmas remontent au début du XXe siècle, lorsque le physicien Irving Langmuir a s'intérésser les décharges électriques dans les gaz. En 1928, Langmuir a introduit le terme « plasma » pour décrire un gaz ionisé.
+    Les plasmas omniprésents dans l'univers, sont présents dans les étoiles, les nébuleuses, et sur Terre à de très hautes températures, dans les éclairs et les feux. C'est la découverte et la compréhension de la physique des plasmas dans l'ionosphère qui a notamment permis d'établir la première liaion sans-fil directe transatlantique. En effet, au delà d'une certaine distance, la courbure de la terre empèche de relier 2 points par une ligne droite sans couper la surface de la terre.
+    On peut alors se servir de l'ionosphère pour réfléchir les ondes et ainsi établir une communication entre 2 points à la surface de la terre.
+
+    <div class="image">
+        <img src="/img/projects/propagation_ionospherique/illustration1.png" alt="Schema" style="max-width: 300px; max-height: 300px; padding-top: 30px;">
+    </div>
+
+    <h3>II - Propagation d'une onde électromagnétique dans un plasma peu dense</h3>
+
+    <h4>II.1 - Définition d'un plasma et de l'ionosphère</h4>
+    Un plasma est un gaz ionisé. Il est un des 4 états fondamentaux de la matière Il est composé d'une part d'ions positifs et d'électrons. Le plasma est globalement neutre.
+    L'ionosphère située entre 60km et 800km d'altitude est constitué d'un gaz ionisé (plasma) par les rayons ultraviolets et rayons X  provenant du soleil.
+
+    <h4>II.2 - Relation constitutive des plasmas peu denses</h4>
+
+    Afin de mener cette présentation, nous utiliserons des hypothèses simplificatrices du problèmes :
+    La plasma est considéré peu dense et les intéractions entres les différents porteurs de charge qui le constituent peuvent être négligées.
+    La masse des ions est au moins trois ordres de grandeurs plus grande que celle des électrons. Lors du passage d'une onde électromagnétique dans le plasma,
+    seuls les électrons sont mis en mouvement. Enfin, on suppose les électrons non-relativistes, ie \(\left\| \overrightarrow{V_{i}} \right\| \ll c\) avec c la célérité de la lumière dans le vide et \(\overrightarrow{V_{i}}\) le vecteur vitesse de l'électron n°i.
+    La densité de courant s'exprime donc : 
+    \[\overrightarrow{j}(M,t) = \rho_{m}(M,t)\overrightarrow{v}(M,t) =-n_{e}e\overrightarrow{v}(M,t)\]
+
+    avec \(\rho_{m}(M,t)\) la densité volumique de charge, \(n_{e}\) la densité particulaire (ici la densité d'électrons supposée uniforme).
+
+    L'électron n°i est soumis à la force de Lorentz :
+    \[\overrightarrow{F}_{L} = -e(\overrightarrow{E}+\overrightarrow{V_{i}}\wedge \overrightarrow{B})=\underbrace{-e\overrightarrow{E}}_{\overrightarrow{F_{elec}}}\underbrace{-e\overrightarrow{V_{i}}\wedge \overrightarrow{B}}_{\overrightarrow{F_{mag}}}\]
+    
+    S'il on suppose qu'il n'y a pas d'autres champs que ceux de l'onde électromagnétique, alors \(\frac{\left\| \overrightarrow{E} \right\|}{\left\| \overrightarrow{B} \right\|} \simeq c\)
+    Ainsi, \[\frac{\left\| \overrightarrow{F_{mag}} \right\|}{\left\| \overrightarrow{F_{élec}} \right\|} \le \frac{V_{i}B}{E} \simeq \frac{V_{i}}{c} \ll 1\]
+
+    Les électrons étant non relativistes, on peut négliger la force magnétique devant la force électrique.
+    On suppose donc que la seule force en jeu est la force électrique. On peut appliquer le principe fondamental de la dynamique à l'électron n°i, uniquement soumis à la force électrique :
+    \[m_{e}\frac{d \overrightarrow{V_{i}}}{dt} = -e\overrightarrow{E}(M,t)\]
+
+    On somme la relation sur l'ensemble des électrons contenu dans le volume mésoscopique centré en M :
+    \[m_{e} \sum_{i=1}^{\delta N}\frac{d \overrightarrow{V_{i}}}{dt} = -e \delta N \overrightarrow{E}(M,t)\] 
+    \[\Leftrightarrow m_{e} \frac{1}{\delta N} \sum_{i=1}^{\delta N}\frac{d \overrightarrow{V_{i}}}{dt} = -e \overrightarrow{E}(M,t)\] 
+    \[\Leftrightarrow m_{e} \frac{\partial \overrightarrow{v}(M,t)}{\partial t} = -e \overrightarrow{E}(M,t)\]
+
+    On a montré que le champ électrique d'une onde électromagnétique se propageant dans un plasma peu dense engendre l'apparition d'une densité de courant, c'est la <strong>relation constitutive des plasmas peu denses</strong> :
+    \[\boxed{\frac{\partial \overrightarrow{j}}{\partial t}(M,t)=\frac{n_{e}e^{2}}{m_{e}}\overrightarrow{E}(M,t)}\]
+
+    <!--
+    <h4>II.3 - Equation d'onde</h4>
+    
+    On peut réécrire les équations de Maxwell dans le cadre d'étude :
+    <ul style="list-style-type:none;">
+        <li>Equation de Maxwell-Gauss : \(\overrightarrow{\nabla }\cdot \overrightarrow{E}=0\)</li>
+        <li>Equation de Maxwell-Thomson : \(\overrightarrow{\nabla}\cdot \overrightarrow{B} = 0\)</li>
+        <li>Equation de Maxwell-Ampère : \(\overrightarrow{\nabla}\wedge \overrightarrow{B}=\mu_{0}(\overrightarrow{j}+\varepsilon_{0}\frac{\partial \overrightarrow{E}}{\partial t})\)</li> 
+        <li>Equation de Maxwell-Faraday : \(\overrightarrow{\nabla}\wedge \overrightarrow{E}=-\frac{\partial \overrightarrow{B}}{\partial t}\)</li>
+    </ul>
+
+    En partant de l'équation de Maxwell-Faraday, et en appliquant sucessivement l'équation de Maxwell-Ampère puis la relation constitutive des plasmas peu denses, il vient :
+    \[\overrightarrow{\nabla} \wedge (\overrightarrow{\nabla} \wedge \overrightarrow{E}) = -\frac{\mu_{0}n_{e}e^{2}}{m_{e}}\overrightarrow{E}-\frac{1}{c^{2}}\frac{\partial^{2} \overrightarrow{E}}{\partial t^{2}} \text{, avec } c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}\]
+    Or, \(\overrightarrow{\nabla} \wedge (\overrightarrow{\nabla} \wedge \overrightarrow{E}) = \overrightarrow{grad} \text{ }div \overrightarrow{E} - \Delta\overrightarrow{E}\).
+    Ainsi, on obtient l'équation d'onde \[\boxed{\overrightarrow{\Delta} \overrightarrow{E}  - \frac{1}{c^{2}} \frac{\partial ^{2} \overrightarrow{E}}{\partial t^{2}} = \frac{\mu_{0}n_{e}e^{2}}{m_{e}}\overrightarrow{E}}\]
+    -->
+    <h4>II.3 - Structure des ondes électromagnétiques planes pseudo progressives harmoniques</h4>
+    On considère une telle onde dont la direction et le sens de propagation sont selon le vecteur \(\overrightarrow{u_{z}}\).
+    Les vecteurs \(\overrightarrow{E}\) et \(\overrightarrow{B}\) peuvent se mettre sous la forme :
+    \[\underline{\overrightarrow{E}} = \underline{\overrightarrow{E_{m}}}e^{i(\omega t-\underline{k}z)}\]
+    \[\underline{\overrightarrow{B}} = \underline{\overrightarrow{B_{m}}}e^{i(\omega t-\underline{k}z)}\]
+
+    D'autre part on peut réécrire les équations de Maxwell dans le cadre d'étude :
+    <ul style="list-style-type:none;">
+        <li>Equation de Maxwell-Gauss : \(\overrightarrow{\nabla }\cdot \overrightarrow{E}=0\)</li>
+        <li>Equation de Maxwell-Thomson : \(\overrightarrow{\nabla}\cdot \overrightarrow{B} = 0\)</li>
+        <li>Equation de Maxwell-Ampère : \(\overrightarrow{\nabla}\wedge \overrightarrow{B}=\mu_{0}(\overrightarrow{j}+\varepsilon_{0}\frac{\partial \overrightarrow{E}}{\partial t})\)</li> 
+        <li>Equation de Maxwell-Faraday : \(\overrightarrow{\nabla}\wedge \overrightarrow{E}=-\frac{\partial \overrightarrow{B}}{\partial t}\)</li>
+    </ul>
+
+    On en déduit alors les relations complexes suivantes :
+    \[-i\underline{k}\overrightarrow{u_{z}}\cdot \overrightarrow{\underline{E}}=0\]
+    \[-i\underline{k}\overrightarrow{u_{z}}\cdot \overrightarrow{\underline{B}}=0\]
+    \[-i\underline{k}\overrightarrow{u_{z}}\wedge  \overrightarrow{\underline{E}}=-i\omega\underline{\overrightarrow{B}}\]
+    \[-i\underline{k}\overrightarrow{u_{z}}\wedge  \overrightarrow{\underline{B}}=\mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+    L'onde électromagnétique dans le plasma est transversale. On cherche alors maintenant à établir la relation de dispertion.
+    \[-i\underline{k}\overrightarrow{u_{z}}\wedge (\frac{k}{\omega}\overrightarrow{u_{z}}\wedge \overrightarrow{E}) = \mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+    La relation vectorielle \(\overrightarrow{u}\wedge (\overrightarrow{v}\wedge \overrightarrow{w})=(\overrightarrow{u}\cdot \overrightarrow{w})\cdot \overrightarrow{v}-(\overrightarrow{u}\cdot \overrightarrow{v})\cdot \overrightarrow{w}\) permet de simplifier l'expression. Sachant de plus que les vecteurs \(\overrightarrow{u_{z}}\) et \(\overrightarrow{E}\) sont orthogonaux, il vient :
+    \[i\frac{\underline{k^{2}}}{\omega}\overrightarrow{E}=\mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+    \[\Leftrightarrow (\underline{k^{2}}-\mu_{0}\varepsilon_{0}\omega^{2}+\frac{\mu_{0}n_{e}e^{2}}{m_{e}})\overrightarrow{E} = \overrightarrow{0}\]
+    On a donc \(\overrightarrow{E}\neq \overrightarrow{0}\) seulement si \(\boxed{\underline{k^{2}}=\frac{\omega^{2}-\omega_{p}^{2}}{c^{2}}} \text{, avec } \omega_{p}=\sqrt{\frac{n_{e}e^{2}}{m_{e}\varepsilon_{0}}} \text{ et } c = \frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}.\)
+    
+    <p>On a établit la <strong>relation de dispertion de Klein-Gordon</strong> de la propagation de l'onde dans un plasma peu dense, où \(c\) est la célérité des ondes électromagnétiques dans le vide et \(\omega_{p}\) la pulsation plasma.</p>
+
+    <h4>II.4 - Résolution de la relation de dispertion</h4>
+    Pour la résolution de la relation de dispertion on doit discriminer selon 2 cas :
+    <h5>Si \(\omega > \omega_{p}\)</h5>
+    On a alors \(\underline{k}=\pm \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\). 
+    <p>\(\underline{k}\) peut se mettre sous la forme \(\underline{k} = k'-ik''\)</p> Par unicité de l'écriture complexe, on identifie alors :
+    \[k'=\pm \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\]
+    \[k''=0\]
+    Considérons une onde suivant les z croissants, on a donc \(k'>0\) et ainsi \(\underline{k} = k' = \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\).
+    Chacune des composantes \(E_{x}\), \(E_{y}\), \(B_{x}\) et \(B_{y}\) sont de la forme : \(A_{m,i} cos(\omega t-k'(w)z +\varphi_{i})\).
+    Dans le cas \(\omega > \omega_{p}\), l'onde se propage dans le plasma sans attenuation associée à la vitesse de phase :
+    \[v_{\varphi}=\frac{c}{\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}}\]
+    La vitesse de phase dépendant de \(\omega\), le plasma constitu donc un milieu dispersif.
+
+    <h5>Si \(\omega < \omega_{p}\)</h5>
+    Dans ce cas, on a \(\underline{k}=\pm i\frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\)
+    <p>\(\underline{k}\) peut se mettre sous la forme \(\underline{k} = k'-ik''\)</p> Par unicité de l'écriture complexe, on identifie alors :
+    \[k'=0\]
+    \[k''=\pm \frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\]
+    L'onde ne peut pas être amplifiée sans apport d'énergie extérieure, d'où \(\underline{k} = -ik'' = -i\frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\)
+    Chacune des composantes \(E_{x}\), \(E_{y}\), \(B_{x}\) et \(B_{y}\) sont de la forme : \(A_{m,i}e^{-k''z}cos(\omega t+\varphi)\). Il s'agit d'une onde stationnaire (car de la forme \(F(z)G(t)\)).
+    C'est une <strong>onde évanescente</strong>. L'amplitude de l'onde décroît de façon exponentielle avec la distance \(\frac{1}{k''}\).
+    
+    <h4>II.5 - Réflexion des ondes</h4>
+    Si \(\omega < \omega_{p}\) il n'y a donc pas de propagation dans le plasma et l'onde est entièrement réfléchie contrairement au cas \(\omega > \omega_{p}\) où la propagation se fait sans attenuation.
+    Pour l'ionosphère, \(n_{e}\) la densité d'électrons est de l'ordre de \(10^{10}\). Ainsi, \[f_{p} = \frac{1}{2\pi}\sqrt{\frac{n_{e}e^{2}}{m_{e}\varepsilon_{0}}}=\sqrt{\frac{10^{10}(1,60\cdot 10^{-19})^{2}}{9,1\cdot 10^{-31}\cdot 8,85\cdot 10^{-12}}} \simeq 900 \text{ kHz}\]
+    Dans le cas où l'onde transmettant le signal est de l'odre de quelques centaines de kHz, il y a réflexion totale de l'onde sur l'ionosphère ce qui permet d'établir une communication entre 2 points distants sur la surface de la planète.
+</div>
+<footer>
+    © 2024 Paul Guillemin
+</footer>
+</body>
+</html>
