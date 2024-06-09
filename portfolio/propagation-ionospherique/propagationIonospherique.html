@@ -35,14 +35,129 @@
     </header>
 
         <div class="presentation">
-    <h1>PROPAGATION AND REFLECTION OF ELECTROMAGNETIC WAVES IN THE IONOSPHERE FOR TELECOMMUNICATIONS</h1>
-    <h2>History of the First Transatlantic Telecommunication</h2>
 
-    <div class="espace-titre"></div>
+            <h1>WAVE PROPAGATION AND REFLECTION IN THE IONOSPHERE FOR TELECOMMUNICATIONS</h1>
+            <h2>History of the 1st transatlantic telecommunication</h2>
+        
+            <div class="espace-titre"></div>
+        
+            <h3>I - Introduction</h3>
+        
+            The first studies of plasmas date back to the early 20th century, when physicist Irving Langmuir became interested in electrical discharges in gases. In 1928, Langmuir introduced the term “plasma” to describe an ionized gas.
+            Plasmas are ubiquitous in the universe, present in stars and nebulae, and on Earth at very high temperatures, in lightning and fires. It was the discovery and understanding of the physics of plasmas in the ionosphere that made it possible to establish the first direct transatlantic wireless link. Indeed, beyond a certain distance, the curvature of the earth makes it impossible to link 2 points by a straight line without cutting its surface.
+            We can then use the ionosphere to reflect the waves and establish communication between 2 points on the earth's surface.
+        
+            <div class="image">
+                <img src="/img/projects/propagation_ionospherique/illustration1.png" alt="Schema" style="max-width: 300px; max-height: 300px; padding-top: 30px;">
+            </div>
+        
+            <h3>II - Propagation of an electromagnetic wave in a sparse plasma</h3>
+        
+            <h4>II.1 - Definition of plasma and ionosphere</h4>
+            A plasma is an ionized gas. It is one of the 4 fundamental states of matter. It is composed of positive ions and electrons. Plasma is neutral overall.
+            The ionosphere, located between 60km and 800km above the Earth's surface, is made up of a gas ionized (plasma) by ultraviolet and X-ray radiation from the sun.
+        
+            <h4>II.2 - Constitutive relationship of low-density plasmas</h4>
+        
+            In order to carry out this presentation, we will use simplifying assumptions of the problem:
+            Plasma is considered sparsely populated, and interactions between the various charge carriers that make it up can be neglected.
+            The mass of ions is at least three orders of magnitude greater than that of electrons. When an electromagnetic wave passes through the plasma,
+            only electrons are set in motion. Finally, electrons are assumed to be non-relativistic, ie \(\left\| \overrightarrow{V_{i}} \right\| \ll c\) where c is the speed of light in vacuum and \(\overrightarrow{V_{i}}\) electron velocity vector number i.
+            Current density is therefore expressed as : 
+            \[\overrightarrow{j}(M,t) = \rho_{m}(M,t)\overrightarrow{v}(M,t) =-n_{e}e\overrightarrow{v}(M,t)\]
+        
+            with \(\rho_{m}(M,t)\) volumetric charge density, \(n_{e}\) particle density (here, the electron density is assumed to be uniform).
+        
+            Electron number i is subject to the Lorentz force :
+            \[\overrightarrow{F}_{L} = -e(\overrightarrow{E}+\overrightarrow{V_{i}}\wedge \overrightarrow{B})=\underbrace{-e\overrightarrow{E}}_{\overrightarrow{F_{elec}}}\underbrace{-e\overrightarrow{V_{i}}\wedge \overrightarrow{B}}_{\overrightarrow{F_{mag}}}\]
+            
+            If we assume that there are no fields other than those of the electromagnetic wave, then \(\frac{\left\| \overrightarrow{E} \right\|}{\left\| \overrightarrow{B} \right\|} \simeq c\)
+            Then, \[\frac{\left\| \overrightarrow{F_{mag}} \right\|}{\left\| \overrightarrow{F_{élec}} \right\|} \le \frac{V_{i}B}{E} \simeq \frac{V_{i}}{c} \ll 1\]
+        
+            Since electrons are non-relativistic, the magnetic force can be neglected in front of the electrical force.
+            We therefore assume that the only force in play is the electric force. We can apply the fundamental principle of dynamics to electron number i, subject only to the electric force:
+            \[m_{e}\frac{d \overrightarrow{V_{i}}}{dt} = -e\overrightarrow{E}(M,t)\]
+        
+            The relationship is summed over all the electrons contained in the mesoscopic volume centered at M :
+            \[m_{e} \sum_{i=1}^{\delta N}\frac{d \overrightarrow{V_{i}}}{dt} = -e \delta N \overrightarrow{E}(M,t)\] 
+            \[\Leftrightarrow m_{e} \frac{1}{\delta N} \sum_{i=1}^{\delta N}\frac{d \overrightarrow{V_{i}}}{dt} = -e \overrightarrow{E}(M,t)\] 
+            \[\Leftrightarrow m_{e} \frac{\partial \overrightarrow{v}(M,t)}{\partial t} = -e \overrightarrow{E}(M,t)\]
+        
+            It has been shown that the electric field of an electromagnetic wave propagating in a sparse plasma generates the appearance of a current density, this is the <strong>constitutive relationship of sparse plasmas</strong> :
+            \[\boxed{\frac{\partial \overrightarrow{j}}{\partial t}(M,t)=\frac{n_{e}e^{2}}{m_{e}}\overrightarrow{E}(M,t)}\]
+        
+            <!--
+            <h4>II.3 - Equation d'onde</h4>
+            
+            On peut réécrire les équations de Maxwell dans le cadre d'étude :
+            <ul style="list-style-type:none;">
+                <li>Equation de Maxwell-Gauss : \(\overrightarrow{\nabla }\cdot \overrightarrow{E}=0\)</li>
+                <li>Equation de Maxwell-Thomson : \(\overrightarrow{\nabla}\cdot \overrightarrow{B} = 0\)</li>
+                <li>Equation de Maxwell-Ampère : \(\overrightarrow{\nabla}\wedge \overrightarrow{B}=\mu_{0}(\overrightarrow{j}+\varepsilon_{0}\frac{\partial \overrightarrow{E}}{\partial t})\)</li> 
+                <li>Equation de Maxwell-Faraday : \(\overrightarrow{\nabla}\wedge \overrightarrow{E}=-\frac{\partial \overrightarrow{B}}{\partial t}\)</li>
+            </ul>
+        
+            En partant de l'équation de Maxwell-Faraday, et en appliquant sucessivement l'équation de Maxwell-Ampère puis la relation constitutive des plasmas peu denses, il vient :
+            \[\overrightarrow{\nabla} \wedge (\overrightarrow{\nabla} \wedge \overrightarrow{E}) = -\frac{\mu_{0}n_{e}e^{2}}{m_{e}}\overrightarrow{E}-\frac{1}{c^{2}}\frac{\partial^{2} \overrightarrow{E}}{\partial t^{2}} \text{, avec } c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}\]
+            Or, \(\overrightarrow{\nabla} \wedge (\overrightarrow{\nabla} \wedge \overrightarrow{E}) = \overrightarrow{grad} \text{ }div \overrightarrow{E} - \Delta\overrightarrow{E}\).
+            Ainsi, on obtient l'équation d'onde \[\boxed{\overrightarrow{\Delta} \overrightarrow{E}  - \frac{1}{c^{2}} \frac{\partial ^{2} \overrightarrow{E}}{\partial t^{2}} = \frac{\mu_{0}n_{e}e^{2}}{m_{e}}\overrightarrow{E}}\]
+            -->
+            <h4>II.3 - Structure of harmonic pseudo-progressive electromagnetic plane waves</h4>
+            Consider such a wave whose direction and sense of propagation are along the \(\overrightarrow{u_{z}}\) vector.
+            The \(\overrightarrow{E}\) and \(\overrightarrow{B}\) vectors can take the form of :
+            \[\underline{\overrightarrow{E}} = \underline{\overrightarrow{E_{m}}}e^{i(\omega t-\underline{k}z)}\]
+            \[\underline{\overrightarrow{B}} = \underline{\overrightarrow{B_{m}}}e^{i(\omega t-\underline{k}z)}\]
+        
+            On the other hand, Maxwell's equations can be rewritten in the study frame:
+            <ul style="list-style-type:none;">
+                <li>Maxwell-Gauss's equation : \(\overrightarrow{\nabla }\cdot \overrightarrow{E}=0\)</li>
+                <li>Maxwell-Thomson's equation : \(\overrightarrow{\nabla}\cdot \overrightarrow{B} = 0\)</li>
+                <li>Maxwell-Ampère's equation : \(\overrightarrow{\nabla}\wedge \overrightarrow{B}=\mu_{0}(\overrightarrow{j}+\varepsilon_{0}\frac{\partial \overrightarrow{E}}{\partial t})\)</li> 
+                <li>Maxwell-Faraday's equation : \(\overrightarrow{\nabla}\wedge \overrightarrow{E}=-\frac{\partial \overrightarrow{B}}{\partial t}\)</li>
+            </ul>
+        
+            The following complex relations can then be deduced:
+            \[-i\underline{k}\overrightarrow{u_{z}}\cdot \overrightarrow{\underline{E}}=0\]
+            \[-i\underline{k}\overrightarrow{u_{z}}\cdot \overrightarrow{\underline{B}}=0\]
+            \[-i\underline{k}\overrightarrow{u_{z}}\wedge  \overrightarrow{\underline{E}}=-i\omega\underline{\overrightarrow{B}}\]
+            \[-i\underline{k}\overrightarrow{u_{z}}\wedge  \overrightarrow{\underline{B}}=\mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+            The electromagnetic wave in the plasma is transverse. We now seek to establish the dispersion relation.
+            \[-i\underline{k}\overrightarrow{u_{z}}\wedge (\frac{k}{\omega}\overrightarrow{u_{z}}\wedge \overrightarrow{E}) = \mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+            The vector relationship \(\overrightarrow{u}\wedge (\overrightarrow{v}\wedge \overrightarrow{w})=(\overrightarrow{u}\cdot \overrightarrow{w})\cdot \overrightarrow{v}-(\overrightarrow{u}\cdot \overrightarrow{v})\cdot \overrightarrow{w}\) simplifies the expression. Knowing that the \(\overrightarrow{u_{z}}\) and \(\overrightarrow{E}\) vectors are orthogonal, so :
+            \[i\frac{\underline{k^{2}}}{\omega}\overrightarrow{E}=\mu_{0}(-i\frac{n_{e}e^{2}}{m_{e}\omega}+i\varepsilon_{0}\omega)\underline{\overrightarrow{E}}\]
+            \[\Leftrightarrow (\underline{k^{2}}-\mu_{0}\varepsilon_{0}\omega^{2}+\frac{\mu_{0}n_{e}e^{2}}{m_{e}})\overrightarrow{E} = \overrightarrow{0}\]
+            Then we get \(\overrightarrow{E}\neq \overrightarrow{0}\) only if \(\boxed{\underline{k^{2}}=\frac{\omega^{2}-\omega_{p}^{2}}{c^{2}}} \text{, with } \omega_{p}=\sqrt{\frac{n_{e}e^{2}}{m_{e}\varepsilon_{0}}} \text{ and } c = \frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}.\)
+            
+            <p>We established the <strong>Klein-Gordon dispersion relation</strong> for wave propagation in a sparse plasma, where \(c\) is the celerity of electromagnetic waves in vacuum and \(\omega_{p}\) is the plasma pulsation.
+        
+            <h4>II.4 - Solving the dispersion relation</h4>
+            For the resolution of the dispertion relation we must discriminate according to 2 cases:
+            <h5>If \(\omega > \omega_{p}\)</h5>
+            The we have \(\underline{k}=\pm \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\). 
+            <p>\(\underline{k}\) can be expressed as \(\underline{k} = k'-ik''\)</p>. By uniqueness of the complex writing, we then identify :
+            \[k'=\pm \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\]
+            \[k''=0\]
+            Let's consider a wave following increasing z, so we have \(k'>0\) and then \(\underline{k} = k' = \frac{\omega}{c}\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}\).
+            Each component \(E_{x}\), \(E_{y}\), \(B_{x}\) and \(B_{y}\) are of the form : \(A_{m,i} cos(\omega t-k'(w)z +\varphi_{i})\).
+            In the case of \(\omega > \omega_{p}\), the wave propagates in the plasma without attenuation associated with the phase velocity:
+            \[v_{\varphi}=\frac{c}{\sqrt{1-(\frac{\omega_{p}}{\omega})^{2}}}\]
+            The phase velocity depends on \(\omega\), plasma is therefore a dispersive environment.
+        
+            <h5>If \(\omega < \omega_{p}\)</h5>
+            In this case, we have \(\underline{k}=\pm i\frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\)
+            <p>\(\underline{k}\) can be expressed as \(\underline{k} = k'-ik''\)</p>. By uniqueness of the complex writing, we then identify :
+            \[k'=0\]
+            \[k''=\pm \frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\]
+            The wave cannot be amplified without external energy input, so \(\underline{k} = -ik'' = -i\frac{\omega}{c}\sqrt{(\frac{\omega_{p}}{\omega})^{2}-1}\)
+            Each component \(E_{x}\), \(E_{y}\), \(B_{x}\) and \(B_{y}\) are of the form : \(A_{m,i}e^{-k''z}cos(\omega t+\varphi)\). It's a standing wave (because of the form of \(F(z)G(t)\)).
+            It's an <strong>evanescent wave</strong>. The amplitude of the wave decreases exponentially with distance \(\frac{1}{k''}\).
+            
+            <h4>II.5 - Wave reflection</h4>
+            If \(\omega < \omega_{p}\) There is therefore no propagation in the plasma and the wave is entirely reflected, unlike in the case of \(\omega > \omega_{p}\) where propagation occurs without attenuation.
+            For the ionosphere, \(n_{e}\) the electron density is of the order of \(10^{10}\). Then, \[f_{p} = \frac{1}{2\pi}\sqrt{\frac{n_{e}e^{2}}{m_{e}\varepsilon_{0}}}=\sqrt{\frac{10^{10}(1,60\cdot 10^{-19})^{2}}{9,1\cdot 10^{-31}\cdot 8,85\cdot 10^{-12}}} \simeq 900 \text{ kHz}\]
+            If the wave transmitting the signal is of the order of a few hundred kHz, there is total reflection of the wave on the ionosphere, enabling communication between 2 distant points on the planet's surface.
+        </div>
 
-    <h1>COMING SOON !</h1>
-    <h2>Available in french</h2>
-</div>
 <footer>
     © 2024 Paul Guillemin
 </footer>
