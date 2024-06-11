@@ -356,11 +356,13 @@ p {
 
 .image {
     flex: 1;
+    text-align: center;
 }
 
 .image img {
     width: 50%;
     height: auto;
+    display: inline-block;
 }
 
 .espace-titre {

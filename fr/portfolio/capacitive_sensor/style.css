@@ -356,11 +356,13 @@ p {
 
 .image {
     flex: 1;
+    text-align: center;
 }
 
 .image img {
     width: 50%;
     height: auto;
+    display: inline-block;
 }
 
 .espace-titre {
@@ -375,3 +377,7 @@ p {
     line-height: 60px;
 }
 
+ul.liste li {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 20px;
+}

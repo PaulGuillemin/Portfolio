@@ -35,12 +35,174 @@
 
         <div class="presentation">
     <h1>CONCEPTION D'UN CAPTEUR CAPACITIF</h1>
-    <h2>Etude et fabrication d'un capteur tactile</h2>
-    
+    <h2>Conception et fabrication d'un digicode à distance variable</h2>
 
+    <h3>1 - Introduction</h3>
+
+    <p>Depuis son invention dans les années 1960, le digicode a révolutionné la manière dont nous sécurisons nos espaces et nos biens. Initialement conçu pour remplacer les clés physiques par des codes d'accès, ce système a rapidement gagné en popularité grâce à sa simplicité et son efficacité. Toutefois, avec l'évolution des technologies, le digicode traditionnel montre aujourd'hui certaines limites, telles que la vulnérabilité aux vols de codes notamment en utilisant les marques d'usures laissés sur les touches ou la potentielle transmission de maladies à travers l'usage des touches physiques. C'est dans ce contexte que notre système de digicode à détection de proximité et à plusieurs positions vient répondre à certaines de ces problématiques. Notre dispositif d'authentification offre une alternative à la fois plus sécurisée avec des combinaisons plus complexes, intuitive et sans contact direct avec le dispositif. Grâce à l'utilisation de plusieurs électrodes et à la détection de la distance du doigt de l'utilisateur, notre digicode permet de créer des combinaisons d'avantage complexes rendant ainsi le vol de codes plus difficile.</p>
+
+    <h4>1.1 - Problématique et objectifs</h4>
+
+    <p>L'évolution des technologies et des besoins en matière de sécurité a mis en évidence certaines limitations des digicodes traditionnels. Ces dispositifs, bien que largement adoptés, présentent des vulnérabilités telles que le vol de codes d'accès, qui peut se produire par l'observation des marques d'usure laissées sur les touches. De plus, la manipulation répétée des touches par plusieurs utilisateurs pose des problèmes d'hygiène, favorisant la transmission de bactéries. Face à ces défis, le projet vise à concevoir un digicode à détection de proximité et à plusieurs positions.</p>
+
+    <p>Les objectifs spécifiques du projet sont les suivants :
+
+    <ul class="liste">
+        <li>Sécurité améliorée : L'utilisation de combinaisons plus complexes, rendues possibles par la détection de la distance entre le doigt et le capteur, rend le vol de codes d'accès plus difficile. Cette approche ajoute une couche de sécurité par rapport aux digicodes traditionnels.</li>
+        <li>Hygiène : En éliminant le besoin de contact physique avec le dispositif, notre digicode réduit les risques de transmission de maladies. Ce système sans contact est particulièrement pertinent dans des contextes où l'hygiène est une préoccupation majeure.</li>
+        <li>Intuitivité et ergonomie : La création d'une interface utilisateur intuitive, qui permet une utilisation sans contact, vise à rendre le dispositif plus facile et agréable à utiliser. Les utilisateurs peuvent ainsi interagir avec le digicode de manière naturelle et sans effort.</li>
+    </ul>
+
+    </p>
+
+    <h4>1.2 - Méthodes et solutions techniques retenues</h4>
+
+    <p>Pour atteindre les objectifs fixés, plusieurs méthodes et solutions techniques ont été mises en place :</p>
+
+    <p>
+    <ul class="liste">
+        <li>Capteurs capacitifs : Le projet utilise des capteurs capacitifs pour détecter la proximité et la position du doigt de l'utilisateur. Chaque capteur est capable de distinguer entre deux positions : proche ou éloigné du capteur.</li>
+        <li>Circuit conditionneur : Un circuit conditionneur a été conçu pour traiter et générer le signal des électrodes. Ce circuit inclut un circuit de charge à courant constant, qui fournit un courant stable au condensateur formé par l'électrode et la main de l'utilisateur. Il comporte également un oscillateur avec un comparateur à hystérésis, qui détecte le seuil de déclenchement et permet le fonctionnement en boucle fermée. Ce conditionneur est essentiel pour assurer une détection précise et fiable des positions du doigt.</li>
+        <li>Microcontrôleur STM32 : Le projet intègre un microcontrôleur STM32 pour l'acquisition et le traitement du signal. Ce microcontrôleur convertit les variations de capacité en données numériques et gère les différentes combinaisons possibles des positions détectées par les capteurs. Il constitue le cœur du système, assurant la coordination des différentes fonctions du digicode.</li>
+        <li>Conception du PCB sous KiCAD : Le schéma et le routage du circuit imprimé (PCB) ont été réalisés à l'aide du logiciel KiCAD. Cette étape permet d'intégrer de manière optimale les différents composants électroniques sur le PCB, facilitant ainsi la fabrication et les tests du dispositif. KiCAD offre une plateforme robuste pour la conception et la simulation des circuits électroniques.</li>
+        <li>Programmation et test : Le développement du logiciel embarqué a été une étape cruciale pour assurer le bon fonctionnement du système de digicode à plusieurs positions. Des tests rigoureux ont été effectués pour mesurer les performances et valider la robustesse du dispositif.</li>
+    </ul>
+    </p>
+
+    <h3>2 - Présentation générale du projet</h3>
+
+    <div class="image">
+        <img src="../../../img/projects/capacitive_sensor/1.png" alt="Schema">
+    </div>
+
+    <h4>2.1 - Les capteurs capacitifs</h4>
+
+    <p>Les capteurs capacitifs sont représentent les élements centraux du projet. Leur principe de fonctionnement repose sur la mesure de la capacité électrique entre une électrode et la main de l'utilisateur. Cette capacité varie en fonction de la distance qui les sépare, permettant ainsi de détecter la proximité et la position du doigt sans contact physique.</p>
+
+    <p>L'objectif est de créer un condensateur à capacité variable. Dans le modèle théorique du condensateur plan infini, la capacité \(C\) est exprimée comme suit :
+
+        \[
+        C = \frac{\varepsilon_0 \varepsilon_r S}{d}
+        \]
+    </p>
+
+    <p>où :
+    \(\varepsilon_0\) est la permittivité du vide,
+    \(\varepsilon_r\) est la permittivité relative du matériau entre les plaques,
+    \(S\) est la surface des plaques et
+    \(d\) est la distance entre les plaques.
+    </p>
+
+    <p>La démonstration de la formule est à la section <a href="#demonstrations">7.2 - Démonstrations</a></p>
+
+    <p>Bien que nos condensateurs ne soient pas infinis, l'approximation est bien assez précise pour l'application visée.</p>
+
+    <p>Dans notre application, bien que le modèle du condensateur plan infini ne soit pas strictement valide, il illustre la relation inversement proportionnelle entre la capacité et la distance \(d\) entre l'électrode et la main de l'utilisateur. La capacité est également directement proportionnelle à la surface de l'électrode.</p>
+
+    <p>En pratique, nous utilisons trois électrodes pour générer les différentes combinaisons du digicode. Une simulation sous Comsol montre la distribution des lignes de champ électrique lorsqu'une main est placée au-dessus de l'électrode centrale. Les lignes de champ des électrodes adjacentes se courbent vers la main, influençant la mesure de la capacité de l'électrode centrale.</p>
+
+    <h4>2.2 - Nécessité d’un Conditionneur</h4>
+
+    <p>Pour exploiter les variations de capacité mesurées par les capteurs capacitifs, un conditionneur de signal est nécessaire. Ce circuit doit traiter et générer le signal des électrodes de manière fiable.</p>
+
+    <p>En effet, il est compliqué de mesurer directement la capacité. On pourrait par exemple utiliser la résonnance d'un circuit RLC ou un pont de Sauty-Wien. Cependant ces méthodes sont en général moins précises, plus compliquées à étalonner et également plus sensible au bruit ambiant. La méthode de charge d'un condensateur à courant constant permet le meilleur compromis pour obtenir la meilleure précision.</p>
+
+    <h4>2.3 - Fonctionnement du Conditionneur</h4>
+
+    <p>La méthode de détermination de la capacité consiste à charger le condensateur à courant constant. La capacité est alors déduite du temps nécessaire pour atteindre un certain seuil de tension. Cette approche nécessite un circuit précis et stable pour garantir des mesures fiables.</p>
+
+    <p>La conception du conditionneur comprend plusieurs composants clés :</p>
+
+    <ul class="liste">
+        <li>Circuit de charge à courant constant : Ce circuit charge le condensateur formé par la main de l'utilisateur et l'électrode avec un courant constant, permettant de déterminer la capacité en fonction du temps de charge.</li>
+        <li>Oscillateur avec comparateur à hystérésis : Utilisé pour détecter le seuil de déclenchement et permettre un fonctionnement en boucle fermée.</li>
+    </ul>
+
+    <h4>2.4 - Système de digicode à plusieurs positions</h4>
+
+    <p>Initialement, chaque électrode est calibrée pour mesurer une capacité de base en l'absence de tout objet conducteur à proximité. Ensuite, un seuil de détection est défini pour déterminer 2 différentes zones de proximité de la main par rapport à chaque capteur : Proche et éloignée. </p>
+
+    <p>Lorsqu'une main s'approche des électrodes, le microcontrôleur détecte les variations de capacité et évalue la distance de la main. Une combinaison de touches et de distances peut être enregistrée comme code d'accès. Par exemple, une séquence de touches pourrait être :</p>
+    
+    <p>"Capteur 2 proche + Capteur 1 éloigné puis proche + Capteur 3 éloigné". Le système valide ensuite le code en comparant la combinaison entrée par l'utilisateur avec celle préalablement enregistrée. Si les distances et les séquences des capteurs correspondent, l'accès est accordé.</p>
+
+    <h3>3 - Conception du capteur capacitif</h3>
+
+    <h3>4 - Acquisition du signal avec un microcontrôleur STM32</h3>
+
+    <h3>5 - Finalisation du projet</h3>
+
+    <h3>6 - Conclusion</h3>
+
+    <h3>7 - Annexes</h3>
+
+    <h4>7.1 - Code annexes</h4>
+
+    <h4 id="demonstrations">7.2 - Démonstration</h4>
+
+    <h5>Expression de la capacité d'un condensateur plan</h5>
+<p>
+    Symétrie du champ électrique :
+    
+Pour un condensateur plan infini, les plaques sont infinies et chargées uniformément. Cela implique que le champ électrique \(\vec{E}\) doit être orthogonal aux plaques et uniforme entre elles en raison de l'invariance par translation dans les directions orthogonales aux plaques.
+
+La loi de Gauss est donnée par :
+
+\[
+\iint_{\Sigma} \vec{E} \cdot \vec{dS} = \frac{Q_{int}}{\epsilon}
+\]
+
+
+Pour appliquer cette loi, considérons une surface gaussienne en forme de cylindre traversant les deux plaques, où les extrémités du cylindre sont parallèles aux plaques du condensateur. La symétrie du problème nous dit que le champ électrique est constant et perpendiculaire aux plaques.
+
+Pour une plaque avec une charge superficielle \(\sigma\), la charge totale \(Q_{int}\) incluse dans la surface gaussienne est :
+\[
+Q_{int} = \sigma \cdot S
+\]
+où \(S\) est la surface des extrémités du cylindre.
+
+Les contributions des parois latérales du cylindre s'annulent, donc l'intégrale de Gauss se réduit aux deux bases du cylindre :
+\[
+E \cdot S + (-E) \cdot (-S) = \frac{\sigma \cdot S}{\epsilon}
+\]
+\[
+2ES = \frac{\sigma S}{\epsilon}
+\]
+\[
+E = \frac{\sigma}{2\epsilon}
+\]
+
+Calcul de la différence de potentiel
+
+La différence de potentiel \(V\) entre les deux plaques séparées par une distance \(d\) est donnée par l'intégrale du champ électrique sur cette distance :
+\[
+V = \int_{0}^{d} E \, dx = E \cdot d
+\]
+
+En utilisant la densité de charge \(\sigma = \frac{Q}{S}\), où \(S\) est la surface d'une plaque, nous obtenons :
+\[
+V = \left(\frac{\sigma}{\epsilon}\right) \cdot d = \frac{Q}{\epsilon S} \cdot d
+\]
+
+Détermination de la capacité
+
+La capacité \(C\) d'un condensateur est définie par la relation entre la charge \(Q\) et la différence de potentiel \(V\) :
+\[
+C = \frac{Q}{V}
+\]
+
+En substituant l'expression de \(V\) que nous avons trouvée :
+\[
+C = \frac{Q}{\frac{Qd}{\epsilon S}} = \frac{\epsilon S}{d}
+\]
+
+Nous avons démontré que la capacité d'un condensateur plan infini, avec une distance \(d\) entre les plaques et une surface \(S\), est donnée par :
+\[
+C = \frac{\epsilon S}{d}
+\]
+</p>
     <div class="espace-titre"></div>
 
-    <h1>BIENTÔT DISPONIBLE !</h1>
 </div>
 <footer>
     © 2024 Paul Guillemin
