@@ -73,7 +73,10 @@
     <h3>2 - Présentation générale du projet</h3>
 
     <div class="image">
-        <img src="../../../img/projects/capacitive_sensor/1.png" alt="Schema">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/1.png" alt="Schema">
+            <figcaption>Diagramme du circuit complet</figcaption>
+        </figure>
     </div>
 
     <h4>2.1 - Les capteurs capacitifs</h4>
@@ -129,11 +132,314 @@
 
     <h3>3 - Conception du capteur capacitif</h3>
 
+    <p>Nous allons dans un premier temps étudier le principal général de fonctionnement du capteur capacitif. Nous étudierons ensuite pourquoi il est nécessaire d'avoir un conditionneur pour traiter et générer le signal de l'électrode. Nous détaillerons par la suite la conception d'un tel conditionneur et enfin nous mènerons des tests et mesures du circuit conditionneur.</p>
+
+    <h4>3.1 - Principe de fonctionnement</h4>
+
+    <p>L'objectif est de construire un condensateur à capacité variable. Dans le modèle du condensateur plan infini (sans effets de bord) la capacité s'exprime comme : \(C = \frac{\varepsilon_{0}\varepsilon_{r}S}{d}\). Bien que le modèle du condensateur plan infini n'est pas valide ici, il permet de donner la variation de la capacité en fonction de l'épaisseur d entre les deux armatures (ici l'électrode et la main de l'utilisateur) : La capacité est alors inversement proportionnelle à la distance inter-armature. D'autre part, la capacité est directement proportionnelle à la surface de l'électrode.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/2.png" alt="Schema">
+            <figcaption>Simulation 2D sous Comsol</figcaption>
+        </figure>
+        
+    </div>
+
+    <p>En pratique on utilisera 3 électrode pour les combinaisons du digicode. Après simulation, en plaçant la main au dessus de l'électrode centrale on obtient la simulation suivante :</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/3.png" alt="Schema">
+            <figcaption>Simulation 2D sous Comsol avec 3 électrodes</figcaption>
+        </figure>
+    </div>
+
+    <p>Entre les deux simulations, on constate que les lignes de champs des électrodes placées de part et d'autre de l'électrode dont on souhaite mesurer la capacité, se recourbe sur la main.</p>
+
+    <p>On souhaite donc estimer l'erreur engendrée par la présence des autres électrodes.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/4.png" alt="Schema">
+            <figcaption>Évolution de la capacité en fonction de la distance pour 3 électrodes (en mm)</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/5.png" alt="Schema">
+            <figcaption>Évolution de la capacité en fonction de la distance pour 1 électrode (en mm)</figcaption>
+        </figure>
+    </div>
+
+    <p>La présence des 2 autres électrodes ne semble pas perturber significativement le système pour la détermination de la distance de la main à l'électrode.</p>
+
+    <h4>3.2 - Conception du conditionneur</h4>
+
+    <p>La conception du conditionneur se divise en plusieurs parties distinctes :</p>
+
+    <ul class="liste">
+        <li>Un circuit permettant de charger la capacité avec un courant constant.</li>
+        <li>Un oscillateur avec un comparateur à hysteresis.</li>
+    </ul>
+
+    <p>La méthode pour déterminer la capacité consiste à charger un condensateur (ici le condensateur est formé par la main de l'utilisateur et l'électrode reliée au circuit conditionneur) à courant constant. On peut ainsi déterminer la capacité en fonction du temps de charge.</p>
+
+    <h5>3.2.1 - Charge d’un condensateur à courant constant</h5>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/6.png" alt="Schema">
+            <figcaption>Circuit de charge à courant constant (les bornes + et - de l'aop sont inversées)</figcaption>
+        </figure>
+    </div>
+
+    <p>Le circuit permet de fournir un courant constant à la capacité C1. La tension de charge devient donc une fonction linéaire, cela permet de relier directement la valeur de la capacité à fréquence d'oscillation du circuit qui dépend du temps de charge du condensateur.</p>
+
+    <p>Le courant que le condensateur reçoit est \(i = \frac{Vin}{R_4}\)
+    Sur PartQuest on modélise le circuit permettant la charge du condensateur à courant constant.
+    </p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/7.png" alt="Schema">
+            <figcaption>Circuit de charge à courant constant sur PartQuest</figcaption>
+        </figure>
+    </div>
+
+    <p>On fixe R1 = R2 = 1 M\textOmega. D'autre part R3 = R4 = nR1 = nR2. Ici on a pris n = 4 tel quel que R3 = R4 = 4 M\textOmega. On prend C1 = 10 pF. L'AOP est
+        alimenté asymétriquement en 0V et 5V. Vin est fixé à 3.3 V. </p>
+    <p>On obtient alors la simulation suivante :</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/8.png" alt="Schema">
+            <figcaption>Charge à courant du condensateur sous PartQuest</figcaption>
+        </figure>
+    </div>
+
+    <p>On observe une saturation en tension à 5V correspondant à l'alimentation de l'AOP. On observe d'autre part une charge linéaire du condensateur.</p>
+
+    <p>L'équation régissant le fonctionnement d'un condensateur est 
+        \(i_C = C\frac{d u_C}{dt}\). On mesure une pente \(\frac{d u_C}{dt} = 1.6\cdot 10^5 \text{ V/s}\). Sachant que le courant de charge est de 8.25e-7 A on détermine la capacité \(C1= \frac{\frac{du_{C}}{dt}}{i_c} = \frac{1.6\cdot 10^5}{8.25\cdot 10^{-7}} = 5.5\text{ pF}\).</p>
+
+    <h5>3.2.2 -  Comparateur à hysteresis</h5>
+
+    <p>Il est ensuite nécessaire de concevoir le comparateur à hysteresis afin de detecter le seuil de déclenchement pour le fonctionnemnt en boucle fermée.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/9.png" alt="Schema">
+            <figcaption>Comparateur à hysteresis</figcaption>
+        </figure>
+    </div>
+
+    <p>\(Vin_{l->h} \text{ et } Vin_{h->l}\) représentent respectivement les seuils de basculement de 0 V à Vsat et Vsat à 0 V. Ici Vsat = 5V et correspond à la tension d'alimentation de l'AOP.</p>
+
+    <p>On montre alors que \(Vin_{h->l} = \frac{R_{6}}{R_{5} + R_{6}} Vsat\) et \(Vin_{l->h} = 0\). Les démonstrations sont à la section <a href="#demonstrations">7.2 - Démonstrations</a></p>
+    
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/10.png" alt="Schema">
+            <figcaption>Cycle d'hystérésis du comparateur</figcaption>
+        </figure>
+    </div>
+
+    <h5>3.2.3 -  Simulation du circuit en boucle fermée</h5>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/11.png" alt="Schema">
+            <figcaption>Conception du circuit conditionneur sous PartQuest</figcaption>
+        </figure>
+    </div>
+
+    <p>On effectue la simulation en faisant varier la distance entre l'électrode et la main entre 1mm et 10 cm :</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/12.png" alt="Schema">
+            <figcaption>Résultat de la simulation en faisant varier la distance entre l'électrode et la main (en abscisse : la distance et en ordonnées : la fréquence)</figcaption>
+        </figure>
+    </div>
+
+    <h4>3.3 - Conception du PCB sous KiCAD</h4>
+
+    <p>La conception du PCB a été réalisée en deux étapes. Tout d'abord, nous avons conçu le circuit complet de notre projet, comportant une STM32 principale reliée à trois conditionneurs en entrée, ainsi qu'une LED RGB, un bouton et une sortie point test. Dans un premier temps, nous avons routé l'ensemble du projet sur un seul et même PCB (les trois conditionneurs, la STM32 et l'ensemble des sorties).</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/13.png" alt="Schema">
+            <figcaption>Circuit du projet avec les 3 conditionneurs détailles</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/14.png" alt="Schema">
+            <figcaption>Zoom sur les sorties du STM32</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/15.png" alt="Schema">
+            <figcaption>Zoom sur un des conditionneurs</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/16.png" alt="Schema">
+            <figcaption>Routage du circuit</figcaption>
+        </figure>
+    </div>
+
+    <p>Mais, en raison d'un manque d'AOP, il nous a été déconseillé d'imprimer notre PCB et de souder l'ensemble. On nous a alors encouragés à refaire notre routage en intégrant directement des conditionneurs tout faits. Cette méthode permettait de simplifier le processus de développement, d'éviter les erreurs, tout en simplifiant le processus de fabrication.</p>
+
+    <p>Nous avons donc décidé de remplacer les conditionneurs par des empreintes de microcontrôleurs STM32, afin de pouvoir utiliser des conditionneurs déjà faits. Dans la continuité de cette optimisation, nous avons également entrepris de remplacer les empreintes de la LED RGB et du bouton, ce qui nous a offert plus de liberté dans le design de notre projet en nous affranchissant des contraintes liées à l'accessibilité de certaines parties du PCB. Nous avons alors repris le routage à zéro.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/17.png" alt="Schema">
+            <figcaption>Circuit comportant des STM 32 à la place des conditionneurs</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/18.png" alt="Schema">
+            <figcaption>Routage du circuit</figcaption>
+        </figure>
+    </div>
+
+    <p>Cette méthode nous a posé de nouveaux problèmes, notamment sur l'orientation des empreintes pour correspondre avec les conditionneurs tout imprimés. Après de nombreuses corrections, nous avons finalement validé notre PCB, qui a été lancé en impression. C'est cette version qui deviendra la base de notre projet de prototypage. Nous avons également fait face à un manque de conditionneurs et avons finalement dû en router deux nous-mêmes. Cette méthode nous a fait perdre beaucoup de temps et a repoussé nos phases de test, car en l'absence de PCB et de conditionneurs, l'avancement de notre projet était limité.</p>
+
+    <h4>3.4 -  Tests et mesures</h4>
+
+    <p>Après assemblage de notre conditionneur, on peut tester le changement de fréquence en sortie du circuit.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/19.png" alt="Schema">
+            <figcaption>Sortie du conditionneur à vide</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/20.png" alt="Schema">
+            <figcaption>Sortie du conditionneur avec présence d'une main</figcaption>
+        </figure>
+    </div>
+
+    <p>On constate que sans main à proximité, la fréquence est de 36 kHz alors que lorsqu'on approche la main de la plaque de cuivre, la fréquence diminue pour atteindre ici par exemple, 23 kHz.</p>
+
+    <p>La fréquence à donc bien diminuée comme attendu lors de l'approche de la main du la plaque de cuivre.</p>
+
     <h3>4 - Acquisition du signal avec un microcontrôleur STM32</h3>
+
+    <h4>4.1 - Architecture globale du code d'acquisition</h4>
+
+    <p>Afin d'acquérir le signal on utilise le microcontroleur STM32. Pour déterminer la fréquence on utilise un timer qui mesure le temps entre deux fronts montants à l'aide d'une interruption. On détermine ainsi la fréquence puis la capacité à l'aide de la relation \(f = \frac{1}{RC}\), avec R = 1 M \Omega.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/25.png" alt="Schema">
+            <figcaption>Diagramme du main</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/26.png" alt="Schema">
+            <figcaption>Diagramme des interruptions</figcaption>
+        </figure>
+    </div>
+
+    <p>Pour plus de précision, on peut se référer au diagramme suivant qui détaille l'acquisition de la fréquence/capacité à l'aide du timer :</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/27.png" alt="Schema">
+            <figcaption>Diagramme des interruptions</figcaption>
+        </figure>
+    </div>
+
+    <p>Pour la conception nous avons utilisé une transmission UART afin de visualiser les valeur de notre capacité. Cependant nous avons rencontré plusieurs problèmes. La carte STM32 F301K8 est une "MCU selector" et non une "Board selector", cela nous a empeché de voir certaines connexions, notamment celle de l'UART1 qui est utilisé pour le ST-LINK. Nous avons donc été bloqués car le UART1 était inutilisable. Nous avons donc au bout de quelques recherches trouvé qu'il fallait utiliser l'UART2 pour transmettre les données.</p>
+
+    <p>On n'utilisons pas de prescalaire, et nous mettrons l'ARR à une très grande valeur (8000000). Nous avons activé l'option 'NVIC', pour l'interruption pour la fonction Callback.</p>
+
+    <h4>4.2 - Détails techniques de l'acquisition de signal</h4>
 
     <h3>5 - Finalisation du projet</h3>
 
-    <h3>6 - Conclusion</h3>
+    <h4>5.1 - Tests et mesures du système</h4>
+
+    <p>Après avoir programmé le microcontrôleur, nous avons relevé plusieurs mesures caractérisant le bon fonctionnement de notre système.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/21.png" alt="Schema">
+            <figcaption>Capacité en fonction de la distance tracée sur Python</figcaption>
+        </figure>
+    </div>
+
+    <p>Nous avons relevé la capacité mesurée à intervalle régulier puis nous l'avons tracé en fonction de la distance. Nous constatons alors que l'allure ainsi que les valeurs sont cohérentes avec celles théoriques.</p>
+
+    <p>On remarque que au-delà de 8 cm, la variation de capacité est quasi nulle, ce qui rend toute mesure imprécise. On veillera donc à ne pas dépasser cette valeur pour la mise en place du seuil de détection pour les 2 positions de la main au dessus de l'électrode. Plus le seuil est proche de 0 cm, plus le système sera précis mais plus il est compliqué pour l'utilisateur de positionner correctement sa main dans les 2 positions : il s'agit alors de trouver un compromis entre précision et ergonomie.</p>
+
+    <p>On détecte 2 positions pour la main : proche ou éloignée :</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/22.jpg" alt="Schema">
+            <figcaption>Led allumée en bleu pour la position de la main proche</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/23.jpg" alt="Schema">
+            <figcaption>Led allumée en vert pour la position de la main éloignée</figcaption>
+        </figure>
+    </div>
+
+    <p>La couleur de la led permet à l'utilisateur de bien positionner sa main à la bonne distance de l'électrode afin de "rentrer" le bon code souhaité.</p>
+
+    <p>Ce système fonctionne pour les 3 électrodes permettant d'entrer le code souhaité et ainsi d'effectuer l'action demandée.</p>
+
+    <p>Afin d'être sûr de la position de la main, plusieurs mesures sont effectuées par le microcontrôleur avant d'allumer la led de la bonne couleur. Cela permet de réduire le nombre d'erreurs et ainsi d'améliorer la précision du système.</p>
+
+    <h4>5.2 - Fabrication finale</h4>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capacitive_sensor/24.png" alt="Schema">
+            <figcaption>Modélisation 3d du projet</figcaption>
+        </figure>
+    </div>
+
+    <p>Nous avons modéliser un boîtier imprimé en 3d permettant de contenir le microcontrôleur ainsi que les 3 conditionneurs pour les 3 électrodes.</p>
+
+    <p>La led RGB se situe sur le dessus et s'allume pour avertir l'utilisateur de la bonne position de sa main ou non.</p>
+
+    <p>Enfin, notre actionneur est ici un servomoteur qui ouvre une petite porte qui pourrait être en vrai une plus grosse porte pour accéder à un endroit sensible par exemple.</p>
+
+    <h3>6 - Conclusion et perspectives d'amélioration</h3>
+
+    <p>Pour conclure, les objectifs fixés au début de notre projet n'ont pas tous pu être atteints, mais nous avons tout de même réalisé des avancées significatives. Malheureusement, l'objectif de sécurité n'a pas pu être pleinement abordé en raison des difficultés techniques rencontrées lors de la fabrication du PCB et de l'élaboration du code. Ces obstacles nous ont empêchés de traiter ce sujet crucial.</p>
+
+    <p>Cependant, notre conditionneur a permis d'éviter le contact physique, ce qui assure une bonne hygiène. Néanmoins, cet aspect pourrait encore être amélioré. En optimisant le conditionneur, nous pourrions augmenter la distance entre la main et la plaque de cuivre, offrant ainsi une meilleure protection et confort pour les utilisateurs.</p>
+
+    <p>En outre, la simplicité ergonomique de notre projet a pleinement respecté notre souhait d'intuitivité. Cette approche a facilité l'utilisation de notre dispositif, rendant les interactions plus naturelles et accessibles pour tous. Nous restons convaincus que ces bases solides nous permettront de surmonter les défis rencontrés et d'apporter des améliorations futures pour atteindre tous les objectifs initiaux.</p>
+
+    <p>Les perspectives pour ce système incluent plusieurs améliorations potentielles. Premièrement, l'optimisation du conditionneur et de la gestion des signaux pourrait améliorer encore davantage la précision et la fiabilité du système. </p>
+
+    <p>Deuxièmement, l'intégration d'une interface utilisateur plus intuitive pourrait faciliter l'utilisation du digicode. </p>
+
+    <p>Enfin, l'expansion de ce système à d'autres applications de sécurité et d'accès pourrait élargir son champ d'utilisation et le rendre plus polyvalent dans divers contextes.</p>
 
     <h3>7 - Annexes</h3>
 
@@ -202,6 +508,54 @@ Nous avons démontré que la capacité d'un condensateur plan infini, avec une d
 C = \frac{\epsilon S}{d}
 \]
 </p>
+
+<h5>Générateur de courant constant</h5>
+
+<p>D'après le thérorème de Millman :
+    
+    \[V_{-}  = V_{out}\frac{R_{1}}{R_{1}+R_{1}}\]
+    
+    \[V_{+} = \frac{\frac{V_{in}}{R_{4}}+\frac{V_{out}}{R_{3}}}{\frac{1}{R_{4}}+\frac{1}{Z_{c}}+\frac{1}{R_{3}}}\]
+    
+    De plus, l'aop fonctionnant en régime linéaire on a \[V_{+} = V_{-}\]
+    Ainsi,
+    \[V_{+} = \frac{\frac{V_{in}}{R_{4}}+\frac{R_{1}+R_{1}}{R_{1}R_{3}}V_{+}}{\frac{1}{R_{4}}+\frac{1}{Z_{c}}+\frac{1}{R_{3}}}\]
+    
+    \[\Leftrightarrow  V_{+} = \frac{V_{in}}{R_{4}((\frac{1}{R_{4}}+\frac{1}{Z_{c}}+\frac{1}{R_{3}}))-\frac{{R_{1}+R_{1}}}{R_{1}R_{3}}} \Leftrightarrow V_{+} = \frac{V_{in}}{1+\frac{R_{4}}{Z_{c}d}+\frac{R_{4}}{R_{3}}-\frac{R_{4}(R_{1}+R_{1})}{R_{1}R_{3}}}\]
+    
+    Or, d'après la loi d'Ohm on a :
+    
+    \[i=\frac{V_{+}}{Z_{c}}=\frac{V_{in}}{Z_{c}+R_{4}+\frac{Z_{c}R_{4}}{R_{3}}-\frac{Z_{c}R_{4}(R_{1}+R_{1})}{R_{1}R_{3}}}\]
+    
+    On souahite que le courant i soit indépendant de l'impédance de la capacité, on doit donc necessairement avoir :
+    
+    \[Z_{c}+\frac{R_{4}Z_{c}}{R_{3}}-\frac{Z_{c}R_{4}(R_{1}+R_{1})}{R_{1}R_{3}} = 0\]
+    
+    Il vient donc \[\boxed{i = \frac{V_{in}}{R_{4}}}\]</p>
+
+    <h5>Cycle d'hystérésis</h5>
+
+    <p>
+        <ul class="liste">
+            <li>Supposons que \(Vout = Vsat \Leftrightarrow \epsilon = V_{+} - V_{-} > 0\).
+
+                Or, \(V_{-} = Vin\) et par la loi d'Ohm on a \(i = \frac{Vsat-V_{+}}{R5} = \frac{V_{+}}{R6}\), car \(i_{+} = 0\). 
+
+                Donc \(R6(Vsat-V_{+})=R5\cdot V_{+} \Leftrightarrow  V_{+}=\frac{R6}{R5+R6}\)
+
+                Ainsi, \(\epsilon > 0 \Leftrightarrow \frac{R6}{R5+R6}Vsat - Vin > 0 \Leftrightarrow Vin < \frac{R6}{R5+R6}Vsat\).
+
+                La sortie Vout reste donc à l'état haut tant que \(\epsilon > 0 \) ie
+                \(\boxed{Vin < Vin_{h->l} \text{ avec } Vin_{h->l} = \frac{R6}{R5+R6}Vsat}\)</li>
+
+                <li>Supposons que \(Vout = 0 \Leftrightarrow \epsilon = V_{+} - V_{-} < 0\).
+
+                \(\epsilon > 0 \Leftrightarrow - Vin > 0 \Leftrightarrow Vin < 0\).
+
+                La sortie Vout reste donc à l'état haut tant que \(\epsilon > 0 \) ie \(Vin > 0\), donc \(\boxed{Vin_{l->h} = 0}\)</li>
+        </ul>
+    </p>
+
     <div class="espace-titre"></div>
 
 </div>

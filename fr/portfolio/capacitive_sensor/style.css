@@ -363,6 +363,7 @@ p {
     width: 50%;
     height: auto;
     display: inline-block;
+    max-width: 100%; /* Assure que l'image est responsive */
 }
 
 .espace-titre {
