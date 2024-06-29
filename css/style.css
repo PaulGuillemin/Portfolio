@@ -1,20 +1,48 @@
 @font-face {
     font-family: 'Montserrat';
+    src: url('../../fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
     src: url('../../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../../fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #1B4353;
-    background-color: #FEFDFF; 
+    color: #000000; /* Dark blue for primary text */
+    background-color: #FEFDFF; /* Light cream background */
     margin: 0;
     padding: 0;
 }
 
+#about h2::before,
+#languages h2::before,
+#portfolio h2::before,
+#skills h2::before,
+#contact h2::before {
+    content: ''; /* Contenu vide */
+    display: inline-block;
+    width: 6px; /* Largeur du rectangle */
+    height: 1em; /* Hauteur égale à la taille de la police */
+    background-color: #2892D7; /* Couleur du rectangle */
+    margin-right: 10px; /* Espace entre le rectangle et le texte */
+    vertical-align: middle; /* Alignement vertical au centre */
+}
+
 .content-container {
-    margin: 40px; 
+    margin: 7%; /* Ajoutez une marge autour du contenu */
 }
 
 #headerTitle {
@@ -45,6 +73,7 @@ header {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
     transition: background-color 0.5s ease;
     font-size: 18px;
+    font-family: 'Montserrat-Medium', sans-serif;
 }
 
 header nav {
@@ -131,8 +160,8 @@ header nav ul li {
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 5px;
     z-index: 1;
+    border-radius: 5px;
 }
 
 .language-menu a {
@@ -237,7 +266,6 @@ button:hover::after, header nav ul li a:hover::after {
     background-color: #FEFDFF; /* Couleur de fond légère */
     font-size: 16px;
     border-radius: 5px;
-    height: 50px;
 }
 
 #skillsList img {
@@ -260,6 +288,10 @@ h2 {
     font-size: 16px; /* Adjust font size as needed */
     margin: 20px 0; /* Add margin for spacing */
     text-decoration: none;
+    align-items: center;
+    display: block; /* Affiche le bouton comme un bloc */
+    width: fit-content; /* Ajuste la largeur au contenu */
+    margin: 0 auto; /* Centre horizontalement */
 }
 
 #downloadCv:hover {
@@ -275,10 +307,11 @@ h2 {
 .image-button {
     display: inline-block;
     text-decoration: none;
-    width: 50%; /* 50% de la largeur de la page */
+    width: 100%; /* 50% de la largeur de la page */
     height: 100px; /* 100px de hauteur, ajustez au besoin */
     overflow: hidden; /* Pour s'assurer que le contenu ne dépasse pas du rectangle */
     border-radius: 5px; 
+    position: relative;
 }
 
 .image-container {
@@ -313,6 +346,21 @@ h2 {
     text-align: center;
     white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
     font-weight: bold;
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 20px; /* Space between grid items */
+    margin-top: 20px;
+    align-items: center;
+}
+
+.portfolio-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 /* Styles pour la section "Langues parlées" */
@@ -351,4 +399,8 @@ h2 {
 
 #aboutContent {
     text-align: justify;
+}
+
+#subtitle {
+    font-family: 'Monserrat-Bold', sans-serif
 }
