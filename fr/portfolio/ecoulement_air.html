@@ -35,8 +35,45 @@
     </header>
 
         <div class="presentation">
-    <h1>SIMULATION DES ECOULENTS D'AIR EN MECANIQUE</h1>
-    <h2>De la simulation à l'analyse</h2>
+    <h1>MECANIQUE DES FLUIDES : EFFET VENTURI</h1>
+    <h2>Ecoulements d'air en mécanique</h2>
+
+    <h3>I - Modèle de l'écoulement parfait</h3>
+
+    <p>
+    De manière générale, on définit un écoulement parfait comme un écoulement où tous les phénomènes diffusifs (viscosité, conduction thermique...), sont négligés.
+    Dans un tel écoulement, les molécules de fluide évoluent de manière isentropique, c'est-à-dire que l'entropie reste constante pendant l'étude.
+    Comme l'écoulement parfait est non visqueux, il ne respecte pas la condition d'adhérence à la surface d'un obstacle fixe. Ainsi, la composante normale de la vitesse à la surface est nulle.
+    </p>
+
+    <h4>I.1 - Relations de Bernoulli</h4>
+
+    <p>Pour établir la relation de Bernoulli, on va considérer un écoulement parfait, stationnaire (les dérivées temporelles sont nulles), incompressible et homogène (le champ de masse volumique est homogène) dans un référentiel d'étude supposé galiléen.
+    On fixe l'axe (Oz) ascendant et on suppose que la seule force s'exercant sur le fluide est la pesanteur. On fixe 2 points A et B sur une même ligne de courant. L'écoulement étant stationnaire la ligne de courant correspond à la trajectoire des particules de fluide allant du point A au point B.
+    </p>
+
+    <p>On applique le premier principe appliqué au fluide en écoulement entre A et B :
+        \[h_B - h_A + \frac{1}{2}(v_B^2 - v_A^2) + g(z_B - z_A) = w' + q\]
+
+    Dans notre cas le fluide ne recoit ni travail utile, ni transfert thermique, on a donc :
+    \[h_B - h_A + \frac{1}{2}(v_B^2 - v_A^2) + g(z_B - z_A) = 0\]
+
+    Avec les hypothèses utilisées, on a aussi que :
+
+    \[dh = T ds + V_m dP = \frac{dP}{\mu}\]
+
+    Ce qui s'intègre entre A et B en 
+    \[h_B - h_A = \frac{P_B - P_A}{\mu}\]
+
+    Finalement, dans le cadre de l'étude le premier principe s'écrit :
+
+    \[\boxed{\frac{P_B}{\mu} + \frac{1}{2}v_B^2 + g z_B = \frac{P_A}{\mu} + \frac{1}{2}v_A^2 + g z_A}\]
+    Ceci est la <strong>relation de Bernoulli</strong> pour les écoulements parfaits, stationnaires, incompressibles et homogènes.
+    </p>
+
+    <h4>I.2 - Effet Venturi</h4>
+
+
 
     <div class="espace-titre"></div>
 
