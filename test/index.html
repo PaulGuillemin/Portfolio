@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouton Animé</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #353535;
+            overflow: hidden;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center {
+            width: 180px;
+            height: 60px;
+            position: absolute;
+        }
+
+        .btn {
+            width: 180px;
+            height: 60px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            outline: none;
+            position: relative;
+            transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth acceleration and deceleration */
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            fill: none;
+            stroke: #2892D7;
+            stroke-width: 4;
+            stroke-dasharray: 480;
+            stroke-dashoffset: 480;
+            transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth acceleration and deceleration */
+        }
+
+        .btn:hover svg {
+            stroke-dashoffset: 0; /* Change stroke-dashoffset to 0 to complete the path */
+        }
+
+        .btn span {
+            color: white;
+            font-size: 18px;
+            font-weight: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+            <button class="btn">
+                <svg width="180px" height="60px">
+                    <rect x="0" y="0" width="180" height="60"></rect>
+                </svg>
+                <span>Passez sur moi</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
