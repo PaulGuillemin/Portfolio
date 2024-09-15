@@ -19,6 +19,17 @@
     font-style: normal;
 }
 
+/* --- COULEURS --- */
+:root {
+    --primary-color: #173753;
+    --secondary-color: #2892D7;
+    --background-color: #FEFDFF;
+    --text-color: #2C3E50;
+    --accent-color: #E74C3C;
+    --footer-bg: #0F2C46;
+    --button-hover-bg: #E74C3C;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: #000000; /* Dark blue for primary text */
@@ -275,7 +286,11 @@ button:hover::after, header nav ul li a:hover::after {
 }
 
 h2 {
-    font-size: 35px;
+    font-size: 45px;
+}
+
+span {
+    margin: 0;
 }
 
 #downloadCv {
