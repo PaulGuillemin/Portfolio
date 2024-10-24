@@ -66,14 +66,12 @@ body {
 }
 
 header, footer {
+    background-color: #173753;
     color: #FEFDFF; /* White text for header and footer */
     padding: 1em 0;
     text-align: center;
 }
 
-footer {
-    background-color: #173753;
-}
 
 header {
     background-color: transparent;
