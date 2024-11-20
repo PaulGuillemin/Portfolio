@@ -45,15 +45,17 @@ body {
 #contact h2::before {
     content: ''; /* Contenu vide */
     display: inline-block;
-    width: 6px; /* Largeur du rectangle */
+    width: 1vh; /* Largeur du rectangle */
     height: 1em; /* Hauteur égale à la taille de la police */
     background-color: #2892D7; /* Couleur du rectangle */
     margin-right: 10px; /* Espace entre le rectangle et le texte */
-    vertical-align: middle; /* Alignement vertical au centre */
+    vertical-align:-11%; /* Alignement vertical au centre */
 }
 
 .content-container {
     margin: 7%; /* Ajoutez une marge autour du contenu */
+    display: flex;
+    flex-direction: column;
 }
 
 #headerTitle {
@@ -62,7 +64,6 @@ body {
     color: #FEFDFF; /* Couleur du texte */
     font-family: Arial, sans-serif; /* Police de caractères */
     margin-left: 10px;
-    font-weight: bold;
 }
 
 header, footer {
@@ -124,8 +125,11 @@ header nav ul li a {
 }
 
 section {
-    padding: 10px;
-    margin: 10px 0;
+    height: 100vh; /* Hauteur de 100% de la fenêtre */
+    display: flex; /* Centrage optionnel */
+    flex-direction: column;
+    padding: 20px; /* Ajoute un espace autour du contenu */
+    box-sizing: border-box; /* Inclut les paddings dans le calcul de la hauteur */
 }
 
 button, header nav ul li a {
@@ -259,32 +263,62 @@ button:hover::after, header nav ul li a:hover::after {
 
 #skillsList {
     list-style: none; /* Enlève les puces de liste */
-    display: flex; /* Utilise Flexbox pour aligner les éléments horizontalement */
+    padding: 0;
+    display: flex;
     flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
-    padding: 0; /* Enlève le padding par défaut */
     justify-content: space-around; /* Répartit les éléments uniformément */
+    gap: 20px; /* Ajoute un espace entre les éléments */
+    margin: 0;
+    text-align: center; /* Centre le texte sous chaque icône */
+    user-select: none; /* Empêche la sélection du texte */
 }
 
 #skillsList li {
     display: flex;
+    flex-direction: column; /* Affiche l'image et le texte l'un sous l'autre */
+    justify-content: center;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid #FEFDFF; /* Bordure grise */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
-    background-color: #FEFDFF; /* Couleur de fond légère */
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 20px;
+    border: 2px solid #FEFDFF; /* Bordure claire */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Ombre légère */
+    background-color: #FEFDFF; /* Fond léger */
+    border-radius: 10px; /* Bordures arrondies */
+    width: 150px; /* Largeur définie des éléments */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition pour l'effet au survol */
+    user-select: none; /* Empêche la sélection du texte et des éléments */
 }
 
-#skillsList img {
-    width: 40px; /* Taille du logo */
-    height: 40px; /* Taille du logo */
-    margin-right: 10px; /* Espace entre le logo et le texte */
+#skillsList li:hover {
+    transform: translateY(-10px); /* Légère élévation au survol */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+#skillsList li img {
+    width: 50px; /* Taille de l'icône */
+    height: 50px;
+    margin-bottom: 10px; /* Espace entre l'icône et le texte */
+    transition: transform 0.3s ease; /* Transition sur l'icône */
+    user-select: none; /* Empêche la sélection de l'image */
+}
+
+#skillsList li:hover img {
+    transform: scale(1.1); /* Agrandit l'icône au survol */
+}
+
+#skillsList li span {
+    font-size: 18px; /* Taille du texte des compétences */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* Rendre le texte plus visible */
+    color: #173753; /* Couleur du texte */
+    transition: color 0.3s ease; /* Transition de couleur */
+}
+
+#skillsList li:hover span {
+    color: #2892D7; /* Change la couleur du texte au survol */
 }
 
 h2 {
-    font-size: 45px;
+    font-size: 10vh;
 }
 
 span {
@@ -379,11 +413,16 @@ span {
 /* Styles pour la section "Langues parlées" */
 #languages {
     margin-top: 20px; /* Espacement depuis la section précédente */
+    padding: 40px; /* Espacement autour de la section */
 }
 
 .language-list {
-    list-style: none;
+    list-style: none; /* Supprimer les puces */
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacement entre les langues */
 }
 
 .language-list li {
@@ -391,29 +430,141 @@ span {
 }
 
 .language-name {
-    display: inline-block;
-    width: 100px; /* Largeur du nom de la langue */
+    font-size: 1.5rem; /* Taille du texte augmentée */
     font-weight: bold;
+    color: var(--text-color); /* Utilisation de la couleur du texte */
+    display: inline-block;
+    margin-bottom: 10px; /* Espacement entre le texte et la barre */
 }
 
 .progress-bar {
-    width: 50%; /* Largeur de la barre de progression - Modifiez cette valeur pour plus de longueur */
-    height: 10px; /* Hauteur de la barre de progression */
-    background-color: #eee; /* Couleur de fond de la barre de progression */
-    border-radius: 5px; /* Coins arrondis */
-    overflow: hidden;
+    width: 80%; /* Largeur augmentée */
+    max-width: 700px; /* Largeur maximale */
+    height: 15px; /* Hauteur de la barre */
+    background-color: #eee; /* Couleur de fond */
+    border-radius: 10px; /* Coins arrondis */
+    overflow: hidden; /* Empêche la progression de dépasser */
+    position: relative; /* Nécessaire pour la pseudo-classe */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .progress {
     height: 100%;
-    background-color: #2892D7; /* Couleur de la barre de progression */
-    transition: width 0.3s ease; /* Animation de la largeur de la barre */
+    background-color: var(--secondary-color); /* Couleur de progression */
+    width: 0; /* Toujours vide par défaut */
+    transition: width 1.5s ease-in-out; /* Animation fluide de la largeur */
+}
+
+/* Lorsque la barre devient visible (classe active ajoutée via JS) */
+.progress-bar.active .progress {
+    width: var(--progress-width); /* Largeur finale dynamique */
 }
 
 #aboutContent {
-    text-align: justify;
+    font-size: 1rem; /* Taille de police lisible */
+    line-height: 1.6; /* Espacement des lignes */
+    text-align: justify; /* Justifier le texte */
+    color: var(--text-color); /* Couleur de texte définie */
+}
+
+#about img#me {
+    flex: 1; /* Permet à l'image de prendre un espace proportionnel */
+    max-width: 75vh; /* Largeur maximale de l'image */
+    height: auto; /* Conserver les proportions */
+    border-radius: 2%; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
 }
 
 #subtitle {
     font-family: 'Monserrat-Bold', sans-serif
+}
+
+#about {
+    display: flex; /* Utilisation de Flexbox pour aligner les éléments horizontalement */
+    flex-direction: row; /* Positionner l'image et le contenu côte à côte */
+    align-items: center; /* Centrer verticalement les éléments */
+    justify-content: space-between; /* Espacer uniformément l'image et le contenu */
+    padding: 40px; /* Ajouter de l'espace autour de la section */
+    gap: 40px; /* Espacement entre l'image et le texte */
+}
+
+#about .text-container {
+    flex: 2; /* Le texte occupe plus d'espace que l'image */
+    display: flex;
+    flex-direction: column; /* Aligner le texte et le bouton verticalement */
+    gap: 20px; /* Espacement entre le texte et le bouton */
+}
+
+#contact {
+    padding: 40px 5%;
+    text-align: left; /* Aligner à gauche */
+}
+
+#contact h2 {
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left; /* Aligner le titre à gauche */
+}
+
+.contact-container {
+    display: flex;
+    align-items: flex-start; /* Alignement au début de l'axe vertical */
+    justify-content: flex-start; /* Aligner au début de l'axe horizontal */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-photo {
+    flex: 1;
+    max-width: 100vh;
+    padding: 0;
+    margin-left: 0;
+    display: inline-block;
+}
+
+#profile-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 2%; /* Réduire le border-radius à 2% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-details {
+    flex: 2;
+    text-align: left;
+    padding-left: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-details p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #2C3E50;
+}
+
+.contact-icon {
+    margin-right: 10px;
+}
+
+.contact-icon img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    filter: grayscale(100%); /* Désaturation des icônes */
+    transition: filter 0.3s ease;
+}
+
+.contact-details p:hover .contact-icon img {
+    filter: none; /* Affiche les icônes en couleur au survol */
+}
+
+.contact-details a {
+    color: #2892D7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
 }

@@ -16,6 +16,7 @@
     <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
     <script src="../fr/js/jsIndex.js"></script>
     <script src="../fr/js/headerAnimation.js"></script>
+    <script src="../js/languagesAnimation.js"></script>
 </head>
 
 <body>
@@ -47,43 +48,46 @@
 
 <div class="content-container">
     <section id="about">
-        <h2 id="subtitle">À PROPOS</h2>
+        <img src="../img/about/me.jpg" id="me">
+        <div id="text-container">
+            <h2>À PROPOS</h2>
             <p id="aboutContent">Étudiant à l'École des Mines de Saint-Étienne, je suis passionné d'ingénierie au sens le plus large du terme : allant de la mécanique à l'électronique, en passant par l'informatique. J'aspire à transformer mes connaissances théoriques en solutions pratiques en m'efforçant d'appliquer ce que j'apprends pour résoudre des problèmes concrets. Mon but est alors d'exploiter mes compétences pour innover, répondre à des problématiques et créer des technologies avancées. Je suis alors prêt à porter l'évolution de ces domaines aussi passionnants que complexes !</p>
-        <a id="downloadCv" href="../dl/fr/CV_Paul_GUILLEMIN.pdf">Curriculum vitae</a>
+            <a id="downloadCv" href="../dl/fr/CV_Paul_GUILLEMIN.pdf">Curriculum vitae</a>
+        </div>
     </section>
 
     <section id="languages">
-        <h2 id="subtitle">LANGUES</h2>
+        <h2>LANGUES</h2>
         <ul class="language-list">
             <li>
                 <span class="language-name">Français</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 100%;"></div>
+                    <div class="progress" data-width="100%"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">Anglais</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 75%;"></div>
+                    <div class="progress" data-width="75%"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">Allemand</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 20%;"></div>
+                    <div class="progress" data-width="20%"></div>
                 </div>
             </li>
             <li>
                 <span class="language-name">Espagnol</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 30%;"></div>
+                    <div class="progress" data-width="30%"></div>
                 </div>
             </li>
         </ul>
     </section>
 
     <section id="portfolio">
-        <h2 id="subtitle">PORTFOLIO</h2>
+        <h2>PORTFOLIO</h2>
         <div class="portfolio-container">
     
             <div class="portfolio-item">
@@ -154,27 +158,37 @@
     </section>
     
     <section id="skills">
-        <h2 id="subtitle">COMPÉTENCES</h2>
+        <h2>COMPÉTENCES</h2>
         <ul id="skillsList">
             <li><img src="../img/skills/python.png" alt="Python">Python</li>
-            <li><img src="../img/skills/tensorflow.png" alt="Python">TensorFlow</li>
-            <li><img src="../img/skills/C.png" alt="C">C/C++</li>
+            <li><img src="../img/skills/tensorflow.png" alt="TensorFlow">TensorFlow</li>
+            <li><img src="../img/skills/C.png" alt="C/C++">C/C++</li>
             <li><img src="../img/skills/matlab.png" alt="MATLAB/Simulink">MATLAB/Simulink</li>
-            <li><img src="../img/skills/solidworks.png" alt="Solidworks">SolidWorks</li>
-            <li><img src="../img/skills/systemverilog.png" alt="systemverilog">SystemVerilog / VHDL</li>
+            <li><img src="../img/skills/solidworks.png" alt="SolidWorks">SolidWorks</li>
+            <li><img src="../img/skills/systemverilog.png" alt="SystemVerilog / VHDL">SystemVerilog / VHDL</li>
         </ul>
     </section>
 
     <section id="contact">
         <h2 id="subtitle">CONTACT</h2>
-        <p>Email: <a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
-        <p>GitHub: <a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
+        <div class="contact-container">
+            <div class="contact-photo">
+                <img src="../img/about/me.jpg" id="profile-photo">
+            </div>
+    
+            <div class="contact-details">
+                <p><span class="contact-icon"><img src="../img/icon/mail.png" alt="Email"></span><a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/linkedin.png" alt="LinkedIn"></span><a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/github.png" alt="GitHub"></span><a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/location.png" alt="Location"></span>Paris et alentours, France</p>
+            </div>
+        </div>
     </section>    
 </div>
 <footer>
     © 2024 Paul Guillemin
 </footer>
-<script src="/js/headerAnimation.js"></script>
+<script src="../js/headerAnimation.js"></script>
+<script src="../js/languagesAnimation.js"></script>
 </body>
 </html>
