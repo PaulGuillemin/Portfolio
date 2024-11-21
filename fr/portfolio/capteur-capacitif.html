@@ -34,16 +34,16 @@
                 <button id="languageButton"><img src="../../../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
                 <div id="languageMenu" class="language-menu">
                     <a href="#">Français</a>
-                    <a href="/portfolio/smartvitale/smartvitale.html">English</a>
+                    <a href="/portfolio/capacitive-sensor.html">English</a>
                     <a href="#">Deutsch</a>
                     <a href="#">Español</a>
                 </div>
             </div>
-            <script src="js_script.js"></script>
+            <script src="/js/jsIndex.js"></script>
         </nav>
     </header>
 
-        <div class="presentation">
+    <div class="presentation">
     <h1>CONCEPTION D'UN CAPTEUR CAPACITIF</h1>
     <h2>Conception et fabrication d'un digicode à distance variable</h2>
 
@@ -58,9 +58,9 @@
     <p>Les objectifs spécifiques du projet sont les suivants :
 
     <ul class="liste">
-        <li>Sécurité améliorée : L'utilisation de combinaisons plus complexes, rendues possibles par la détection de la distance entre le doigt et le capteur, rend le vol de codes d'accès plus difficile. Cette approche ajoute une couche de sécurité par rapport aux digicodes traditionnels.</li>
-        <li>Hygiène : En éliminant le besoin de contact physique avec le dispositif, notre digicode réduit les risques de transmission de maladies. Ce système sans contact est particulièrement pertinent dans des contextes où l'hygiène est une préoccupation majeure.</li>
-        <li>Intuitivité et ergonomie : La création d'une interface utilisateur intuitive, qui permet une utilisation sans contact, vise à rendre le dispositif plus facile et agréable à utiliser. Les utilisateurs peuvent ainsi interagir avec le digicode de manière naturelle et sans effort.</li>
+        <li><strong>Sécurité améliorée</strong> : L'utilisation de combinaisons plus complexes, rendues possibles par la détection de la distance entre le doigt et le capteur, rend le vol de codes d'accès plus difficile. Cette approche ajoute une couche de sécurité par rapport aux digicodes traditionnels.</li>
+        <li><strong>Hygiène</strong> : En éliminant le besoin de contact physique avec le dispositif, notre digicode réduit les risques de transmission de maladies. Ce système sans contact est particulièrement pertinent dans des contextes où l'hygiène est une préoccupation majeure.</li>
+        <li><strong>Intuitivité et ergonomie</strong> : La création d'une interface utilisateur intuitive, qui permet une utilisation sans contact, vise à rendre le dispositif plus facile et agréable à utiliser. Les utilisateurs peuvent ainsi interagir avec le digicode de manière naturelle et sans effort.</li>
     </ul>
 
     </p>
@@ -71,11 +71,11 @@
 
     <p>
     <ul class="liste">
-        <li>Capteurs capacitifs : Le projet utilise des capteurs capacitifs pour détecter la proximité et la position du doigt de l'utilisateur. Chaque capteur est capable de distinguer entre deux positions : proche ou éloigné du capteur.</li>
-        <li>Circuit conditionneur : Un circuit conditionneur a été conçu pour traiter et générer le signal des électrodes. Ce circuit inclut un circuit de charge à courant constant, qui fournit un courant stable au condensateur formé par l'électrode et la main de l'utilisateur. Il comporte également un oscillateur avec un comparateur à hystérésis, qui détecte le seuil de déclenchement et permet le fonctionnement en boucle fermée. Ce conditionneur est essentiel pour assurer une détection précise et fiable des positions du doigt.</li>
-        <li>Microcontrôleur STM32 : Le projet intègre un microcontrôleur STM32 pour l'acquisition et le traitement du signal. Ce microcontrôleur convertit les variations de capacité en données numériques et gère les différentes combinaisons possibles des positions détectées par les capteurs. Il constitue le cœur du système, assurant la coordination des différentes fonctions du digicode.</li>
-        <li>Conception du PCB sous KiCAD : Le schéma et le routage du circuit imprimé (PCB) ont été réalisés à l'aide du logiciel KiCAD. Cette étape permet d'intégrer de manière optimale les différents composants électroniques sur le PCB, facilitant ainsi la fabrication et les tests du dispositif. KiCAD offre une plateforme robuste pour la conception et la simulation des circuits électroniques.</li>
-        <li>Programmation et test : Le développement du logiciel embarqué a été une étape cruciale pour assurer le bon fonctionnement du système de digicode à plusieurs positions. Des tests rigoureux ont été effectués pour mesurer les performances et valider la robustesse du dispositif.</li>
+        <li><strong>Capteurs capacitifs</strong> : Le projet utilise des capteurs capacitifs pour détecter la proximité et la position du doigt de l'utilisateur. Chaque capteur est capable de distinguer entre deux positions : proche ou éloigné du capteur.</li>
+        <li><strong>Circuit conditionneur</strong> : Un circuit conditionneur a été conçu pour traiter et générer le signal des électrodes. Ce circuit inclut un circuit de charge à courant constant, qui fournit un courant stable au condensateur formé par l'électrode et la main de l'utilisateur. Il comporte également un oscillateur avec un comparateur à hystérésis, qui détecte le seuil de déclenchement et permet le fonctionnement en boucle fermée. Ce conditionneur est essentiel pour assurer une détection précise et fiable des positions du doigt.</li>
+        <li><strong>Microcontrôleur STM32</strong> : Le projet intègre un microcontrôleur STM32 pour l'acquisition et le traitement du signal. Ce microcontrôleur convertit les variations de capacité en données numériques et gère les différentes combinaisons possibles des positions détectées par les capteurs. Il constitue le cœur du système, assurant la coordination des différentes fonctions du digicode.</li>
+        <li><strong>Conception du PCB sous KiCAD</strong> : Le schéma et le routage du circuit imprimé (PCB) ont été réalisés à l'aide du logiciel KiCAD. Cette étape permet d'intégrer de manière optimale les différents composants électroniques sur le PCB, facilitant ainsi la fabrication et les tests du dispositif. KiCAD offre une plateforme robuste pour la conception et la simulation des circuits électroniques.</li>
+        <li><strong>Programmation et test</strong> : Le développement du logiciel embarqué a été une étape cruciale pour assurer le bon fonctionnement du système de digicode à plusieurs positions. Des tests rigoureux ont été effectués pour mesurer les performances et valider la robustesse du dispositif.</li>
     </ul>
     </p>
 

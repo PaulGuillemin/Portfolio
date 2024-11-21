@@ -363,11 +363,11 @@ p {
     width: 50%;
     height: auto;
     display: inline-block;
-    max-width: 100%; /* Assure que l'image est responsive */
+    max-width: 100%;
 }
 
 .espace-titre {
-    margin-top: 100px; /* Ajustez cette valeur pour augmenter ou diminuer l'espace */
+    margin-top: 100px;
 }
 
 .presentation {
