@@ -30,6 +30,10 @@
     --button-hover-bg: #E74C3C;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: #000000; /* Dark blue for primary text */
