@@ -313,6 +313,8 @@ h3 {
     margin-left: 20px;
     text-align: center;
     font-size: 25px;
+    margin-bottom: 60px;
+    margin-top: 90px;
 }
 
 h4 {
@@ -381,4 +383,19 @@ p {
 ul.liste li {
     font-family: Montserrat, sans-serif;
     margin-bottom: 20px;
+}
+
+pre {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.enum {
+    line-height: 4vh;
+}
+
+.svg_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

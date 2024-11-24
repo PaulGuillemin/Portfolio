@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <title>Paul Guillemin</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css"> <!-- Pour la coloration du code -->
     <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
     <script src="js_script.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -47,13 +48,115 @@
     <h1>DEEP LEARNING : RECONNAISSANCE DE CHIFFRES AVEC TENSORFLOW</h1>
     <h2>Développement d'un modèle de classification de chiffres manuscrits avec TensorFlow et le dataset MNIST</h2>
 
+    <br>
+
+    <hr>
+
+    <br>
+    <br>
+
     <h3>I - Pourquoi développer un modèle de classification de chiffres ?</h3>
 
     <h4>I.1 - Un problème simple s'inscrivant dans un contexte plus complexe</h4>
-    
+
+    <p>
+    La reconnaissance de chiffres manuscrits représente un problème important dans le domaine du machine learning. Bien qu’un tel problème semble triviale, il est directement applicable à des systèmes pratiques comme la lecture automatique de chèques bancaires, la reconnaissance de codes postaux pour les services postaux, et bien d'autres.
+
+    Résoudre un problème simple comme la classification de chiffres permet de mettre en œuvre des concepts généraux pouvant être appliqués à des problématiques plus complexes, comme la reconnaissance de caractères manuscrits dans différentes langues, la compréhension d’écriture cursive ou encore l’analyse de documents numérisés. En progressant dans ces problématiques, les modèles peuvent être adaptés pour des applications plus avancées comme la lecture automatique d'articles scientifiques ou l'identification de schémas complexes dans des bases de données manuscrites.
+
+    Ce cas d’utilisation illustre également la manière dont les réseaux de neurones convolutionnels (CNN), peuvent être appliqués efficacement à des images en exploitant leurs caractéristiques spatiales et visuelles.
+    </p>
+
     <h4>I.2 - Le dataset MNIST</h4>
 
+    <p>
+        Le dataset <strong>MNIST (Modified National Institute of Standards and Technology)</strong> est une référence dans le domaine du machine learning, spécialement pour les tâches de classification d’images. Il s'agit d'une base de données contenant 70 000 images de chiffres manuscrits en niveaux de gris, réparties en deux ensembles :
+    </p>
+    <ul class="enum">
+        <li><strong>Ensemble d’entraînement</strong> : 60 000 images utilisées pour former les modèles.</li>
+        <li><strong>Ensemble de test</strong> : 10 000 images utilisées pour évaluer les performances des modèles.</li>
+    </ul>
+    <p>Chaque image a une résolution de 28 x 28 pixels, soit 784 pixels par image, ce qui en fait un dataset relativement léger et facile à manipuler. Chaque pixel est représenté par une intensité de gris allant de 0 (noir) à 255 (blanc).</p>
 
+    <h3>II - Utilisation de Tensorflow pour classifier les images</h3>
+
+    <p>
+    TensorFlow est une bibliothèque open-source optimisée pour le développement et l'entraînement de modèles de deep learning, intégrant une gestion avancée des tenseurs et des opérations différentiables. Sa compatibilité native avec Keras permet de concevoir des modèles en utilisant une API haut niveau, tout en offrant une flexibilité pour personnaliser des graphes computationnels bas-niveau. TensorFlow exploite efficacement les GPU et TPU pour accélérer l'entraînement grâce à sa prise en charge de calculs parallèles.
+    </p>
+
+    <h4>II.1 - Importation des librairies python</h4>
+
+    
+        
+    <pre><code class="language-python">        import pandas as pd
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import tensorflow as tf
+        import tensorflow_datasets as tfds
+        </code>
+    </pre>
+
+    <ul class="enum">
+        <li><strong>NumPy</strong> : pour les calculs numériques et les manipulations de données sous forme de tableaux.</li>
+        <li><strong>Matplotlib</strong> : pour la visualisation des images ou des résultats.</li>
+        <li><strong>TensorFlow</strong> : pour la création, l'entraînement et l'évaluation du modèle de machine learning.</li>
+        <li><strong>TensorFlow Datasets</strong> : pour accéder facilement aux jeux de données, comme MNIST, pour entraîner et tester le modèle.</li>
+    </ul>
+
+    <h4>II.2 - Séparation des datasets de train / test</h4>
+
+    <pre>
+        
+        <code class="language-python">        mnist = tf.keras.datasets.mnist
+
+        (x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+        x_train = tf.keras.utils.normalize(x_train, axis=1)
+        x_test = tf.keras.utils.normalize(x_test, axis=1)
+        </code>
+    </pre>
+
+
+    <h4>II.3 - Création du modèle</h4>
+
+    <pre>
+        
+        <code class="language-python">        model = tf.keras.models.Sequential()
+
+        model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
+        model.add(tf.keras.layers.Dense(128, activation='relu'))
+        model.add(tf.keras.layers.Dense(128, activation='relu'))
+        model.add(tf.keras.layers.Dense(10, activation='softmax'))
+            
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+            
+        model.fit(x_train, y_train, epochs=3)
+        model.save('handwrittenRecognition.keras')
+        </code>
+    </pre>
+
+    <ul class="enum">
+        <li><strong>tf.keras.models.Sequential</strong> : Crée un modèle séquentiel dans lequel les couches sont empilées les unes après les autres.</li>
+        <li><strong>tf.keras.layers.Flatten</strong> : Applique une transformation de l'image 28x28 (matrice 2D) en un vecteur unidimensionnel afin qu'il puisse être utilisé par les couches suivantes du réseau de neurones.</li>
+        <li><strong>tf.keras.layers.Dense</strong> : Une couche de neurones entièrement connectée. Chaque neurone reçoit des entrées de toutes les couches précédentes.
+            <ul>
+                <li><strong>128</strong> : Le nombre de neurones dans chaque couche dense.</li>
+                <li><strong>activation='relu'</strong> : La fonction d'activation ReLU (Rectified Linear Unit) est utilisée pour introduire des non-linéarités et aider le modèle à apprendre des relations complexes.</li>
+                <li><strong>activation='softmax'</strong> : Fonction d'activation softmax dans la couche de sortie, utilisée pour normaliser les sorties du modèle en une distribution de probabilités (une pour chaque classe de chiffres de 0 à 9).</li>
+            </ul>
+        </li>
+        <li><strong>model.compile</strong> : Prépare le modèle en spécifiant l'optimiseur, la fonction de perte et les métriques à suivre pendant l'entraînement.
+            <ul>
+                <li><strong>optimizer='adam'</strong> : Utilisation de l'optimiseur Adam, qui est efficace pour l'entraînement des réseaux de neurones.</li>
+                <li><strong>loss='sparse_categorical_crossentropy'</strong> : Fonction de perte adaptée pour les problèmes de classification multiclasse avec des étiquettes d'entraînement sous forme d'entiers (comme dans MNIST).</li>
+                <li><strong>metrics=['accuracy']</strong> : La métrique d'évaluation de l'entraînement est la précision du modèle.</li>
+            </ul>
+        </li>
+        <li><strong>model.fit</strong> : Lance l'entraînement du modèle sur les données d'entraînement <code>x_train</code> et <code>y_train</code> pendant 3 époques (iterations complètes sur l'ensemble des données d'entraînement).</li>
+        <li><strong>model.save</strong> : Sauvegarde le modèle entraîné dans un fichier afin qu'il puisse être utilisé ultérieurement sans avoir à être réentraîné.</li>
+    </ul>
+
+    <img src="/img/projects/digit-recognition/nn.svg" alt="Image SVG de Démonstration" class="svg_image"/>
 
     <div class="espace-titre"></div>
 
@@ -63,5 +166,12 @@
 <footer>
     © 2024 Paul Guillemin
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js/dist/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        hljs.initLineNumbersOnLoad();
+    </script>
+
 </body>
 </html>
