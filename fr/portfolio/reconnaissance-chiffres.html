@@ -158,9 +158,50 @@
 
     <img src="/img/projects/digit-recognition/nn.svg" alt="Image SVG de Démonstration" class="svg_image"/>
 
+    <h4>II.4 - Évaluation du modèle</h4>
+
+    <pre>
+        <code class="language-python">        model = tf.keras.models.load_model('handwrittenRecognition.keras')
+        loss, accuracy = model.evaluate(x_test, y_test)
+        </code>
+    </pre>
+
+    <h5>Loss et Accuracy</h5>
+    
+    <ul>
+        <li>Loss : <strong>0.0967</strong></li>
+        <li>Accuracy : <strong>96.79%</strong></li>
+    </ul>
+
+    <h5>Calcul de la Loss</h5>
+    <p>La fonction de perte utilisée est <strong>l'entropie croisée catégorique</strong>, souvent employée dans les tâches de classification. Voici comment elle est calculée :</p>
+    <ul>
+        <li>Pour un échantillon individuel \(i\), la perte est définie par :
+            \[
+            \text{Loss}_i = - \sum_{k=1}^{C} y_{i,k} \cdot \log(\hat{y}_{i,k})
+            \]
+            <ul>
+                <li>\(y_{i,k}\) : Indicateur binaire (1 si l'échantillon appartient à la classe \(k\), sinon 0).</li>
+                <li>\(\hat{y}_{i,k}\) : Probabilité prédite pour la classe \(k\) par la fonction softmax.</li>
+            </ul>
+        </li>
+        <li>La perte totale moyenne pour \(N\) échantillons est donnée par :
+            \[
+            \text{Loss} = \frac{1}{N} \sum_{i=1}^{N} \text{Loss}_i
+            \]
+        </li>
+    </ul>
+
+    <h5>Fonction d'activation Softmax</h5>
+    <p>Les probabilités prédites \(\hat{y}_{i,k}\) sont calculées avec la fonction softmax :</p>
+    \[
+    \hat{y}_{i,k} = \frac{\exp(z_{i,k})}{\sum_{j=1}^{C} \exp(z_{i,j})}
+    \]
+    <p>Où \(z_{i,k}\) est la sortie brute (logit) du modèle pour la classe \(k\).</p>
+
     <div class="espace-titre"></div>
 
-    <h3>BIENTÔT DISPONIBLE !</h3>
+    <h3>SUITE BIENTÔT DISPONIBLE !</h3>
 
 </div>
 <footer>
