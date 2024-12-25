@@ -85,8 +85,6 @@
     </p>
 
     <h4>II.1 - Importation des librairies python</h4>
-
-    
         
     <pre><code class="language-python">        import pandas as pd
         import numpy as np
@@ -111,11 +109,30 @@
 
         (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-        x_train = tf.keras.utils.normalize(x_train, axis=1)
-        x_test = tf.keras.utils.normalize(x_test, axis=1)
+        X_train = x_train.reshape(60000, 784) 
+        X_test = x_test.reshape(10000, 784)   
+            
+        X_train = X_train.astype("float32") / 255.0
+        X_test = X_test.astype("float32") / 255.0
+            
+        Y_train = to_categorical(y_train, 10)
+        Y_test = to_categorical(y_test, 10)
         </code>
     </pre>
 
+    <p>Training matrix shape (60000, 784)</p>
+    <p>Testing matrix shape (10000, 784)</p>
+    <br>
+    <p>On peut afficher 6 exemples de données du dataset :</p>
+
+    <div class="image">
+        <figure>
+            <img src="/img/projects/digit-recognition/img1.png" alt="Schema">
+            <figcaption>Quelques données d'entrée du modèle</figcaption>
+        </figure>
+    </div>
+
+    <p>Le label de chacune des images est un vecteur de dimension 10.</p>
 
     <h4>II.3 - Création du modèle</h4>
 
