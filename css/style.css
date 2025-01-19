@@ -77,7 +77,6 @@ header, footer {
     text-align: center;
 }
 
-
 header {
     background-color: transparent;
     position: fixed;
@@ -129,7 +128,7 @@ header nav ul li a {
 }
 
 section {
-    height: 100vh; /* Hauteur de 100% de la fenêtre */
+    height: 140vh; /* Hauteur de 100% de la fenêtre */
     display: flex; /* Centrage optionnel */
     flex-direction: column;
     padding: 20px; /* Ajoute un espace autour du contenu */
