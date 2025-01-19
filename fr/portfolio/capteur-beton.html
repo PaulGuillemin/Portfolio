@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDESVG1RX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LFDESVG1RX');
+</script>
+    <meta charset="UTF-8">
+    <title>Capteur béton</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
+    <script src="js_script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../../../fr/index.html"><img src="../../../img/logo/logoAlpha.png" alt="Website Logo" id="siteLogo"></a>
+            <div id="headerTitle">Paul Guillemin</div>
+            <ul>
+                <li><a href="/fr/index.html#about" id="navAbout">À propos</a></li>
+                <li><a href="/fr/index.html#portfolio" id="navPortfolio">Portfolio</a></li>
+                <li><a href="/fr/index.html#skills" id="navSkills">Compétences</a></li>
+                <li><a href="/fr/index.html#contact" id="navContact">Contact</a></li>
+            </ul>
+            <div class="languageSelector">
+                <button id="languageButton"><img src="../../../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
+                <div id="languageMenu" class="language-menu">
+                    <a href="#">Français</a>
+                    <a href="#">English</a>
+                    <a href="#">Deutsch</a>
+                    <a href="#">Español</a>
+                </div>
+            </div>
+            <script src="/js/jsIndex.js"></script>
+        </nav>
+    </header>
+
+    <div class="presentation">
+    <h1>CONCEPTION D'UN CAPTEUR DE LA MESURE DE QUALITÉ DU BÉTON</h1>
+    <h2>Conception d’un capteur de mesure en quasi temps réel de la
+        qualité du béton précontraint sur un ouvrage d’art</h2>
+
+    <h3>1 - Introduction</h3>
+
+    <h4>1.1 - Contexte et problématique</h4>
+
+    <p>Le contrôle des ouvrages d’art en France, réalisé tous les deux ans, ne permet pas une
+        détection précoce ni un suivi continu des défauts structurels. Face à ces limites, un capteur
+        connecté capable de mesurer en quasi temps réel la qualité du béton précontraint constitue une
+        solution innovante. Ce dispositif utiliserait les câbles de précontrainte comme guides d’ondes
+        pour détecter et localiser des défauts tels que l’humidité, les fissures ou la corrosion, tout en
+        mesurant le vieillissement via la constante diélectrique.</p>
+
+    <h4>1.2 - Objectifs</h4>
+
+    <p>L’objectif de ce projet est de concevoir un capteur capable de mesurer en quasi temps réel
+        la qualité du béton précontraint et de détecter les défauts structurels des ouvrages d’art.</p>
+
+    <h4>1.3 - Méthodes et ressources</h4>
+
+    <p>La conception de ce capteur sera subdivisée en plusieurs étapes :</p>
+
+    <p>
+        <ul class="liste">
+            <li><p><strong>Modélisation de la ligne de transmission : </strong>Cette première étape consiste à adapter
+                le modèle théorique aux spécificités du béton précontraint, en tenant compte de la géométrie
+                des câbles et des propriétés diélectriques. Les simulations des paramètres tels que
+                l’impédance caractéristique et le temps de propagation seront effectuées avec PartQuest.</p></li>
+            <li><p><strong>Détection et classification des défauts : </strong>Les défauts tels que l’humidité, les fissures et
+                la corrosion seront modélisés et leurs signatures électriques analysées à partir de mesures
+                de réflectométrie temporelle pour établir un protocole de classification.</p></li>
+            <li><p><strong>Suivi du vieillissement : </strong>Une analyse fréquentielle permettra de mesurer l’évolution
+                de la constante diélectrique, utilisée comme indicateur de vieillissement global du béton.</p></li>
+            <li><p><strong>Conception du conditionneur électronique : </strong>Un conditionneur sera développé pour
+                traiter les signaux issus de la ligne de transmission. Il intégrera un pont de Wheatstone,
+                un amplificateur et un détecteur de crêtes.</p></li>
+        </ul>
+    </p>
+
+    <h3>2 - Présentation générale du système</h3>
+
+    <p>Dans cette partie, nous présenterons les principes généraux de fonctionnement du système,
+        notamment en décrivant ses sous-systèmes.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c21.png" alt="Schema">
+            <figcaption>Synoptique du système</figcaption>
+        </figure>
+    </div>
+
+    <p>Le système est composé de 3 grands sous-systèmes :</p>
+
+    <p>
+        <ul class="liste">
+            <li><p><strong>La ligne de transmission : </strong>Il s’agit de l’élément sensible du capteur, directement influencée
+                par l’état du béton. Ses propriétés électriques, notamment l’impédance caractéristique,
+                varient en fonction de l’humidité, des fissures ou de la corrosion. Ces variations modifient
+                la propagation des signaux dans la ligne, traduisant les changements physiques du béton
+                en paramètres électriques mesurables.</p></li>
+            <li><p><strong>Pont de Wheatstone : </strong>Il est utilisé pour détecter les variations d’impédance de la ligne
+                de transmission en réponse aux défauts dans le béton. Lorsque le béton reste intact, le
+                pont est équilibré et la tension de sortie est nulle. En cas de défaut (humidité, fissure,
+                corrosion), l’impédance de la ligne change, déséquilibrant le pont et générant une tension
+                proportionnelle à la variation. Ce montage permet de convertir le changement d’impédance
+                en tension électrique.</p></li>
+            <li><p><strong>Conditionneur : </strong>Il a pour rôle de transformer le signal brut délivré par le pont de Wheatstone,
+                faible et alternatif, en une valeur exploitable par le système de traitement. Il comprend
+                un soustracteur, qui extrait la différence de potentiels, un détecteur de crêtes, qui
+                convertit le signal alternatif en une tension continue, et un amplificateur, qui ajuste le
+                niveau du signal afin de le rendre compatible avec un microcontrôleur.</p></li>
+        </ul>
+    </p>
+
+    <h3>3 - Différents sous-systèmes</h3>
+
+    <h4>3.1 - Ligne de transmission</h4>
+
+    <h5>3.1.1 - Formalisation de la ligne de transmission</h5>
+
+    <p>Le but de cette partie est d’établir l’équation d’onde de d’Alembert qui régit la propagation
+        du signal le long de la ligne de transmission.</p>
+
+    <p>La ligne est orientée selon l’axe (Ox).
+        On note u(x,t) et u(x+dx,t) la tension entre les deux câbles respectivement à la côte x et d+dx.
+        On note i(x,t) et i(x+dx,t) le courant circulant dans le sens des x croissants respectivement à la
+        côte x et d+dx.</p>
+
+    <p>Les grandeurs R, G, L et C sont linéiques.
+        Enfin, on choisit la longueur élémentaire dx suffisamment petite pour que l’ARQS soit valide à
+        l’échelle du tronçon.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c1.png" alt="Schema">
+            <figcaption>Schéma d’une portion de longueur dx de la ligne de transmission</figcaption>
+        </figure>
+    </div>
+
+    <p>Par application de la loi des noeuds et loi des mailles, on peut montrer que la tension et le
+        courant sont liés par le système d’équations aux dérivées partielles suivantes :</p>
+
+    <p>\[\begin{cases}
+        \frac{\partial u}{\partial x}(x, t) = -L \frac{\partial i}{\partial t}(x, t) - R i(x, t), \\
+        \frac{\partial i}{\partial x}(x, t) = -C \frac{\partial u}{\partial t}(x, t) - G u(x, t)
+        \end{cases}\]</p>
+
+    <p>On déduit de ce système l'équation ne faisant intervenir que la tension :</p>
+
+    <p>\[
+        \frac{\partial^2 u}{\partial x^2}(x, t) = L C \frac{\partial^2 u}{\partial t^2}(x, t) + (R C + G L) \frac{\partial u}{\partial t}(x, t) + G R u(x, t)
+        \]</p>
+
+    <p>Enfin, si on se place dans le cas où la ligne est sans pertes, ie R = G = 0, on retrouve une équation d'onde de d'Alembert :</p>
+
+    <p>\[
+        \boxed{\frac{\partial^2 u}{\partial x^2}(x, t) = \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2}(x, t)}
+        \quad \text{avec } c = \frac{1}{\sqrt{L C}}
+        \]</p>
+
+    <p>La ligne sera considérée sans pertes dans le reste du document.
+        La solution de l'équation d'onde est de la forme : \(u(x,t)=U_{+}e^{j\omega t}e^{-j\beta x}+U_{-}e^{j\omega t}e^{j\beta x}\), avec :</p>
+
+    <p>\[\beta=\frac{2\pi}{\lambda}=\frac{\omega}{v_{\varphi}} \quad \text{et la vitesse de phase }
+        v_{\varphi}=\frac{c}{\sqrt{\varepsilon_{r}}}\]</p>
+
+    <p>L'impédance caractéristique est l’impédance de charge pour laquelle l’impédance d’entrée est égale à l’impédance de charge.
+        L'impédance caractéristique dans notre cas s'exprime :
+    </p>
+
+    <p>\[
+        Z_{C} 
+        = \frac{1}{\pi} 
+          \sqrt{\frac{\mu_0}{\epsilon_0\,\epsilon_r}} 
+          \,\mathrm{acosh}\!\biggl(\frac{r_d}{r_a}\biggr).
+        \]</p>
+
+    <p>On peut approximer la fonction \(\mathrm{acosh}\) pour l'implémentation en VHDL tel que </p>
+
+    <p>\[
+        Z_{C} 
+        = \frac{1}{\pi} 
+          \sqrt{\frac{\mu_0}{\epsilon_0 \,\epsilon_r}} 
+          \,\log\!\biggl(
+             \frac{r_d}{r_a}
+             + \sqrt{
+                 \biggl(\frac{r_d}{r_a}\biggr)^{2}
+                 - 1
+               }
+          \biggr).
+        \]avec \(r_{d}\) le rayon entre les centres des deux câbles et \(r_{a}\) le rayon d'un câble.</p>
+
+    <p>C'est cette expression de l'impédance caractéristique qui sera implémenté dans le modèle de la ligne sur Partquest.
+        On peut maintenant donner le temps de propagation du signal sur la ligne, temps de retard : \(t_{d}=\frac{l}{v_{\varphi}}\).
+        La valeur de \(t_{d}\) permettra de choisir une largeur d'impulsion bien inférieure au temps de retard de la ligne.
+    </p>
+
+    <h5>3.1.2 - Étude en réflectométrie temporelle</h5>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c3.png" alt="Schema">
+            <figcaption>Circuit d'étude en réflectométrie temporelle</figcaption>
+        </figure>
+    </div>
+
+    <p>Sachant que le rayon intérieur est de 0.05 m et celui extérieur de 0.5 m, on a une impédance caractéristique \(Z_{C}=119,64 \text{ } \Omega\)</p>
+    
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c4.png" alt="Schema">
+            <figcaption>Résultat de l'étude en réflectométrie temporelle pour \(Z_{L} =\) \(30 \Omega\), \(50 \Omega\) et \(70 \Omega\)</figcaption>
+        </figure>
+    </div>
+
+    <p>On remarque que, plus la valeur de l'impédance de charge se rapproche de l'impédance caractéristique, plus l'amplitude de l'onde réfléchie diminue.
+        On mesure un temps de propagation de \(3.0 \) \(\mu s\).</p>
+
+    <h5>3.1.3 - Étude fréquentielle</h5>
+
+    <p>On fixe l'impédance de charge à \(Z_{L} =\) \(100 \Omega\) pour que la ligne soit désadaptée. Et la longueur de la ligne est fixée à 1m.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c19.png" alt="Schema">
+            <figcaption>Étude fréquentielle</figcaption>
+        </figure>
+    </div>
+
+    <p>La période fréquentielle est de 50 MHz.
+        Prenons un des maximums, par exemple 100 MHz. On trace alors la réponse temporelle pour cette fréquence.
+        On remarque que les maximums correspondent à une valeur de phase nulle modulo pi. On est alors dans le cas d'interférences constructives, ainsi la longueur de la ligne s'exprime comme :</p>
+
+    <p>\[L=n\frac{\lambda}{2},\text{  }\text{  }\text{  }n\in \mathbb{N^{*}}\]</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c20.png" alt="Schema">
+            <figcaption>Réponse temporelle pour 100 MHz</figcaption>
+        </figure>
+    </div>
+
+    <p>Sachant que \(\lambda=\frac{v}{f}\) et \(v=\frac{c}{\epsilon_{r}}\), on en déduit
+
+        \[L=\frac{c}{2\sqrt{\epsilon_{r}}\Delta f}\]
+        
+        avec \(\Delta f\) la période fréquentielle (ici 50 MHz).
+        Ainsi \[L=\frac{3\cdot10^8}{2\sqrt{9}\cdot 50\cdot10^6}=1\text{m}\]
+        
+        Ce résultat correspond effectivement à la valeur de ligne fixée dans la simulation.</p>
+
+    <h4>3.2 - Pont de Wheatstone</h4>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c2.png" alt="Schema">
+            <figcaption>Montage avec le pont de Wheatstone</figcaption>
+        </figure>
+    </div>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/wheatstone.png" alt="Schema">
+            <figcaption>Sortie du pont de Wheatstone pour 5 valeurs de \(Z_{L} \) : inférieures, supérieures et égale à \(119,64 \Omega\)</figcaption>
+        </figure>
+    </div>
+
+    <p>On constate que pour \(Z_{L} = 119,64 \Omega\), la tension en sortie du pont de Wheatstone est nulle. Pour \(Z_{L} > 119,64 \Omega\), la tension de sortie est positive et augmente avec la valeur de \(Z_{L}\). Pour \(Z_{L} < 119,64 \Omega\), la tension de sortie est négative et diminue avec la valeur de \(Z_{L}\).</p>
+    
+    <p>On en déduit que la tension de sortie du pont de Wheatstone est une fonction affine de \(Z_{L} \) avec \(V(Z_{L}=119,64 \Omega) = 0 V\), où V est la tension en sortie du pont de Wheatstone.</p>
+
+    <p>Ainsi, la tension différentielle permet de retranscrire le coefficient de réflexion.
+
+        Sachant que le potentiel au point \( B \), \( V_B \), dépend de ce coefficient de réflexion, la mesure de la différence de potentiel entre les points \( A \) et \( B \) rend compte des variations de l’humidité.</p>
+
+    <p>D’une part : 
+        \[
+        V_A = \frac{E(t)}{2},
+        \]</p>
+
+    <p>D’autre part :
+        \[
+        V_B = \frac{Z_{\text{in}}}{Z_{\text{in}} + Z_c} E(t).
+        \]</p>
+
+    <p>Donc :
+        \[
+        V_B - V_A = 
+        \left( 
+        \frac{Z_{\text{in}}}{Z_{\text{in}} + Z_c} - \frac{1}{2}
+        \right) E(t) = 
+        \frac{Z_{\text{in}} - Z_c}{2(Z_{\text{in}} + Z_c)} E(t).
+        \]</p>
+
+    <p>On obtient la tension de sortie du pont de Wheatstone : 
+        \[
+        V_B - V_A = \Gamma_{\text{in}} \frac{E(t)}{2} \tag{10}
+        \]
+        
+        On remarque que la ligne est désadaptée (\( \Gamma_{\text{in}} \neq 0 \)) si et seulement si la tension observée \( V_B - V_A \) est non nulle.</p>
+
+    <h3>4 - Modélisation des défauts et classification par réflectométrie temporelle</h3>
+
+    <h4>4.1 - Humidité locale</h4>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c6.png" alt="Schema">
+            <figcaption>Parameter sweep pour \(\epsilon_{r}\) variant de 2 à 20</figcaption>
+        </figure>
+    </div>
+
+    <p>On observe que :</p>
+
+    <p>
+        <ul class="liste">
+            <li><p><strong>Si \(\epsilon_{r}\) >  9,</strong> alors 2 impulsions sont observées l'une après l'autre, la première négative puis la seconde positive.</p></li>
+            <li><p><strong>Si \(\epsilon_{r}\) <  9,</strong> alors 2 impulsions sont observées l'une après l'autre, la première positive puis la seconde négative.</p></li>
+            <li><p><strong>Si \(\epsilon_{r}\) = 9,</strong> on observe aucune impulsion.</p></li>
+        </ul>
+    </p>
+
+    <p>L'amplitude de l'impulsion donne l'information sur la valeur de \(\epsilon_{r}\).</p>
+
+    <h4>4.2 - Fissure</h4>
+
+    <p>Pour modéliser une fissure, on place une résistance \(R_{p}\) en parallèle dont on fait varier la valeur entre 200 \(\Omega\) et 500 \(\Omega\).</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c5.png" alt="Schema">
+            <figcaption>Parameter sweep pour \(R_{p}\) variant de 200 à 500 \(\Omega\)</figcaption>
+        </figure>
+    </div>
+
+    <p>On observe alors plusieurs valeurs d'impulsions réfléchies, dont l'amplitude est fonction de la valeur de \(R_{p}\). En effet, l'amplitude de l'impulsion diminue avec l'augmentation de \(R_{p}\).
+
+        De plus, les valeurs mesurées sont négatives.</p>
+
+    <h4>4.3 - Corrosion du câble</h4>
+
+    <p>On souhaite maintenant la corrosion du câble, on place donc une résistance \(R_{s}\) en série dont on fait varier la valeur entre 1 \(\Omega\) et 10 \(\Omega\).</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c7.png" alt="Schema">
+            <figcaption>Parameter sweep pour \(R_{s}\) variant de 1 à 10 \(\Omega\)</figcaption>
+        </figure>
+    </div>
+
+    <p>On observe plusieurs valeurs d'impulsions réfléchies, dont l'amplitude est fonction de la valeur de \(R_{s}\). En effet, l'amplitude de l'impulsion augmente avec la valeur de \(R_{s}\).
+        
+        On constate cette fois que les valeurs mesurées sont positives.</p>
+
+    <h3>5 - Conditionneur</h3>
+
+    <p>Afin de tester le circuit dans la suite du document on effectue un parameter sweep de \(\epsilon_{r}\) de 9 à 20 par pas de 2.</p>
+
+    <h4>5.1 - Soustracteur</h4>
+
+    <p>On cherche maintenant à extraire la tension en sortie du pont de Wheatstone. On utilise dans un premier temps un montage soustracteur pour extraire la différence de potentiels.</p>
+    
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c9.png" alt="Schema">
+            <figcaption>Montage soustracteur utilisé dans le circuit</figcaption>
+        </figure>
+    </div>
+
+    <p>La tension de sortie du montage soustracteur s'exprime comme :
+
+        \[V_{S}=\frac{R_{2}}{R_{1}}(V_{2}-V_{1})\]
+        
+        On choisit \(R_{1}=50\Omega\) et \(R_{2}=5000\Omega\). De cette façon le gain en sortie du soustracteur est de 100.</p>
+
+        <div class="image">
+            <figure>
+                <img src="../../../img/projects/capteur-beton/c12.png" alt="Schema">
+                <figcaption>Signaux en sortie du soustracteur</figcaption>
+            </figure>
+        </div>
+
+    <h4>5.2 - Détecteur de crêtes</h4>
+
+    <p>On souhaite maintenant récupérer l'amplitude du signal en sortie du soustracteur puisque cette dernière est directement fonction de la valeur de \(\epsilon_{r}\).
+        
+        On utilise pour ce faire un détecteur de crêtes composé d'une diode suivie d'une résistance et d'un condensateur en parallèles.</p>
+
+        <div class="image">
+            <figure>
+                <img src="../../../img/projects/capteur-beton/c10.png" alt="Schema">
+                <figcaption>Détecteur de crêtes utilisé dans le circuit</figcaption>
+            </figure>
+        </div>
+
+    <p>Le choix des valeurs de R et C sont primordiales, car c'est elle qui vont permettre au montage de fournir la tension avec le minimum d'ondulation en tension possible.</p>
+
+    <p>Ainsi, on doit choisir R et C de telle façon que le temps caractéristique de décharge du condensateur soit très grand devant la période du signal : \(RC=\tau>>T\) avec T la période du signal en entrée.</p>
+
+    <p>En même temps, \(\tau\) ne doit pas être trop grand pour permettre au signal en sortie du détecteur de crêtes d'atteindre le plus vite possible sa valeur finale et éviter que la réponse du circuit final soit trop "lente".</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c13.png" alt="Schema">
+            <figcaption>Signaux de sortie du détecteur de crêtes</figcaption>
+        </figure>
+    </div>
+
+    <p>On mesure un temps de réponse à 5% du circuit de 4,5 ms.</p>
+
+    <h4>5.3 - Amplification du signal</h4>
+
+    <p>En analysant les résultats des simulations, on s’aperçoit que la tension en sortie du détecteur de crêtes est très faible. Or, on voudrait que pour \(\epsilon_{r}=20\) on ait une tension de sortie pleine échelle de 3,3 V.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c11.png" alt="Schema">
+            <figcaption>Amplificateur non inverseur utilisé dans le circuit</figcaption>
+        </figure>
+    </div>
+
+    <p>On mesure une tension de sortie de 1.28 V en sortie du détecteur de crêtes. Donc pour avoir 3.3 V on doit avoir un amplificateur avec un gain de \(\frac{3,3}{1,28}=2,26\).
+        
+        Or, la tension en sortie de l'amplificateur non-inverseur s’exprime :
+        
+        \[V_{S}=(1+\frac{R_{2}}{R_{1}})V_{E}\]
+        
+        En prenant \(R_{1}=1k\Omega\) et \(R_{2}=1,6k\Omega\) on a un gain de 2,27.</p>
+
+        <div class="image">
+            <figure>
+                <img src="../../../img/projects/capteur-beton/c14.png" alt="Schema">
+                <figcaption>Signal en sortie de l'amplificateur non-inverseur</figcaption>
+            </figure>
+        </div>
+
+    <p>On mesure donc bien 3,3 V en sortie de l'amplificateur pour \(\epsilon_{r}\) = 20.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c15.png" alt="Schema">
+            <figcaption>Ondulation en tension pour \(\epsilon_{r}\) = 20 en sortie de l'amplificateur</figcaption>
+        </figure>
+    </div>
+
+    <p>On mesure une ondulation en tension de 10 mV au maximum pour $\epsilon_{r}$ = 20 ce qui est relativement peu et permet de ne pas perturber significativement le comportement d'un microcontrôleur que l'on pourrait placer en sortie du circuit par exemple.</p>
+
+    <h3>5 - Vérifications et synthèse</h3>
+
+    <p>Ci-dessous l'architecture finale du circuit sur Partquest.
+        
+        On y retrouve les 5 grands sous-systèmes à savoir le Pont de Wheatstone, la ligne de transmission et le conditionneur composé du soustracteur, du détecteur de crêtes et enfin de l'amplificateur.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c16.png" alt="Schema">
+            <figcaption>Circuit final</figcaption>
+        </figure>
+    </div>
+
+    <p>On effectue un parameter sweep avec un pas de 1 pour avoir la meilleure précision pour la régression.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/c22.png" alt="Schema">
+            <figcaption>Parameter Sweep pour plusieurs valeurs de permittivité relative</figcaption>
+        </figure>
+    </div>
+
+    <p>On peut tracer ensuite sur Python la permittivité relative en fonction de la tension et effectuer une régression affine.</p>
+
+    <div class="image">
+        <figure>
+            <img src="../../../img/projects/capteur-beton/plot.png" alt="Schema">
+            <figcaption>Parameter Sweep pour plusieurs valeurs de permittivité relative</figcaption>
+        </figure>
+    </div>
+
+    <p>Le coefficient de détermination \(R^2\) est de 0.99 ce qui donne une indication de la validité de la régression.
+        
+        On a alors la loi de comportement entre la tension et \(\epsilon_{r}\) :
+        
+        \[\epsilon_{r}(U)=3,26\cdot U+9,2\]</p>
+
+    <h3>6 - Conclusion</h3>
+
+    <p>Ce projet a permis de développer un système de mesure en quasi temps réel de la qualité du béton précontraint. Basé sur une ligne de transmission couplée à un pont de Wheatstone et un système de conditionnement du signal, notre dispositif permet la détection et la caractérisation de l'humidité locale. Les simulations montrent une excellente linéarité de la réponse avec un R² de 0,99 et un temps de réponse de 4,5 ms. Pour améliorer ce système, un microcontrôleur pourrait être intégré afin d'analyser la tension en sortie et d'optimiser la gestion des données pour une analyse plus précise et en temps réel. Bien que ces résultats soient prometteurs, des tests en conditions réelles seront nécessaires pour valider pleinement le concept.</p>
+
+    <h3>7 - Annexe</h3>
+
+    <a id="downloadCv" href="../../../dl/doc/capteur-beton/ligne.vhdl">Modèle de la ligne en VHDL</a>
+
+    <div class="espace-titre"></div>
+
+</div>
+<footer>
+    © 2024 Paul Guillemin
+</footer>
+</body>
+</html>
