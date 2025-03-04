@@ -36,8 +36,8 @@ html {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #000000; /* Dark blue for primary text */
-    background-color: #FEFDFF; /* Light cream background */
+    color: #000000;
+    background-color: #FEFDFF;
     margin: 0;
     padding: 0;
 }
@@ -125,6 +125,7 @@ header nav ul li a {
     background-size: cover; /* Assure que l'image couvre entièrement la div */
     background-position: center; /* Centre l'image dans la div */
     height: 100vh;
+    width: 100vw;
 }
 
 section {
@@ -351,7 +352,8 @@ span {
 #siteLogo {
     width: 50px; /* Adjust the width of the logo as needed */
     height: auto; /* Maintain aspect ratio */
-    margin-right: 20px; /* Add margin to create space between the logo and other header content */
+    margin-right: 3vh; /* Add margin to create space between the logo and other header content */
+    margin-left: 3vh;
 }
 
 .image-button {
