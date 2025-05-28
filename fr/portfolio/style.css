@@ -293,6 +293,9 @@ button:hover::after, header nav ul li a:hover::after {
     text-align: center;
     white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
     font-weight: bold;
+    text-shadow:
+    0 0 6px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(0, 0, 0, 0.5);
 }
 
 /************************************/
