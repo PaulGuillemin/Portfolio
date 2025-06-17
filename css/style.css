@@ -120,6 +120,13 @@ header nav ul li a {
     justify-content: space-between;
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #FEFDFF;
+}
+
 .intro-background {
     background-image: url("../../img/background/backgroundHeader.jpg");
     background-size: cover; /* Assure que l'image couvre entièrement la div */
@@ -393,10 +400,12 @@ span {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-family: 'Montserrat', sans-serif; /* Appliquez la police Montserrat */
-    font-size: 1.2vw; /* Ajustez la taille de la police selon vos préférences */
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(14px, 2.5vw, 22px);
     text-align: center;
-    white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
+    white-space: normal;
+    width: 90%;
+    line-height: 1.2;
     font-weight: bold;
     text-shadow:
     0 0 6px rgba(0, 0, 0, 0.7),
@@ -585,10 +594,19 @@ span {
         gap: 10px;
     }
 
+    .menu-toggle {
+        display: block;
+    }
+
     header nav ul {
+        display: none;
         flex-direction: column;
         align-items: center;
-        width: auto;
+        width: 100%;
+    }
+
+    header nav ul.show-menu {
+        display: flex;
     }
 
     #headerTitle {
