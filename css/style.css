@@ -577,3 +577,58 @@ span {
 .contact-details a:hover {
     text-decoration: underline;
 }
+
+/* ------------ Responsive styles ------------ */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+
+    #headerTitle {
+        font-size: 24px;
+        margin-left: 0;
+    }
+
+    #siteLogo {
+        width: 40px;
+        margin: 0;
+    }
+
+    section {
+        height: auto;
+    }
+
+    h2 {
+        font-size: 8vw;
+    }
+
+    #about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #about img#me {
+        max-width: 80vw;
+    }
+
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-photo {
+        max-width: 80vw;
+        margin: 0 auto 20px auto;
+    }
+}
