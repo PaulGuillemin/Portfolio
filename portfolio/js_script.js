@@ -32,3 +32,16 @@ function handleClickOutside(event) {
 
 // Ajoute l'écouteur d'événements au document pour détecter les clics à l'extérieur
 document.addEventListener('click', handleClickOutside);
+
+// Toggle navigation menu on small screens
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menuToggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            var navList = document.querySelector('header nav ul');
+            if (navList) {
+                navList.classList.toggle('show-menu');
+            }
+        });
+    }
+});
