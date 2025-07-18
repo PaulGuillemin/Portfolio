@@ -203,6 +203,13 @@ header nav ul li a {
     justify-content: space-between;
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #FEFDFF;
+}
+
 .intro-background {
     background-image: url("../../img/background/backgroundHeader.jpg");
     background-size: cover; /* Assure que l'image couvre entièrement la div */
