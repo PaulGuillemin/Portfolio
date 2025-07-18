@@ -1,10 +1,25 @@
-window.addEventListener('scroll', function() {
-    var header = document.getElementById('header');
-    var scrollPosition = window.scrollY;
-    var scrollLimit = 150;
-    if(scrollPosition > scrollLimit){ // Change la couleur après 50px de défilement
-        header.style.backgroundColor = "#173753"; // Nouvelle couleur
-    } else {
-        header.style.backgroundColor = "transparent"; // Couleur initiale
+document.addEventListener('DOMContentLoaded', () => {
+    const header   = document.getElementById('header');
+    const introBg  = document.querySelector('.intro-background');
+
+    // Fonction qui retourne la hauteur de la section d’intro (peut changer au resize)
+    const getLimit = () => introBg.offsetHeight;   // ≈ 100 vh
+
+    let scrollLimit = getLimit();                  // seuil initial
+
+    // Mettez à jour le seuil si la fenêtre est redimensionnée
+    window.addEventListener('resize', () => {
+        scrollLimit = getLimit();
+        onScroll();                                // recalcul immédiat
+    });
+
+    function onScroll () {
+        if (window.scrollY >= scrollLimit) {
+            header.classList.add('scrolled');      // applique le flou
+        } else {
+            header.classList.remove('scrolled');   // en-dessous du seuil
+        }
     }
+
+    window.addEventListener('scroll', onScroll);
 });

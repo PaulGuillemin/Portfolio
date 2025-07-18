@@ -12,6 +12,7 @@
 </script>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paul Guillemin</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
@@ -25,12 +26,17 @@
         <nav>
             <a href="index.html"><img src="../img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
             <div id="headerTitle">Paul Guillemin</div>
-            <ul>
-                <li><a href="#about" id="navAbout">About</a></li>
-                <li><a href="#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="#skills" id="navSkills">Skills</a></li>
-                <li><a href="#contact" id="navContact">Contact</a></li>
+            <button id="burger">
+                <img src="img/icon/burgerButton.png" alt="Menu">
+            </button>
+
+            <ul id="navLinks">
+              <li><a href="#about">About</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
+
             <div class="languageSelector">
                 <button id="languageButton"><img src="/img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>English</span></button>
                 <div id="languageMenu" class="language-menu">
@@ -42,7 +48,6 @@
             </div>
             <script src="js/jsIndex.js"></script>
         </nav>
-        
     </header>
 
 <div class="intro-background"></div>
@@ -55,36 +60,6 @@
             <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in the broadest sense: ranging from mechanics to electronics, and including computer science. I aim to turn my theoretical knowledge into practical solutions by striving to apply what I learn to solve real-world problems. My goal is then to leverage my skills to innovate, address issues, and create advanced technologies. I am therefore ready to contribute to the evolution of these fields, as exciting as they are complex!</p>
             <a id="downloadCv" href="/dl/en/Resume_Paul_GUILLEMIN.pdf">Resume</a>
         </div>
-    </section>
-
-    <section id="languages">
-        <h2>LANGUAGES</h2>
-        <ul class="language-list">
-            <li>
-                <span class="language-name">French</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="100%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">English</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="75%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">German</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="20%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">Spanish</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="30%"></div>
-                </div>
-            </li>
-        </ul>
     </section>
 
     <section id="portfolio">
@@ -173,6 +148,36 @@
             </div> -->
         </div>
     </section>
+
+    <section id="languages">
+        <h2>LANGUAGES</h2>
+        <ul class="language-list">
+            <li>
+                <span class="language-name">French</span>
+                <div class="progress-bar">
+                    <div class="progress" data-width="100%"></div>
+                </div>
+            </li>
+            <li>
+                <span class="language-name">English</span>
+                <div class="progress-bar">
+                    <div class="progress" data-width="75%"></div>
+                </div>
+            </li>
+            <li>
+                <span class="language-name">German</span>
+                <div class="progress-bar">
+                    <div class="progress" data-width="20%"></div>
+                </div>
+            </li>
+            <li>
+                <span class="language-name">Spanish</span>
+                <div class="progress-bar">
+                    <div class="progress" data-width="30%"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
     
     <section id="skills">
         <h2 id="skillsTitle">SKILLS</h2>
@@ -207,6 +212,23 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
+<script>
+const burger = document.getElementById('burger');
+const nav    = document.getElementById('navLinks');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('show');
+  burger.setAttribute('aria-expanded', nav.classList.contains('show'));
+});
+
+/* On retire .show quand l’écran redevient large (>950 px) */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 950 && nav.classList.contains('show')) {
+    nav.classList.remove('show');
+    burger.setAttribute('aria-expanded','false');
+  }
+});
+</script>
 <script src="js/headerAnimation.js"></script>
 <script src="/js/languagesAnimation.js"></script>
 </body>

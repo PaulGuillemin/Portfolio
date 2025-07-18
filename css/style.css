@@ -19,6 +19,8 @@
     font-style: normal;
 }
 
+
+
 /* --- COULEURS --- */
 :root {
     --primary-color: #173753;
@@ -62,7 +64,7 @@ body {
     flex-direction: column;
 }
 
-#headerTitle {
+header:not(.scrolled) #headerTitle {
     white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
     font-size: 35px; /* Taille de la police */
     color: #FEFDFF; /* Couleur du texte */
@@ -72,21 +74,102 @@ body {
 
 header, footer {
     background-color: #173753;
-    color: #FEFDFF; /* White text for header and footer */
+    color: #FEFDFF;
     padding: 1em 0;
     text-align: center;
 }
 
+/* ---- base inchangée ---- */
+#navLinks li a{
+  position: relative;
+  display: block;
+  padding: .6rem 1.4rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ---- trait du bas (pseudo‑élément ::before) ---- */
+#navLinks li a::before,
+#navLinks li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transform: translateX(-50%);
+    transition: width .35s cubic-bezier(.4,0,.2,1), background 0.3s;
+}
+
+#navLinks li a::before {
+    bottom: .15rem;
+}
+
+#navLinks li a::after {
+    top: .15rem;
+}
+
+#navLinks li a:hover::before,
+#navLinks li a:hover::after {
+    width: 100%;
+}
+
+/* Couleur noire quand header.scrolled */
+header.scrolled #navLinks li a::before,
+header.scrolled #navLinks li a::after {
+    background: #000000;
+}
+
+
 header {
-    background-color: transparent;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; 
+    z-index: 1000;
+
+    /* Ombre portée inchangée */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.5s ease;
+
+    /* Effet de flou */
+    backdrop-filter: blur(8px);          /* navigateurs modernes */
+    -webkit-backdrop-filter: blur(8px);  /* Safari */
+
+    /* Fine couche translucide pour révéler le flou (optionnel) */
+    background-color: rgba(0, 0, 0, 0.6);
+
+    /* Animation de l’effet ; on peut aussi animer la transparence si besoin */
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+
     font-size: 18px;
     font-family: 'Montserrat-Medium', sans-serif;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+header.scrolled {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+}
+
+#headerTitle {
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+header.scrolled #navLinks li a {
+    color: #000000;
+}
+
+header.scrolled #headerTitle {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+    font-size: 35px; /* Taille de la police */
+    color: #000000; /* Couleur du texte */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    margin-left: 10px;
 }
 
 header nav {
@@ -166,7 +249,7 @@ header nav ul li {
     display: inline;
 }
 
-.language-selector {
+.languageSelector {
     position: relative;
     display: inline-block;
 }
@@ -174,6 +257,8 @@ header nav ul li {
 .language-menu {
     display: none;
     position: absolute;
+    top: 100%;
+    right: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -186,10 +271,6 @@ header nav ul li {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-.language-menu a:hover {
-    background-color: #f1f1f1;
 }
 
 .show { 
@@ -215,7 +296,7 @@ header nav ul li {
     margin-right: 20px;
     align-items: center;
     background: none;
-    border: 2px solid #f1f1f1; 
+    border: 3px solid #f1f1f1; 
     border-radius: 5px; 
     cursor: pointer;
     display: flex;
@@ -223,6 +304,7 @@ header nav ul li {
     justify-content: center;
     padding: 5px 10px;
     color: white; 
+    transition: filter 0.3s ease;
 }
 
 #languageButton img {
@@ -230,39 +312,19 @@ header nav ul li {
     height: 30px; /* ou la taille souhaitée */
     margin-right: 5px; /* espace entre l'icône et le texte */
     fill: white;
+    transition: filter 0.3s ease;   /* fondu doux */
 }
 
-@keyframes underline {
-    from {
-        width: 0; /* Start with no underline */
-    }
-    to {
-        width: 100%; /* Fully underline the text */
-    }
+#languageButton span {
+    display: inline-block; /* Pour que le texte soit centré avec l'icône */
+    color: #FEFDFF; /* Couleur du texte */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* Rendre le texte plus visible */
+    transition: filter 0.3s ease;
 }
 
-/* Apply the animation to button elements */
-button, header nav ul li a {
-    transition: color 0.3s ease; /* Smooth transition for text color change */
-    border: none;
-    position: relative; /* Relative positioning for the ::after pseudo-element */
-}
-
-button::after, header nav ul li a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0; /* Start with no underline */
-    height: 2px; /* Height of the underline */
-    background-color: #2892D7; /* Color of the underline */
-    transition: width 0.3s ease; /* Smooth transition for the underline width */
-}
-
-/* Add the underline animation on hover */
-button:hover::after, header nav ul li a:hover::after {
-    animation: underline 0.3s ease; /* Apply the underline animation */
-    width: 100%; /* Fully underline the text on hover */
+header.scrolled #languageButton span {
+    color: #000000; /* Couleur du texte */
 }
 
 #skillsList {
@@ -354,6 +416,18 @@ span {
     height: auto; /* Maintain aspect ratio */
     margin-right: 3vh; /* Add margin to create space between the logo and other header content */
     margin-left: 3vh;
+    transition: filter 0.3s ease;   /* fondu doux */
+}
+
+header.scrolled #siteLogo {
+    /* 1) invert(1) → blanc → noir
+       2) brightness(0) → on coupe toute luminosité pour garantir du noir pur
+       3) saturate(100%) → garde la saturation (pas indispensable ici) */
+    filter: invert(1) brightness(0) saturate(100%);
+}
+
+header.scrolled #languageButton img {
+    filter: invert(1) brightness(0) saturate(100%); /* Inverse la couleur de l'icône */
 }
 
 .image-button {
@@ -366,11 +440,12 @@ span {
     position: relative;
 }
 
-.image-container {
+.image-container{
     position: relative;
-    width: 100%; /* S'étend sur toute la largeur du conteneur */
-    height: 100%; /* S'étend sur toute la hauteur du conteneur */
-    
+    width: 100%;
+    height: 100%;
+    container-type: inline-size;   /* ← clé pour des tailles de police adaptatives */
+    overflow: hidden;              /* sécurité */
 }
 
 .image-container img {
@@ -387,21 +462,32 @@ span {
     filter: blur(2px);
 }
 
-.text-over-image {
+.text-over-image{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-family: 'Montserrat', sans-serif; /* Appliquez la police Montserrat */
-    font-size: 1.2vw; /* Ajustez la taille de la police selon vos préférences */
+    inset: 0;                      /* occupe toute la vignette */
+    padding: 1rem;                 /* évite que le texte touche les bords */
+    
+    display: flex;                 /* centrage 100 % fiable */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
-    font-weight: bold;
-    text-shadow:
-    0 0 6px rgba(0, 0, 0, 0.7),
-    0 0 15px rgba(0, 0, 0, 0.5);
 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;              /* compacité contrôlée */
+    color: #fff;
+    text-shadow:
+        0 0 6px rgba(0,0,0,.7),
+        0 0 15px rgba(0,0,0,.5);
+
+    /* font-size se calibre sur la largeur du conteneur
+       (grâce à container‑type ci‑dessus) :             */
+    font-size: clamp(0.8rem, 4.5cqw, 1.4rem);
+
+    /* si, malgré tout, le texte est vraiment trop long :
+       il passe proprement à la ligne sans déborder.    */
+    overflow-wrap: break-word;      /* coupe sur les espaces      */
+    word-break: break-word;         /* …et, si besoin, dans un mot */
 }
 
 .portfolio-container {
@@ -413,11 +499,10 @@ span {
 }
 
 .portfolio-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    position: relative;        /* Conserve ce que vous aviez + crée un cadre de recadrage */
+    overflow: hidden;          /* Tout ce qui dépasse est masqué */
 }
+
 
 /* Styles pour la section "Langues parlées" */
 #languages {
@@ -578,18 +663,51 @@ span {
     text-decoration: underline;
 }
 
-/* ------------ Responsive styles ------------ */
-@media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-        gap: 10px;
-    }
+#burger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    transition: filter 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
 
+#burger img {
+    width: 30px;
+    height: 30px;
+}
+
+header.scrolled #burger img {
+    filter: invert(1) brightness(0) saturate(100%); /* Inverse la couleur du burger */
+}
+
+header.scrolled #burger {
+    color: #000000;
+}
+
+/* ------------ Responsive styles ------------ */
+@media (max-width: 950px) {
     header nav ul {
-        flex-direction: column;
+        display: none;
         align-items: center;
         width: auto;
     }
+
+    #burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    #languageButton span {
+        display: none; /* Masquer le texte du bouton de langue */
+    }
+
+    #languageButton {
+    border: 3px solid #00000000; 
+}
 
     #headerTitle {
         font-size: 24px;
@@ -631,4 +749,46 @@ span {
         max-width: 80vw;
         margin: 0 auto 20px auto;
     }
+      #navLinks{
+      position:absolute;
+      top:100%; left:0; right:0; z-index:999;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      display:flex; flex-direction:column; align-items:center;
+
+      /* État FERMÉ */
+      transform-origin:top;
+      transform:translateY(-20px) scaleY(0);
+      opacity:0;
+
+      /* 🔸 AUCUNE transition tant qu’il est fermé  */
+      transition:none;
+
+      pointer-events:none;
+  }
+
+  header.scrolled #navLinks {
+        background: rgba(255, 255, 255);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* État OUVERT – .show ajoutée au clic */
+  #navLinks.show{
+      /* 🔸 On remet la transition SEULEMENT ici */
+      transition:
+          transform .35s cubic-bezier(.4,0,.2,1),
+          opacity   .35s ease;
+      transform:translateY(0) scaleY(1);
+      opacity:1;
+      pointer-events:auto;
+  }
+
+  #navLinks li{width:100%; text-align:center;}
+  #navLinks li a{display:block; padding:1rem 0;}
+
+  /* On laisse le UL visible (display:flex) en mobile */
+  header nav ul{display:flex;}
 }
