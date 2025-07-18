@@ -216,15 +216,30 @@
 const burger = document.getElementById('burger');
 const nav    = document.getElementById('navLinks');
 
+/* --- Ouvre / ferme via burger --- */
 burger.addEventListener('click', () => {
-  nav.classList.toggle('show');
-  burger.setAttribute('aria-expanded', nav.classList.contains('show'));
+  const isOpen = nav.classList.toggle('show');
+  burger.setAttribute('aria-expanded', isOpen);
 });
 
-/* On retire .show quand l’écran redevient large (>950 px) */
+/* --- Lorsque l’on clique sur un lien du menu --- */
+nav.addEventListener('click', e => {
+  if (e.target.tagName === 'A' && nav.classList.contains('show')){
+    /* 1) on déclenche l’animation de fermeture */
+    nav.classList.add('closing');
+
+    /* 2) à la fin de la transition on nettoie tout */
+    nav.addEventListener('transitionend', () => {
+      nav.classList.remove('show','closing');
+      burger.setAttribute('aria-expanded','false');
+    }, { once:true });
+  }
+});
+
+/* --- Si on repasse en grand écran (>950 px) on remet l’état à zéro --- */
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 950 && nav.classList.contains('show')) {
-    nav.classList.remove('show');
+  if (window.innerWidth > 950){
+    nav.classList.remove('show','closing');
     burger.setAttribute('aria-expanded','false');
   }
 });

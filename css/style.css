@@ -695,6 +695,11 @@ header.scrolled #burger {
     color: #000000;
 }
 
+header.scrolled #navLinks li a::before,
+header.scrolled #navLinks li a::after{
+    background:#ffffff;           /* blanc */
+}
+
 /* ------------ Responsive styles ------------ */
 @media (max-width: 950px) {
     header nav ul {
@@ -756,46 +761,43 @@ header.scrolled #burger {
         max-width: 80vw;
         margin: 0 auto 20px auto;
     }
-      #navLinks{
+    #navLinks{
       position:absolute;
-      top:100%; left:0; right:0; z-index:999;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-
+      top:100%; left:0; right:0; z-index:9999;
+      background:rgba(0, 0, 0, 0.7);
+      backdrop-filter:blur(8px);
       display:flex; flex-direction:column; align-items:center;
 
-      /* État FERMÉ */
+      /* fermé par défaut */
       transform-origin:top;
       transform:translateY(-20px) scaleY(0);
       opacity:0;
-
-      /* 🔸 AUCUNE transition tant qu’il est fermé  */
-      transition:none;
-
       pointer-events:none;
+      transition:none;                 /* ← aucune anim par défaut */
   }
 
-  header.scrolled #navLinks {
-        background: rgba(255, 255, 255);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-  }
-
-  /* État OUVERT – .show ajoutée au clic */
+  /* état OUVERT */
   #navLinks.show{
-      /* 🔸 On remet la transition SEULEMENT ici */
-      transition:
-          transform .35s cubic-bezier(.4,0,.2,1),
-          opacity   .35s ease;
       transform:translateY(0) scaleY(1);
       opacity:1;
       pointer-events:auto;
+      transition:
+          transform .35s cubic-bezier(.4,0,.2,1),
+          opacity   .35s ease;
   }
 
-  #navLinks li{width:100%; text-align:center;}
-  #navLinks li a{display:block; padding:1rem 0;}
+  /* état FERMETURE (show + closing) */
+  #navLinks.show.closing{
+      transform:translateY(-20px) scaleY(0); /* même pos. que fermé */
+      opacity:0;
+      pointer-events:none;
+      /* on garde ENCORE la transition : l’anim “vers le haut” se joue */
+  }
 
-  /* On laisse le UL visible (display:flex) en mobile */
-  header nav ul{display:flex;}
+  /* liens blancs */
+  #navLinks li{ width:100%; text-align:center; }
+  #navLinks li a{ display:block; padding:1rem 0; color:#fff; text-decoration:none; }
+
+  header nav ul{ display:flex; }   /* le UL reste présent en mobile */
+  header.scrolled #navLinks li a{ color:#ffffff; }
 }
