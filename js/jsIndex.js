@@ -26,11 +26,33 @@ function initializeHeaderScripts() {
     }
 
     const toggle = document.getElementById('menuToggle');
-    if (toggle) {
+    const burger = document.getElementById('burger');
+    const navList = document.getElementById('navLinks') || document.querySelector('header nav ul');
+
+    if (toggle && navList) {
         toggle.addEventListener('click', function () {
-            const navList = document.querySelector('header nav ul');
-            if (navList) {
-                navList.classList.toggle('show-menu');
+            navList.classList.toggle('show-menu');
+        });
+    } else if (burger && navList) {
+        burger.addEventListener('click', () => {
+            const isOpen = navList.classList.toggle('show');
+            burger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navList.addEventListener('click', e => {
+            if (e.target.tagName === 'A' && navList.classList.contains('show')) {
+                navList.classList.add('closing');
+                navList.addEventListener('transitionend', () => {
+                    navList.classList.remove('show', 'closing');
+                    burger.setAttribute('aria-expanded', 'false');
+                }, { once: true });
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 950) {
+                navList.classList.remove('show', 'closing');
+                burger.setAttribute('aria-expanded', 'false');
             }
         });
     }

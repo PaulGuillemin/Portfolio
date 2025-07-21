@@ -183,38 +183,6 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
-<script>
-const burger = document.getElementById('burger');
-const nav    = document.getElementById('navLinks');
-
-/* --- Ouvre / ferme via burger --- */
-burger.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('show');
-  burger.setAttribute('aria-expanded', isOpen);
-});
-
-/* --- Lorsque l’on clique sur un lien du menu --- */
-nav.addEventListener('click', e => {
-  if (e.target.tagName === 'A' && nav.classList.contains('show')){
-    /* 1) on déclenche l’animation de fermeture */
-    nav.classList.add('closing');
-
-    /* 2) à la fin de la transition on nettoie tout */
-    nav.addEventListener('transitionend', () => {
-      nav.classList.remove('show','closing');
-      burger.setAttribute('aria-expanded','false');
-    }, { once:true });
-  }
-});
-
-/* --- Si on repasse en grand écran (>950 px) on remet l’état à zéro --- */
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 950){
-    nav.classList.remove('show','closing');
-    burger.setAttribute('aria-expanded','false');
-  }
-});
-</script>
 <script src="/js/headerAnimation.js"></script>
 <script src="/js/languagesAnimation.js"></script>
 <script src="/js/jsIndex.js"></script>
