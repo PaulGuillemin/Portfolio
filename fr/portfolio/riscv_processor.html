@@ -21,29 +21,8 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="../../../fr/index.html"><img src="../../../img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
-            <div id="headerTitle">Paul Guillemin</div>
-            <div id="menuToggle" class="menu-toggle">&#9776;</div>
-            <ul>
-                <li><a href="/fr/index.html#about" id="navAbout">À propos</a></li>
-                <li><a href="/fr/index.html#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="/fr/index.html#skills" id="navSkills">Compétences</a></li>
-                <li><a href="/fr/index.html#contact" id="navContact">Contact</a></li>
-            </ul>
-            <div class="languageSelector">
-                <button id="languageButton"><img src="../../../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
-                <div id="languageMenu" class="language-menu">
-                    <a href="../../../fr/index.html">Français</a>
-                    <a href="../../../portfolio/tipe/tipe.html">English</a>
-                    <a href="#">Deutsch</a>
-                    <a href="#">Español</a>
-                </div>
-            </div>
-            <script src="js_script.js"></script>
-        </nav>
-    </header>
+<div data-include-html="/partials/header-fr.html"></div>
+    
 
         <div class="presentation">
     <h1>CONCEPTION D'UN PROCESSEUR AVEC UNE ARCHITECTURE RISC V</h1>
@@ -59,5 +38,9 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
+<script src="/js/headerAnimation.js"></script>
+<script src="/js/languagesAnimation.js"></script>
+<script src="/js/jsIndex.js"></script>
+<script src="/js/loadPartials.js"></script>
 </body>
 </html>

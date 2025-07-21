@@ -5,36 +5,11 @@
     <title>Paul Guillemin</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
-    <script src="../fr/js/jsIndex.js"></script>
-    <script src="../fr/js/headerAnimation.js"></script>
 </head>
 
 <body>
-    <header id="header">
-        <nav>
-            <a href="index.html"><img src="../img/logo/logoAlpha.png" alt="Website Logo" id="siteLogo"></a>
-            <div id="headerTitle">Paul Guillemin</div>
-            <div id="menuToggle" class="menu-toggle">&#9776;</div>
-            <ul>
-                <li><a href="#about" id="navAbout">Über uns</a></li>
-                <li><a href="#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="#skills" id="navSkills">Kompetenzen</a></li>
-                <li><a href="#contact" id="navContact">Kontakt</a></li>
-            </ul>
-            <div class="languageSelector">
-                <button id="languageButton"><img src="../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Deutsch</span></button>
-                <div id="languageMenu" class="language-menu">
-                    <a href="../fr/index.html">Français</a>
-                    <a href="../index.html">English</a>
-                    <a href="../de/index.html">Deutsch</a>
-                    <a href="../es/index.html">Español</a>
-                </div>
-            </div>
-            <script src="../fr/js/jsIndex.js"></script>
-        </nav>
-        
-    </header>
-
+<div data-include-html="/partials/header-de.html"></div>
+    
 <div class="intro-background"></div>
 
 <div class="content-container">
@@ -118,6 +93,9 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
-<script src="../fr/js/headerAnimation.js"></script>
+<script src="/js/headerAnimation.js"></script>
+<script src="/js/languagesAnimation.js"></script>
+<script src="/js/jsIndex.js"></script>
+<script src="/js/loadPartials.js"></script>
 </body>
 </html>
