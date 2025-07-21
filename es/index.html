@@ -1,94 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDESVG1RX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LFDESVG1RX');
+</script>
     <meta charset="UTF-8">
     <title>Paul Guillemin</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/logo/logoAlpha.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
 </head>
+
 <body>
 <div data-include-html="/partials/header-es.html"></div>
     
 
+<div class="intro-background"></div>
+
 <div class="content-container">
     <section id="about">
-        <h2 id="aboutTitle">À PROPOS</h2>
-            <p id="aboutContent">Étudiant à l'École des Mines de Saint-Étienne, je suis passionné d'ingénierie au sens le plus large : allant de la mécanique à l'électronique, en passant par l'informatique. J'aspire à transformer mes connaissances théoriques en solutions pratiques en m'efforcant d'appliquer ce que j'apprends pour résoudre des problèmes concrets. Mon but est alors d'exploiter mes compétences pour innover, répondre à des problématiques et créer des technologies avancées. Je suis alors prêt à porter l'évolution de ces domaines aussi passionnants que complexes !</p>
-        <a id="downloadCv" href="../dl/Resume/Resume_Paul_GUILLEMIN.pdf">Resume</a>
+        <img src="../img/about/me.jpg" id="me">
+        <div id="text-container">
+            <h2>ACERCA DE</h2>
+            <p id="aboutContent">Estudiante en la Escuela de Minas de Saint-Étienne, me apasiona la ingeniería en su sentido más amplio: desde la mecánica hasta la electrónica, pasando por la informática. Aspiro a transformar mis conocimientos teóricos en soluciones prácticas, esforzándome por aplicar lo que aprendo para resolver problemas concretos. Me gusta aprovechar mis habilidades para innovar, responder a desafíos y crear tecnologías avanzadas. ¡Estoy listo para impulsar la evolución de estos campos tan apasionantes como complejos!</p>
+            <a id="downloadCv" href="../dl/fr/CV_Paul_GUILLEMIN.pdf">Currículum vitae</a>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>PORTAFOLIO</h2>
+        <div class="portfolio-container">
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="../img/projects/essai_ethique/background.png" alt="#">
+                        <span class="text-over-image">IA: ¿Quién es responsable en caso de error? Ensayo para el Rotary</span>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="../img/projects/smart_vitale/background.png" alt="#">
+                        <span class="text-over-image">Smart' Vitale: Sistema automatizado de desinfección de tarjetas vitales</span>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="../img/projects/tipe/background.png" alt="#">
+                        <span class="text-over-image">Proyecto: Recarga automatizada de coches eléctricos por inducción</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="../img/projects/ecoulement_air/1.jpg" alt="#">
+                        <span class="text-over-image">Mecánica de fluidos: efecto Venturi</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/propagation_ionospherique/background.jpg" alt="#">
+                        <span class="text-over-image">Reflexión de ondas electromagnéticas en la ionosfera</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/capacitive_sensor/capacitive_sensor.png" alt="#">
+                        <span class="text-over-image">Sensor capacitivo: Diseño de un digicode a distancia variable</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/riscv_processor/riscv_processor.png" alt="#">
+                        <span class="text-over-image">Diseño de un procesador RISC V</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/chaussures-connectees/chaussures connectées.png" alt="#">
+                        <span class="text-over-image">Comunicación inalámbrica: Proyecto de zapatos conectados</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/digit-recognition/background.png" alt="#">
+                        <span class="text-over-image">Deep learning: Reconocimiento de dígitos con TensorFlow</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/capteur-beton/background.png" alt="#">
+                        <span class="text-over-image">Sensor para medir la calidad del hormigón en tiempo real</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/electrodes-ecg/background.png" alt="#">
+                        <span class="text-over-image">Diseño de electrodos para electrocardiograma</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="#portfolio" class="image-button">
+                    <div class="image-container">
+                        <img src="/img/projects/matrice_oled/background.png" alt="#">
+                        <span class="text-over-image">Diseño de una matriz de OLEDs</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
     </section>
 
     <section id="languages">
-        <h2>Langues parlées</h2>
+        <h2>IDIOMAS</h2>
         <ul class="language-list">
             <li>
-                <span class="language-name">Français</span>
+                <span class="language-name">Francés</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 90%;"></div>
+                    <div class="progress" data-width="100%"></div>
                 </div>
             </li>
             <li>
-                <span class="language-name">Anglais</span>
+                <span class="language-name">Inglés</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 80%;"></div>
+                    <div class="progress" data-width="75%"></div>
                 </div>
             </li>
             <li>
-                <span class="language-name">Allemand</span>
+                <span class="language-name">Alemán</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 70%;"></div>
+                    <div class="progress" data-width="20%"></div>
                 </div>
             </li>
             <li>
-                <span class="language-name">Espagnol</span>
+                <span class="language-name">Español</span>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 60%;"></div>
+                    <div class="progress" data-width="30%"></div>
                 </div>
             </li>
         </ul>
     </section>
-
-    <section id="portfolio">
-        <h2>PORTFOLIO</h2>
-        <div class="portfolio-container">
     
-            <!-- New section for "TIPE recharge de voiture électrique par induction" -->
-            <div class="portfolio-item">
-                <a href="lien_vers_votre_destination.html" class="image-button">
-                    <div class="image-container">
-                        <img src="../img/projects/tipe/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Smart' Vitale</span>
-                    </div>
-                </a>
-            </div>
-    
-            <!-- New section for "Smart'Vitale" -->
-            <div class="portfolio-item">
-                <a href="lien_vers_votre_destination.html" class="image-button">
-                    <div class="image-container">
-                        <img src="../img/projects/smart_vitale/background.png" alt="Description de l'image">
-                        <span class="text-over-image">TIPE : Recharge de voitures électriques par induction</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-
     <section id="skills">
-        <h2 id="skillsTitle">COMPÉTENCES</h2>
+        <h2>HABILIDADES</h2>
         <ul id="skillsList">
             <li><img src="../img/skills/python.png" alt="Python">Python</li>
-            <li><img src="../img/skills/C.png" alt="C">C/C++</li>
-            <li><img src="../img/skills/matlab.png" alt="MATLAB/Simulink">MATLAB/Simulink</li>
+            <li><img src="../img/skills/tensorflow.png" alt="TensorFlow">TensorFlow</li>
+            <li><img src="../img/skills/C.png" alt="C/C++">C/C++</li>
+            <li><img src="../img/skills/matlab.png" alt="MATLAB/Simulink">MATLAB / Simulink</li>
+            <li><img src="../img/skills/solidworks.png" alt="SolidWorks">SolidWorks</li>
+            <li><img src="../img/skills/systemverilog.png" alt="SystemVerilog / VHDL">SystemVerilog / VHDL</li>
+            <li><img src="../img/skills/autodesk.png" alt="Fusion / Inventor / AutoCAD">Fusion / Inventor / AutoCAD</li>
+            <li><img src="../img/skills/comsol.png" alt="Fusion / Inventor / AutoCAD">Comsol</li>
         </ul>
     </section>
 
     <section id="contact">
-        <h2 id="contactTitle">CONTACT</h2>
-        <p>Email: <a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
-        <p>Telephone: +33 6 24 48 44 00</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
-        <p>GitHub: <a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
+        <h2 id="subtitle">CONTACTO</h2>
+        <div class="contact-container">
+            <div class="contact-photo">
+                <img src="../img/about/me.jpg" id="profile-photo">
+            </div>
+    
+            <div class="contact-details">
+                <p><span class="contact-icon"><img src="../img/icon/mail.png" alt="Email"></span><a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/linkedin.png" alt="LinkedIn"></span><a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/github.png" alt="GitHub"></span><a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
+                <p><span class="contact-icon"><img src="../img/icon/location.png" alt="Ubicación"></span>París y alrededores, Francia</p>
+            </div>
+        </div>
     </section>    
 </div>
 <footer>
