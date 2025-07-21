@@ -26,6 +26,11 @@ body {
     margin: 40px; /* Ajoutez une marge autour du contenu */
 }
 
+section {
+    padding: 10px;
+    margin: 10px 0;
+}
+
 #headerTitle {
     white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
     font-size: 35px; /* Taille de la police */
@@ -35,77 +40,6 @@ body {
     font-weight: bold;
 }
 
-header, footer {
-    background-color: #173753; /* Dark blue for header and footer */
-    color: #FEFDFF; /* White text for header and footer */
-    padding: 1em 0;
-    text-align: center;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* Adjust the z-index as needed */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-}
-
-header nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-header nav ul li a {
-    color: #FEFDFF; /* White text for navigation links */
-    text-decoration: none;
-}
-
-section {
-    padding: 10px;
-    margin: 10px 0;
-}
-
-button, header nav ul li a {
-    transition: color 0.3s ease; /* Smooth transition for text color change */
-    border: none;
-    position: relative; /* Relative positioning for the ::after pseudo-element */
-    padding: 10px 20px; /* Increase padding to enlarge hover area */
-}
-
-button:hover, header nav ul li a:hover {
-    color: #2892D7; /* Dark blue text color on hover */
-}
-
-header nav {
-    display: flex;
-    justify-content: space-around; /* This will space out the items evenly */
-}
-
-header nav ul {
-    width: 100%; /* Full width */
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-around; /* Even spacing */
-    align-items: center; /* Vertically align items */
-    margin: 0;
-}
-
-header nav ul li {
-    display: inline;
-}
 
 .language-selector {
     position: relative;
@@ -183,13 +117,13 @@ header nav ul li {
 }
 
 /* Apply the animation to button elements */
-button, header nav ul li a {
+button {
     transition: color 0.3s ease; /* Smooth transition for text color change */
     border: none;
     position: relative; /* Relative positioning for the ::after pseudo-element */
 }
 
-button::after, header nav ul li a::after {
+button::after {
     content: "";
     position: absolute;
     bottom: -4px;
@@ -201,7 +135,7 @@ button::after, header nav ul li a::after {
 }
 
 /* Add the underline animation on hover */
-button:hover::after, header nav ul li a:hover::after {
+button:hover::after {
     animation: underline 0.3s ease; /* Apply the underline animation */
     width: 100%; /* Fully underline the text on hover */
 }
