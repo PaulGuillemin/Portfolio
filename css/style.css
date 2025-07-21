@@ -212,8 +212,8 @@ header nav ul li a {
 
 .intro-background {
     background-image: url("../../img/background/backgroundHeader.jpg");
-    background-size: cover; /* Assure que l'image couvre entièrement la div */
-    background-position: center; /* Centre l'image dans la div */
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     width: 100vw;
 }
@@ -303,7 +303,7 @@ header nav ul li {
     margin-right: 20px;
     align-items: center;
     background: none;
-    border: 3px solid #f1f1f1; 
+    border: 3px solid #f1f1f1;
     border-radius: 5px; 
     cursor: pointer;
     display: flex;
@@ -313,6 +313,9 @@ header nav ul li {
     color: white; 
     transition: filter 0.3s ease;
 }
+
+header.scrolled #languageButton {
+    border: 3px solid #000000;}
 
 #languageButton img {
     width: 30px; /* ou la taille souhaitée */
@@ -471,10 +474,10 @@ header.scrolled #languageButton img {
 
 .text-over-image{
     position: absolute;
-    inset: 0;                      /* occupe toute la vignette */
-    padding: 1rem;                 /* évite que le texte touche les bords */
+    inset: 0;
+    padding: 1rem;
     
-    display: flex;                 /* centrage 100 % fiable */
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -506,8 +509,8 @@ header.scrolled #languageButton img {
 }
 
 .portfolio-item {
-    position: relative;        /* Conserve ce que vous aviez + crée un cadre de recadrage */
-    overflow: hidden;          /* Tout ce qui dépasse est masqué */
+    position: relative;
+    overflow: hidden;
 }
 
 

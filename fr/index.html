@@ -24,15 +24,19 @@
         <nav>
             <a href="index.html"><img src="../img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
             <div id="headerTitle">Paul Guillemin</div>
-            <div id="menuToggle" class="menu-toggle">&#9776;</div>
-            <ul>
-                <li><a href="#about" id="navAbout">À propos</a></li>
-                <li><a href="#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="#skills" id="navSkills">Compétences</a></li>
-                <li><a href="#contact" id="navContact">Contact</a></li>
+            <button id="burger">
+                <img src="/img/icon/burgerButton.png" alt="Menu">
+            </button>
+
+            <ul id="navLinks">
+              <li><a href="#about">À propos</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#skills">Compétences</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
+
             <div class="languageSelector">
-                <button id="languageButton"><img src="../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
+                <button id="languageButton"><img src="/img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
                 <div id="languageMenu" class="language-menu">
                     <a href="../fr/index.html">Français</a>
                     <a href="../index.html">English</a>
@@ -40,9 +44,8 @@
                     <a href="#">Español</a>
                 </div>
             </div>
-            <script src="/js/jsIndex.js"></script>
+            <script src="js/jsIndex.js"></script>
         </nav>
-        
     </header>
 
 <div class="intro-background"></div>
@@ -244,6 +247,38 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
+<script>
+const burger = document.getElementById('burger');
+const nav    = document.getElementById('navLinks');
+
+/* --- Ouvre / ferme via burger --- */
+burger.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('show');
+  burger.setAttribute('aria-expanded', isOpen);
+});
+
+/* --- Lorsque l’on clique sur un lien du menu --- */
+nav.addEventListener('click', e => {
+  if (e.target.tagName === 'A' && nav.classList.contains('show')){
+    /* 1) on déclenche l’animation de fermeture */
+    nav.classList.add('closing');
+
+    /* 2) à la fin de la transition on nettoie tout */
+    nav.addEventListener('transitionend', () => {
+      nav.classList.remove('show','closing');
+      burger.setAttribute('aria-expanded','false');
+    }, { once:true });
+  }
+});
+
+/* --- Si on repasse en grand écran (>950 px) on remet l’état à zéro --- */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 950){
+    nav.classList.remove('show','closing');
+    burger.setAttribute('aria-expanded','false');
+  }
+});
+</script>
 <script src="../js/headerAnimation.js"></script>
 <script src="../js/languagesAnimation.js"></script>
 </body>

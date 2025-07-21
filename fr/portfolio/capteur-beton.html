@@ -21,50 +21,54 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <nav>
-            <a href="/fr/index.html"><img src="/img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
+            <a href="index.html"><img src="/img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
             <div id="headerTitle">Paul Guillemin</div>
-            <div id="menuToggle" class="menu-toggle">&#9776;</div>
-            <ul>
-                <li><a href="/fr/index.html#about" id="navAbout">À propos</a></li>
-                <li><a href="/fr/index.html#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="/fr/index.html#skills" id="navSkills">Compétences</a></li>
-                <li><a href="/fr/index.html#contact" id="navContact">Contact</a></li>
+            <button id="burger">
+                <img src="/img/icon/burgerButton.png" alt="Menu">
+            </button>
+
+            <ul id="navLinks">
+              <li><a href="#about">À propos</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#skills">Compétences</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
+
             <div class="languageSelector">
                 <button id="languageButton"><img src="/img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
                 <div id="languageMenu" class="language-menu">
-                    <a href="#">Français</a>
-                    <a href="#">English</a>
+                    <a href="/fr/index.html">Français</a>
+                    <a href="/index.html">English</a>
                     <a href="#">Deutsch</a>
                     <a href="#">Español</a>
                 </div>
             </div>
-            <script src="/js/jsIndex.js"></script>
+            <script src="js/jsIndex.js"></script>
         </nav>
     </header>
 
     <div class="presentation">
     <h1>CONCEPTION D'UN CAPTEUR DE LA MESURE DE QUALITÉ DU BÉTON</h1>
-    <h2>Conception d’un capteur de mesure en quasi temps réel de la
-        qualité du béton précontraint sur un ouvrage d’art</h2>
+    <h2>Conception d'un capteur de mesure en quasi temps réel de la
+        qualité du béton précontraint sur un ouvrage d'art</h2>
 
     <h3>1 - Introduction</h3>
 
     <h4>1.1 - Contexte et problématique</h4>
 
-    <p>Le contrôle des ouvrages d’art en France, réalisé tous les deux ans, ne permet pas une
+    <p>Le contrôle des ouvrages d'art en France, réalisé tous les deux ans, ne permet pas une
         détection précoce ni un suivi continu des défauts structurels. Face à ces limites, un capteur
         connecté capable de mesurer en quasi temps réel la qualité du béton précontraint constitue une
-        solution innovante. Ce dispositif utiliserait les câbles de précontrainte comme guides d’ondes
-        pour détecter et localiser des défauts tels que l’humidité, les fissures ou la corrosion, tout en
+        solution innovante. Ce dispositif utiliserait les câbles de précontrainte comme guides d'ondes
+        pour détecter et localiser des défauts tels que l'humidité, les fissures ou la corrosion, tout en
         mesurant le vieillissement via la constante diélectrique.</p>
 
     <h4>1.2 - Objectifs</h4>
 
-    <p>L’objectif de ce projet est de concevoir un capteur capable de mesurer en quasi temps réel
-        la qualité du béton précontraint et de détecter les défauts structurels des ouvrages d’art.</p>
+    <p>L'objectif de ce projet est de concevoir un capteur capable de mesurer en quasi temps réel
+        la qualité du béton précontraint et de détecter les défauts structurels des ouvrages d'art.</p>
 
     <h4>1.3 - Méthodes et ressources</h4>
 
@@ -76,10 +80,10 @@
                 le modèle théorique aux spécificités du béton précontraint, en tenant compte de la géométrie
                 des câbles et des propriétés diélectriques. Les simulations des paramètres tels que
                 l’impédance caractéristique et le temps de propagation seront effectuées avec PartQuest.</p></li>
-            <li><p><strong>Détection et classification des défauts : </strong>Les défauts tels que l’humidité, les fissures et
+            <li><p><strong>Détection et classification des défauts : </strong>Les défauts tels que l'humidité, les fissures et
                 la corrosion seront modélisés et leurs signatures électriques analysées à partir de mesures
                 de réflectométrie temporelle pour établir un protocole de classification.</p></li>
-            <li><p><strong>Suivi du vieillissement : </strong>Une analyse fréquentielle permettra de mesurer l’évolution
+            <li><p><strong>Suivi du vieillissement : </strong>Une analyse fréquentielle permettra de mesurer l'évolution
                 de la constante diélectrique, utilisée comme indicateur de vieillissement global du béton.</p></li>
             <li><p><strong>Conception du conditionneur électronique : </strong>Un conditionneur sera développé pour
                 traiter les signaux issus de la ligne de transmission. Il intégrera un pont de Wheatstone,
@@ -506,5 +510,37 @@
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
+<script>
+const burger = document.getElementById('burger');
+const nav    = document.getElementById('navLinks');
+
+/* --- Ouvre / ferme via burger --- */
+burger.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('show');
+  burger.setAttribute('aria-expanded', isOpen);
+});
+
+/* --- Lorsque l’on clique sur un lien du menu --- */
+nav.addEventListener('click', e => {
+  if (e.target.tagName === 'A' && nav.classList.contains('show')){
+    /* 1) on déclenche l’animation de fermeture */
+    nav.classList.add('closing');
+
+    /* 2) à la fin de la transition on nettoie tout */
+    nav.addEventListener('transitionend', () => {
+      nav.classList.remove('show','closing');
+      burger.setAttribute('aria-expanded','false');
+    }, { once:true });
+  }
+});
+
+/* --- Si on repasse en grand écran (>950 px) on remet l’état à zéro --- */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 950){
+    nav.classList.remove('show','closing');
+    burger.setAttribute('aria-expanded','false');
+  }
+});
+</script>
 </body>
 </html>
