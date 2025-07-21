@@ -22,5 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof window.initializeHeaderAnimation === 'function') {
             window.initializeHeaderAnimation();
         }
+        if (typeof window.initializeLanguageSwitcher === 'function') {
+            window.initializeLanguageSwitcher();
+        }
     });
 });

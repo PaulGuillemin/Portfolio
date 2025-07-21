@@ -9,10 +9,14 @@
             <li><a href="#skills" id="navSkills">Habilidades</a></li>
             <li><a href="#contact" id="navContact">Contacto</a></li>
         </ul>
-        <select id="languageSelector">
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-        </select>
+        <div class="languageSelector">
+            <button id="languageButton"><img src="/img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Español</span></button>
+            <div id="languageMenu" class="language-menu">
+                <a id="link-fr" data-lang="fr" href="/fr/index.html">Français</a>
+                <a id="link-en" data-lang="en" href="/index.html">English</a>
+                <a id="link-de" data-lang="de" href="/de/index.html">Deutsch</a>
+                <a id="link-es" data-lang="es" href="/es/index.html">Español</a>
+            </div>
+        </div>
     </nav>
 </header>
