@@ -310,12 +310,12 @@ p {
 }
 
 .presentation {
-    margin: 180px;
+    margin: 180px auto;
 }
 
 @media (max-width: 600px) {
     .presentation {
-        margin: 20px;
+        margin: 20px auto;
     }
 }
 
