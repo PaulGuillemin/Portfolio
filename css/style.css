@@ -705,6 +705,10 @@ header.scrolled #navLinks li a::after{
 
 /* ------------ Responsive styles ------------ */
 @media (max-width: 950px) {
+    body {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
     header nav ul {
         display: none;
         align-items: center;
