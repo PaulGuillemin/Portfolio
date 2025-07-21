@@ -16,40 +16,11 @@
     <title>Paul Guillemin</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="/img/logo/logoAlpha.png" type="image/x-icon">
-    <script src="/js/jsIndex.js"></script>
-    <script src="/js/headerAnimation.js"></script>
-    <script src="/js/languagesAnimation.js"></script>
 </head>
 
 <body>
-    <header id="header">
-        <nav>
-            <a href="index.html"><img src="/img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
-            <div id="headerTitle">Paul Guillemin</div>
-            <button id="burger">
-                <img src="img/icon/burgerButton.png" alt="Menu">
-            </button>
-
-            <ul id="navLinks">
-              <li><a href="#about">About</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <div class="languageSelector">
-                <button id="languageButton"><img src="/img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>English</span></button>
-                <div id="languageMenu" class="language-menu">
-                    <a href="../fr/index.html">Français</a>
-                    <a href="../index.html">English</a>
-                    <a href="#">Deutsch</a>
-                    <a href="#">Español</a>
-                </div>
-            </div>
-            <script src="js/jsIndex.js"></script>
-        </nav>
-    </header>
-
+    
+<div data-include-html="/partials/header-en.html"></div>
 <div class="intro-background"></div>
 
 <div class="content-container">
@@ -246,7 +217,7 @@ window.addEventListener('resize', () => {
 </script>
 <script src="/js/headerAnimation.js"></script>
 <script src="/js/languagesAnimation.js"></script>
-<script src="/js/loadPartials.js"></script>
 <script src="/js/jsIndex.js"></script>
+<script src="/js/loadPartials.js"></script>
 </body>
 </html>

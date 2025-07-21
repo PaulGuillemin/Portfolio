@@ -15,35 +15,13 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
-    <script src="js_script.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="../../../fr/index.html"><img src="/img/logo/logoAlphaWhite.png" alt="Website Logo" id="siteLogo"></a>
-            <div id="headerTitle">Paul Guillemin</div>
-            <div id="menuToggle" class="menu-toggle">&#9776;</div>
-            <ul>
-                <li><a href="/fr/index.html#about" id="navAbout">À propos</a></li>
-                <li><a href="/fr/index.html#portfolio" id="navPortfolio">Portfolio</a></li>
-                <li><a href="/fr/index.html#skills" id="navSkills">Compétences</a></li>
-                <li><a href="/fr/index.html#contact" id="navContact">Contact</a></li>
-            </ul>
-            <div class="languageSelector">
-                <button id="languageButton"><img src="../../../img/icon/languagesIcon.png" alt="Langue" style="width: 30px; height: 30px;"><span>Français</span></button>
-                <div id="languageMenu" class="language-menu">
-                    <a href="#">Français</a>
-                    <a href="/portfolio/capacitive-sensor.html">English</a>
-                    <a href="#">Deutsch</a>
-                    <a href="#">Español</a>
-                </div>
-            </div>
-            <script src="/js/jsIndex.js"></script>
-        </nav>
-    </header>
+<div data-include-html="/partials/header-fr.html"></div>
+    
 
     <div class="presentation">
     <h1>CONCEPTION D'UN CAPTEUR CAPACITIF</h1>
@@ -573,5 +551,9 @@ C = \frac{\epsilon S}{d}
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
+<script src="/js/headerAnimation.js"></script>
+<script src="/js/languagesAnimation.js"></script>
+<script src="/js/jsIndex.js"></script>
+<script src="/js/loadPartials.js"></script>
 </body>
 </html>

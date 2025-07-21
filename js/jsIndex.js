@@ -1,47 +1,39 @@
-document.getElementById('languageButton').addEventListener('click', function(event) {
-    var languageMenu = document.getElementById('languageMenu');
-    // Toggle la visibilité du menu
-    if (languageMenu.classList.contains('show')) {
-        languageMenu.classList.add('hide');
-        setTimeout(function() {
-            languageMenu.classList.remove('show', 'hide');
-        }, 500); // Correspond à la durée de l'animation fadeOut
-    } 
-    else 
-    {
-        languageMenu.classList.add('show');
+function initializeHeaderScripts() {
+    const languageButton = document.getElementById('languageButton');
+    const languageMenu = document.getElementById('languageMenu');
+
+    if (languageButton && languageMenu) {
+        languageButton.addEventListener('click', function (event) {
+            if (languageMenu.classList.contains('show')) {
+                languageMenu.classList.add('hide');
+                setTimeout(function () {
+                    languageMenu.classList.remove('show', 'hide');
+                }, 500);
+            } else {
+                languageMenu.classList.add('show');
+            }
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', function handleClickOutside(event) {
+            if (!languageMenu.contains(event.target) && !languageButton.contains(event.target)) {
+                languageMenu.classList.add('hide');
+                setTimeout(function () {
+                    languageMenu.classList.remove('show', 'hide');
+                }, 500);
+            }
+        });
     }
 
-    // Empêche le document de détecter ce clic comme un clic "extérieur"
-    event.stopPropagation();
-});
-
-// Fonction pour fermer le menu si le clic est en dehors de celui-ci
-function handleClickOutside(event) {
-    var languageMenu = document.getElementById('languageMenu');
-    var languageButton = document.getElementById('languageButton');
-
-    // Vérifie si le clic est en dehors du menu et du bouton
-    if (!languageMenu.contains(event.target) && !languageButton.contains(event.target)) {
-        languageMenu.classList.add('hide');
-        setTimeout(function() {
-            languageMenu.classList.remove('show', 'hide');
-        }, 500); // Correspond à la durée de l'animation fadeOut
-    }
-}
-
-// Ajoute l'écouteur d'événements au document pour détecter les clics à l'extérieur
-document.addEventListener('click', handleClickOutside);
-
-// Toggle navigation menu on small screens
-document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.getElementById('menuToggle');
+    const toggle = document.getElementById('menuToggle');
     if (toggle) {
         toggle.addEventListener('click', function () {
-            var navList = document.querySelector('header nav ul');
+            const navList = document.querySelector('header nav ul');
             if (navList) {
                 navList.classList.toggle('show-menu');
             }
         });
     }
-});
+}
+
+window.initializeHeaderScripts = initializeHeaderScripts;
