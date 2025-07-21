@@ -374,6 +374,12 @@ p {
     margin: 180px;
 }
 
+@media (max-width: 600px) {
+    .presentation {
+        margin: 20px;
+    }
+}
+
 .dl_list {
     line-height: 60px;
 }
