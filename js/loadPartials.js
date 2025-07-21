@@ -19,5 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof window.initializeHeaderScripts === 'function') {
             window.initializeHeaderScripts();
         }
+        if (typeof window.initializeHeaderAnimation === 'function') {
+            window.initializeHeaderAnimation();
+        }
     });
 });

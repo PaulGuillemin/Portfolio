@@ -1,25 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const header   = document.getElementById('header');
-    const introBg  = document.querySelector('.intro-background');
+function initializeHeaderAnimation() {
+    const header  = document.getElementById('header');
+    const introBg = document.querySelector('.intro-background');
 
-    // Fonction qui retourne la hauteur de la section d’intro (peut changer au resize)
-    const getLimit = () => introBg.offsetHeight;   // ≈ 100 vh
+    if (!header || !introBg) {
+        return;
+    }
 
-    let scrollLimit = getLimit();                  // seuil initial
+    const getLimit = () => introBg.offsetHeight; // ≈ 100 vh
+    let scrollLimit = getLimit();
 
-    // Mettez à jour le seuil si la fenêtre est redimensionnée
     window.addEventListener('resize', () => {
         scrollLimit = getLimit();
-        onScroll();                                // recalcul immédiat
+        onScroll();
     });
 
-    function onScroll () {
+    function onScroll() {
         if (window.scrollY >= scrollLimit) {
-            header.classList.add('scrolled');      // applique le flou
+            header.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');   // en-dessous du seuil
+            header.classList.remove('scrolled');
         }
     }
 
     window.addEventListener('scroll', onScroll);
+}
+
+window.initializeHeaderAnimation = initializeHeaderAnimation;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!document.querySelector('[data-include-html]')) {
+        initializeHeaderAnimation();
+    }
 });
