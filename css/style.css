@@ -305,8 +305,6 @@ header nav ul li {
     margin-right: 20px;
     align-items: center;
     background: none;
-    border: 3px solid #f1f1f1;
-    border-radius: 5px; 
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -317,7 +315,7 @@ header nav ul li {
 }
 
 header.scrolled #languageButton {
-    border: 3px solid #000000;}
+    border: 3px solid #00000000;}
 
 #languageButton img {
     width: 30px; /* ou la taille souhaitée */
@@ -708,6 +706,9 @@ header.scrolled #navLinks li a::after{
 
 /* ------------ Responsive styles ------------ */
 @media (max-width: 1060px) {
+    header {
+        padding: 0.5em 1em; /* Réduire le padding pour les petits écrans */
+    }
     header nav ul {
         display: none;
         align-items: center;
@@ -723,12 +724,8 @@ header.scrolled #navLinks li a::after{
         display: none; /* Masquer le texte du bouton de langue */
     }
 
-    #languageButton {
-    border: 3px solid #00000000; 
-}
-
     #headerTitle {
-        font-size: 24px;
+        font-size: 20px;
         margin-left: 0;
     }
 

@@ -85,27 +85,6 @@ section {
 .hide {
     animation: fadeOut 0.5s forwards;
 }
-
-#languageButton {
-    margin-right: 20px;
-    align-items: center;
-    background: none;
-    border: 2px solid #f1f1f1; 
-    border-radius: 5px; 
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 10px;
-    color: white; 
-}
-
-#languageButton img {
-    width: 30px; /* ou la taille souhaitée */
-    height: 30px; /* ou la taille souhaitée */
-    margin-right: 5px; /* espace entre l'icône et le texte */
-    fill: white;
-}
 /* Apply the animation to button elements */
 button {
     transition: color 0.3s ease; /* Smooth transition for text color change */
