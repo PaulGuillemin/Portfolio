@@ -35,7 +35,7 @@ section {
     white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
     font-size: 35px; /* Taille de la police */
     color: #FEFDFF; /* Couleur du texte */
-    font-family: Arial, sans-serif; /* Police de caracteres */
+    font-family: Arial, sans-serif; /* Police de caractères */
     margin-left: 10px;
     font-weight: bold;
 }
@@ -106,38 +106,11 @@ section {
     margin-right: 5px; /* espace entre l'icône et le texte */
     fill: white;
 }
-
-@keyframes underline {
-    from {
-        width: 0; /* Start with no underline */
-    }
-    to {
-        width: 100%; /* Fully underline the text */
-    }
-}
-
 /* Apply the animation to button elements */
 button {
     transition: color 0.3s ease; /* Smooth transition for text color change */
     border: none;
     position: relative; /* Relative positioning for the ::after pseudo-element */
-}
-
-button::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0; /* Start with no underline */
-    height: 2px; /* Height of the underline */
-    background-color: #2892D7; /* Color of the underline */
-    transition: width 0.3s ease; /* Smooth transition for the underline width */
-}
-
-/* Add the underline animation on hover */
-button:hover::after {
-    animation: underline 0.3s ease; /* Apply the underline animation */
-    width: 100%; /* Fully underline the text on hover */
 }
 
 #skillsList {
@@ -189,47 +162,26 @@ button:hover::after {
     margin-right: 20px; /* Add margin to create space between the logo and other header content */
 }
 
-.image-button {
-    display: inline-block;
-    text-decoration: none;
-    width: 50%; /* 50% de la largeur de la page */
-    height: 100px; /* 100px de hauteur, ajustez au besoin */
-    overflow: hidden; /* Pour s'assurer que le contenu ne dépasse pas du rectangle */
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 70%;
+    flex-direction: column;
 }
 
-.image-container {
-    position: relative;
-    width: 100%; /* S'étend sur toute la largeur du conteneur */
-    height: 100%; /* S'étend sur toute la hauteur du conteneur */
+.image figure {
+    display: block;
+    margin: 0 auto 20px auto;
 }
 
-.image-container img {
-    width: 100%;
-    height: 100%; /* Assure que l'image couvre tout le conteneur */
-    object-fit: cover; /* Garde les proportions de l'image */
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: blur(10px);
-}
-
-.image-container:hover img {
-    transform: scale(1.1);
-    filter: blur(2px);
-}
-
-.text-over-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-family: 'Montserrat', sans-serif; /* Appliquez la police Montserrat */
-    font-size: 1.2vw; /* Ajustez la taille de la police selon vos préférences */
-    text-align: center;
-    white-space: nowrap; /* Empêche le texte de se diviser en plusieurs lignes */
-    font-weight: bold;
-    text-shadow:
-    0 0 6px rgba(0, 0, 0, 0.7),
-    0 0 12px rgba(0, 0, 0, 0.5);
+.image figure img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
 /************************************/
@@ -250,8 +202,6 @@ h3 {
     margin-left: 20px;
     text-align: center;
     font-size: 25px;
-    margin-bottom: 60px;
-    margin-top: 90px;
 }
 
 h4 {
@@ -299,23 +249,28 @@ p {
 }
 
 .image img {
-    width: 50%;
+    width: 70%;
     height: auto;
     display: inline-block;
-    max-width: 100%;
+    max-width: 100%; /* Assure que l'image est responsive */
 }
 
 .espace-titre {
-    margin-top: 100px;
+    margin-top: 100px; /* Ajustez cette valeur pour augmenter ou diminuer l'espace */
 }
 
 .presentation {
     margin: 180px auto;
+    padding: 10vh;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1060px) {
     .presentation {
         margin: 20px auto;
+        padding: 5vh;
+    }
+    .image {
+        width: 100%;
     }
 }
 
@@ -326,19 +281,4 @@ p {
 ul.liste li {
     font-family: Montserrat, sans-serif;
     margin-bottom: 20px;
-}
-
-pre {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.enum {
-    line-height: 4vh;
-}
-
-.svg_image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }

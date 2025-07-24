@@ -49,6 +49,21 @@ function initializeHeaderScripts() {
             }
         });
 
+        // Ajout pour replier le menu burger si clic à côté
+        document.addEventListener('click', function (event) {
+            if (
+                navList.classList.contains('show') &&
+                !navList.contains(event.target) &&
+                !burger.contains(event.target)
+            ) {
+                navList.classList.add('closing');
+                navList.addEventListener('transitionend', () => {
+                    navList.classList.remove('show', 'closing');
+                    burger.setAttribute('aria-expanded', 'false');
+                }, { once: true });
+            }
+        });
+
         window.addEventListener('resize', () => {
             if (window.innerWidth > 950) {
                 navList.classList.remove('show', 'closing');

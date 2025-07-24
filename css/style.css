@@ -42,6 +42,7 @@ body {
     background-color: #FEFDFF;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 #about h2::before,
@@ -215,7 +216,12 @@ header nav ul li a {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    min-height: 100vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 section {
@@ -231,10 +237,6 @@ button, header nav ul li a {
     border: none;
     position: relative; /* Relative positioning for the ::after pseudo-element */
     padding: 10px 20px; /* Increase padding to enlarge hover area */
-}
-
-button:hover, header nav ul li a:hover {
-    color: #2892D7; /* Dark blue text color on hover */
 }
 
 header nav {
@@ -700,15 +702,12 @@ header.scrolled #burger {
 
 header.scrolled #navLinks li a::before,
 header.scrolled #navLinks li a::after{
-    background:#ffffff;           /* blanc */
+    background:#000000;           /* blanc */
 }
 
+
 /* ------------ Responsive styles ------------ */
-@media (max-width: 950px) {
-    body {
-        padding-left: 4vw;
-        padding-right: 4vw;
-    }
+@media (max-width: 1060px) {
     header nav ul {
         display: none;
         align-items: center;
@@ -808,3 +807,4 @@ header.scrolled #navLinks li a::after{
   header nav ul{ display:flex; }   /* le UL reste présent en mobile */
   header.scrolled #navLinks li a{ color:#ffffff; }
 }
+
