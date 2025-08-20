@@ -43,6 +43,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    width: 100vw; /* Ensure the body takes the full width of the viewport */
 }
 
 #about h2::before,
@@ -212,16 +213,16 @@ header nav ul li a {
 }
 
 .intro-background {
-    background-image: url("../../img/background/backgroundHeader.jpg");
+    background-image: url(" /img/background/backgroundHeader.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     min-height: 100vh;
-    width: 100vw;
+    width: 100%; /* Ensure the image always takes the full width of the page */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0;
 }
 
 section {
@@ -611,66 +612,73 @@ header.scrolled #languageButton img {
 }
 
 .contact-container {
-    display: flex;
-    align-items: flex-start; /* Alignement au début de l'axe vertical */
-    justify-content: flex-start; /* Aligner au début de l'axe horizontal */
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
+/* La photo ne doit pas utiliser vh pour une largeur */
 .contact-photo {
-    flex: 1;
-    max-width: 100vh;
-    padding: 0;
-    margin-left: 0;
-    display: inline-block;
+  /* flex: grow shrink basis */
+  flex: 0 1 260px;     /* base ~260px, rétrécissable */
+  max-width: 320px;    /* limite raisonnable en grand écran */
+  /* display: inline-block;  <-- inutile pour un flex item */
+  padding: 0;
+  margin-left: 0;
 }
 
 #profile-photo {
-    width: 100%;
-    height: auto;
-    border-radius: 2%; /* Réduire le border-radius à 2% */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;      /* évite l'espace inline */
+  width: 100%;
+  height: auto;
+  border-radius: 2%;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
 }
 
+/* L'autre colonne doit pouvoir rétrécir */
 .contact-details {
-    flex: 2;
-    text-align: left;
-    padding-left: 30px;
-    font-family: 'Montserrat', sans-serif;
+  flex: 1 1 300px;
+  min-width: 0;                 /* clé contre le débordement */
+  text-align: left;
+  padding-left: 30px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .contact-details p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #2C3E50;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #2C3E50;
 }
 
 .contact-icon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .contact-icon img {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    filter: grayscale(100%); /* Désaturation des icônes */
-    transition: filter 0.3s ease;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  filter: grayscale(100%);
+  transition: filter .3s ease;
 }
 
 .contact-details p:hover .contact-icon img {
-    filter: none; /* Affiche les icônes en couleur au survol */
+  filter: none;
 }
 
 .contact-details a {
-    color: #2892D7;
-    text-decoration: none;
-    font-weight: bold;
+  color: #2892D7;
+  text-decoration: none;
+  font-weight: bold;
+  overflow-wrap: anywhere;       /* ou word-break: break-word; */
 }
 
 .contact-details a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #burger {
@@ -761,9 +769,13 @@ header.scrolled #navLinks li a::after{
     }
 
     .contact-photo {
-        max-width: 80vw;
-        margin: 0 auto 20px auto;
-    }
+    flex-basis: 200px;
+    max-width: 70%;     /* ou 100% si tu préfères */
+    margin-bottom: 16px;
+  }
+  .contact-details {
+    padding-left: 0;
+  }
     #navLinks{
       position:absolute;
       top:100%; left:0; right:0; z-index:9999;
