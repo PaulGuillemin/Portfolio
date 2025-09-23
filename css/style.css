@@ -213,7 +213,7 @@ header nav ul li a {
 }
 
 .intro-background {
-    background-image: url(" /img/background/backgroundHeader.jpg");
+    background-image: url(" /img/background/backgroundHeader_old.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -394,8 +394,8 @@ header.scrolled #languageButton span {
     color: #2892D7; /* Change la couleur du texte au survol */
 }
 
-h2 {
-    font-size: 10vh;
+.modified-h2 {
+    font-size: 6vw;
 }
 
 span {
@@ -601,7 +601,7 @@ header.scrolled #languageButton img {
 }
 
 #contact {
-    padding: 40px 5%;
+    padding: 5px 5% 20px 5%;
     text-align: left; /* Aligner à gauche */
 }
 
@@ -619,7 +619,7 @@ header.scrolled #languageButton img {
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
-  margin-top: 200px;
+  margin-top: 80px;
 }
 
 /* La photo ne doit pas utiliser vh pour une largeur */

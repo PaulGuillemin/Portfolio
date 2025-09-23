@@ -168,19 +168,19 @@ h1 {
     margin-top: 200px;
     font-family: Montserrat_light, sans-serif;
     text-align: center;
-    font-size: 40px;
+    font-size: 60px;
 }
 
 h2 {
     font-family: Montserrat_light, sans-serif;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 h3 {
     margin-left: 20px;
     text-align: center;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 h4 {
@@ -196,7 +196,7 @@ h5 {
 }
 
 h6 {
-    font-size: 15px;
+    font-size: 20px;
     color: #2187e1;
     font-family: Montserrat, sans-serif;
     text-align: justify;
@@ -212,7 +212,7 @@ h6 {
 }
 
 p {
-    font-size: 15px;
+    font-size: 20px;
     font-family: Montserrat, sans-serif;
     text-align: justify;
     line-height: 1.5;
@@ -240,7 +240,8 @@ p {
 
 .presentation {
     margin: 180px auto;
-    padding: 10vh;
+    padding-right: 10vw;
+    padding-left: 10vw;
 }
 
 @media (max-width: 1060px) {
@@ -260,4 +261,5 @@ p {
 ul.liste li {
     font-family: Montserrat, sans-serif;
     margin-bottom: 20px;
+    font-size: 20px;
 }
