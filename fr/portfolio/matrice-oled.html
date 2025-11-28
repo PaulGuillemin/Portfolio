@@ -27,12 +27,147 @@
     
 
     <div class="presentation">
-    <h1>MATRICE OLEDs : Conception d'une matrice OLEDs</h1>
-    <h2>Conception, fabrication en salle blanche et caractérisation de la matrice OLEDs</h2>
+          <h1>Fabrication et caractérisation d’une matrice OLED</h1>
 
-    <h3>BIENTÔT DISPONIBLE !</h3>
+  <!-- Sous-titre -->
+  <h2>Concevoir l’empilement, fabriquer les pixels, mesurer et piloter l’affichage</h2>
 
-</div>
+  <!-- Contexte du projet -->
+  <p>Ce projet a pour but de réaliser une petite matrice OLED « maison » afin d’illustrer tout le parcours d’un afficheur organique : choix de l’empilement de couches, réalisation en salle blanche, mesures électriques et optiques, puis pilotage en matrice. L’enjeu est double : comprendre concrètement ce qui fait s’allumer un pixel (matériaux, épaisseurs, injection de charges) et apprendre à le commander collectivement sans le dégrader. Nous visons une démarche accessible : un vocabulaire simple, des ordres de grandeur clairs et des images issues de nos fabrications pour ancrer les explications.</p>
+
+  <!-- I -->
+  <h3>I. Contexte et objectifs</h3>
+
+  <h4>I.1 Pourquoi une matrice OLED maison ?</h4>
+  <p>Construire un afficheur organique à partir de couches minces permet de relier les gestes de salle blanche au comportement visible d’un pixel. L’OLED est intéressante car sa lumière provient directement de la zone organique lorsqu’un courant la traverse ; il n’y a pas de rétro-éclairage. En fabriquant nos propres pixels, nous pouvons relier l’uniformité d’un dépôt, la qualité d’une interface ou la propreté d’un masque à des effets concrets : tension d’allumage, homogénéité de luminance, dérive dans le temps.</p>
+
+  <h4>I.2 Objectifs mesurables</h4>
+  <p>Nous nous fixons des cibles réalistes : obtenir une tension d’allumage nette, une montée de luminance régulière avec le courant, un rendement de pixels allumés satisfaisant sur la matrice, et une uniformité correcte à l’œil. Les courbes courant-tension (I–V) et luminance-courant (L–I) sont nos repères ; elles servent à valider l’empilement et à dimensionner le pilotage.</p>
+
+  <!-- II -->
+  <h3>II. Conception des pixels et de la matrice</h3>
+
+  <h4>II.1 Empilement de couches</h4>
+  <p>Un pixel OLED standard se compose d’un substrat (verre), d’une anode transparente (souvent ITO), de couches organiques pour transporter les trous et les électrons, d’une couche émissive au centre, puis d’une cathode métallique semi-réfléchissante. Chaque couche a une épaisseur cible (quelques dizaines à quelques centaines de nanomètres) et un rôle précis : faciliter l’injection de charges, les transporter, les recombiner dans la zone émissive et extraire la lumière. Une sur-épaisseur peut augmenter la tension nécessaire ; une sous-épaisseur peut créer des fuites ou des courts-circuits.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/stack_diagram.png" alt="Empilement typique d’un pixel OLED"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="X" />
+    <p class="legend">Empilement simplifié : verre / ITO / couches organiques (injection & transport) / couche émissive / cathode métallique.</p>
+  </div>
+
+  <h4>II.2 Géométrie et masques</h4>
+  <p>La matrice résulte de la répétition d’îlots ITO (anodes) croisés avec des bandes cathodes. Le pas des pixels et l’ouverture influencent le « fill factor », donc la luminance perçue. Des masques physiques guident les dépôts sous vide pour dessiner proprement les zones actives. Une bonne coïncidence des masques limite les fuites latérales et améliore l’uniformité entre pixels voisins.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/mask_layout.png" alt="Exemple de masque et pas de pixels"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="Y" />
+    <p class="legend">Répétition des pixels et alignement des masques : pas, ouverture, bordures d’isolement.</p>
+  </div>
+
+  <!-- III -->
+  <h3>III. Procédé de fabrication</h3>
+
+  <h4>III.1 Préparation du substrat</h4>
+  <p>La propreté du substrat conditionne la qualité des interfaces. Nous nettoyons le verre/ITO (bains, ultrasons), séchons, puis activons la surface (par exemple plasma) pour améliorer l’adhérence. Si nécessaire, un motif ITO est défini par photolithographie puis attaque chimique ; on obtient ainsi les anodes indépendantes de la matrice.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/process_flow.png" alt="Chaîne de fabrication de la matrice OLED"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="Z" />
+    <p class="legend">Enchaînement des étapes : nettoyage, motif ITO, dépôts organiques, métallisation cathode, encapsulation.</p>
+  </div>
+
+  <h4>III.2 Dépôts sous vide et métallisation</h4>
+  <p>Les couches organiques et la cathode sont déposées sous vide par évaporation. Le débit de dépôt et la distance source-substrat influencent l’uniformité ; une rotation du porte-échantillon aide à homogénéiser l’épaisseur. Les masques d’ombre définissent les zones utiles. Un contrôle d’épaisseur par quartz ou ellipsométrie sur des échantillons témoins permet de valider les cibles avant d’allumer une grande série de pixels.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/deposition_setup.png" alt="Poste de dépôt sous vide et masques d’ombre"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="Z2" />
+    <p class="legend">Évaporation sous vide : contrôle du taux de dépôt et des profils pour des films réguliers.</p>
+  </div>
+
+  <!-- IV -->
+  <h3>IV. Caractérisation électrique et optique</h3>
+
+  <h4>IV.1 Courbes I–V et tension d’allumage</h4>
+  <p>La première vérification consiste à mesurer le courant en fonction de la tension. On observe généralement une zone de très faible courant, puis un « genou » où la conduction s’établit et où la lumière apparaît. Quand le transport est limité par la charge d’espace, le courant suit l’approximation \( J_{\mathrm{SCLC}} = \tfrac{9}{8}\,\varepsilon\,\mu\,\tfrac{V^2}{d^3} \) (avec \(\varepsilon\) la permittivité, \(\mu\) la mobilité et \(d\) l’épaisseur organique équivalente). Ce modèle guide l’interprétation : si l’on doit monter trop haut en tension pour obtenir de la lumière, c’est souvent qu’une interface injecte mal ou que l’empilement est trop épais.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/iv_curve.png" alt="Courbe courant–tension (I–V) d’un pixel"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="A1" />
+    <p class="legend">Exemple d’I–V : zone d’amorçage (« genou »), puis augmentation rapide du courant et de la luminance.</p>
+  </div>
+
+  <h4>IV.2 Luminance, efficacité et perception</h4>
+  <p>La luminance augmente avec le courant ; on suit souvent le rapport \( \eta_{\mathrm{lum}} = \dfrac{L}{I} \) (en cd/A) pour comparer des lots. À courant égal, un pixel plus efficace est plus lumineux. Pour la lecture à l’œil, l’important est la régularité : une échelle de consigne qui produit des paliers visuels homogènes facilite la mise en page d’icônes ou de chiffres.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/luminance_current.png" alt="Luminance en fonction du courant"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="A2" />
+    <p class="legend">L–I typique : une montée progressive puis un possible tassement à fort courant (roll-off).</p>
+  </div>
+
+  <h4>IV.3 Uniformité et rendement pixel</h4>
+  <p>Pour une matrice, l’uniformité compte autant que la performance individuelle. Nous cartographions l’intensité à une consigne donnée et comptons le pourcentage de pixels correctement allumés (rendement). Des écarts systémiques pointent souvent un masque mal jointif, une variation d’épaisseur ou un défaut d’alignement.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/uniformity_map.png" alt="Carte d’uniformité et rendement de pixels"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="A3" />
+    <p class="legend">Uniformité à consigne fixe : zones plus sombres = épaisseur ou contact moins favorables.</p>
+  </div>
+
+  <!-- V -->
+  <h3>V. Pilotage de la matrice</h3>
+
+  <h4>V.1 Balayage et luminosité perçue</h4>
+  <p>La matrice se pilote en balayage : on active une ligne après l’autre, tandis que les colonnes imposent le courant des pixels à allumer. Comme chaque pixel n’est alimenté qu’une fraction du temps, la luminance moyenne dépend du rapport cyclique ; pour garder une échelle « naturelle », on ajoute une table de correspondance (gamma) entre la consigne logicielle et la durée d’allumage ou le courant impulsionnel.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/driver_block.png" alt="Schéma de principe du pilotage en matrice"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="B1" />
+    <p class="legend">Balayage ligne-par-ligne : drivers de lignes, sources de colonnes, et table de gamma pour une échelle régulière.</p>
+  </div>
+
+  <h4>V.2 Protection et longévité</h4>
+  <p>Les OLED n’aiment ni les surtensions, ni les pointes de courant. Des limites par conception (résistances de source, clamps, rampes d’allumage) et un filtrage d’alimentation réduisent les contraintes. Côté logiciel, on évite les sauts de consigne brutaux et on limite le courant maximal par pixel ; on prévient ainsi l’échauffement local et la dérive accélérée.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/sweep_demo.png" alt="Démo de balayage et d’échelle de gris"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="B2" />
+    <p class="legend">Balayage stable : pas de scintillement visible et paliers de gris réguliers après calibration.</p>
+  </div>
+
+  <!-- VI -->
+  <h3>VI. Encapsulation et fiabilité</h3>
+
+  <h4>VI.1 Sensibilité à l’air et à l’humidité</h4>
+  <p>Les matériaux organiques et certaines cathodes réagissent à l’oxygène et à la vapeur d’eau. Sans encapsulation, un pixel se dégrade rapidement (points noirs, baisse de luminance). Une barrière simple associe un capot (verre mince) et une colle de scellement ; mieux la barrière est étanche, plus la durée de vie augmente.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/encapsulation.png" alt="Encapsulation de la matrice OLED"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="C1" />
+    <p class="legend">Encapsulation : capot + colle barrière pour limiter l’entrée d’oxygène et d’humidité.</p>
+  </div>
+
+  <h4>VI.2 Vieillissement et dérive</h4>
+  <p>À consigne constante, la luminance a tendance à diminuer avec le temps. On suit une courbe de vieillissement pour comparer les lots et ajuster le pilotage (par exemple en augmentant légèrement la consigne au fil des heures d’usage). Une bonne encapsulation et une consigne modérée améliorent sensiblement la stabilité.</p>
+
+  <div class="media">
+    <img src="/img/projects/matrice_oled/aging_curve.png" alt="Évolution de la luminance dans le temps"
+         data-pdf="Fab salle blanche - matrice OLEDs - GP électif 2A.pdf" data-page="C2" />
+    <p class="legend">Vieillissement typique : baisse de luminance progressive, compensable par une correction logicielle.</p>
+  </div>
+
+  <!-- VII -->
+  <h3>VII. Résultats et enseignements</h3>
+
+  <h4>VII.1 Ce qui fonctionne</h4>
+  <p>Les pixels s’allument de manière reproductible et la matrice affiche des motifs lisibles après calibration de l’échelle de luminance. Les courbes I–V montrent une tension d’allumage cohérente et une progression régulière du courant ; la cartographie d’uniformité met en évidence des zones légèrement plus faibles, corrélées à l’alignement des masques.</p>
+
+  <h4>VII.2 Points à améliorer</h4>
+  <p>Les priorités sont d’optimiser l’injection aux interfaces (traitement de surface ITO, couche d’injection adaptée), d’uniformiser l’épaisseur des dépôts (réglage du taux et de la géométrie de source) et de renforcer l’encapsulation pour limiter la dérive. Côté pilotage, une gamma plus fine aux faibles niveaux évite l’effet de « marche » visible dans les gris sombres.</p>
+
+  </div>
 <footer>
     Copyright © 2025 Paul Guillemin | All Rights Reserved
 </footer>
