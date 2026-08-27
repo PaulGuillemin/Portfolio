@@ -1,6 +1,11 @@
 .hero-image img{filter:none;mix-blend-mode:normal;opacity:1}
+.brand-logo{display:block;width:38px;height:38px;object-fit:contain;filter:invert(1)}
+.site-header.is-scrolled .brand-logo{filter:none}
 .education-subsection{padding:23px 0;border-bottom:1px solid rgba(255,255,255,.25)}
-.experience-logo{display:flex;justify-content:flex-end;align-items:flex-start;min-height:54px;padding-top:4px}
+.experience-item{grid-template-columns:1.15fr 3fr}
+.experience-meta{display:flex;flex-direction:column;align-items:center;gap:18px}
+.experience-meta .experience-date{text-align:center}
+.experience-logo{display:flex;justify-content:center;align-items:center;min-height:54px;padding-top:0}
 .institution-logo{position:absolute;top:23px;right:0}
 .education-list article{position:relative;padding-right:170px}
 .logo-frame{display:inline-flex;align-items:center;justify-content:center;min-width:112px;min-height:52px;padding:8px 12px;background:#fff;color:#101210;border-radius:2px}
@@ -15,5 +20,12 @@
 .certification-item{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;padding:23px 0;border-bottom:1px solid rgba(255,255,255,.25)}
 .certification-item h3{margin:0 0 5px;font-size:23px;letter-spacing:-.04em}
 .certification-item p{color:rgba(255,255,255,.62);font-size:14px;margin:0}
-@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-logo{justify-content:flex-start;margin-top:18px}.certifications-grid{grid-template-columns:1fr;gap:44px}}
-@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.logo-frame{min-width:100px}.certification-item h3{font-size:21px}}
+.distinctions{padding:140px 0;background:var(--paper-soft)}
+.distinction-list{border-top:1px solid var(--line)}
+.distinction-item{display:grid;grid-template-columns:120px 1fr 70px;gap:30px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
+.distinction-item>span{color:#71756d;font-size:12px;padding-top:8px}
+.distinction-item h3{margin:0 0 6px;font-size:25px;letter-spacing:-.04em}
+.distinction-item p{max-width:650px;color:var(--ink-soft);margin:0;font-size:14px}
+.distinction-rank{justify-self:end;color:var(--ink);font-size:28px;font-weight:700;letter-spacing:-.06em}
+@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.certifications-grid{grid-template-columns:1fr;gap:44px}}
+@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.logo-frame{min-width:100px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-rank{justify-self:start}}
