@@ -1,191 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDESVG1RX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LFDESVG1RX');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paul Guillemin</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="/img/logo/logoAlpha.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paul Guillemin - AI, data and business process transformation student at Mines Saint-Etienne and emlyon business school.">
+  <meta name="theme-color" content="#101210">
+  <meta property="og:title" content="Paul Guillemin - AI, Data & Business Process Transformation">
+  <meta property="og:description" content="Engineering and business student turning complex data into practical decisions and operational improvements.">
+  <meta property="og:type" content="website">
+  <title>Paul Guillemin - AI, Data & Business Process Transformation</title>
+  <link rel="icon" href="/img/logo/logoAlpha.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-    
-<div data-include-html="/partials/header-en.html"></div>
-<div class="intro-background"></div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Paul Guillemin home"><span class="brand-mark">PG</span><span class="brand-name">Paul Guillemin</span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"><span class="sr-only">Open menu</span><span></span><span></span></button>
+      <div class="nav-menu" id="nav-menu"><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a class="nav-language" href="/fr/" lang="fr">FR</a></div>
+    </nav>
+  </header>
 
-<div class="content-container">
-    <section id="about">
-        <img src="img/about/me.jpg" id="me">
-        <div id="text-container">
-            <h2 class="modified-h2">ABOUT</h2>
-            <p id="aboutContent">As a student at the École des Mines de Saint-Étienne, I am passionate about engineering in the broadest sense: ranging from mechanics to electronics, and including computer science. I aim to turn my theoretical knowledge into practical solutions by striving to apply what I learn to solve real-world problems. My goal is then to leverage my skills to innovate, address issues, and create advanced technologies. I am therefore ready to contribute to the evolution of these fields, as exciting as they are complex!</p>
-            <a id="downloadCv" href="/dl/en/Resume_Paul_GUILLEMIN.pdf">Resume</a>
+  <main id="main-content">
+    <section class="hero section-dark" id="home">
+      <div class="hero-grid shell">
+        <div class="hero-copy">
+          <p class="eyebrow">AI / DATA / BUSINESS PROCESS TRANSFORMATION</p>
+          <h1>I turn complex data into <em>decisions.</em></h1>
+          <p class="hero-lead">Engineering and business student building useful systems at the intersection of applied AI, operational efficiency and strategic thinking.</p>
+          <div class="hero-actions"><a class="button button-accent" href="#projects">Explore selected work <span aria-hidden="true">↗</span></a><a class="text-link light-link" href="/dl/en/Resume_Paul_GUILLEMIN.pdf">Download resume <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-meta" aria-label="Profile details"><span>Paris, France</span><span>Available January 2027</span></div>
         </div>
+        <div class="hero-visual"><div class="hero-image"><img src="/img/background/backgroundHeader_old.jpg" alt="Close-up of a computer processor on a circuit board"></div><div class="hero-caption"><span>01 / 04</span><span>Mines Saint-Etienne x emlyon</span></div></div>
+      </div>
+      <div class="scroll-note shell"><span class="scroll-line"></span> Scroll to explore</div>
     </section>
 
-    <section id="portfolio">
-        <h2 class="modified-h2">PORTFOLIO</h2>
-        <div class="portfolio-container">
-
-            <div class="portfolio-item">
-                <a href="/portfolio/ethical-ai-essay.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/essai_ethique/background.png" alt="Description de l'image">
-                        <span class="text-over-image">AI : Who is responsible when an errors occur ? A Rotary Essay</span>
-                    </div>
-                </a>
-            </div>
-    
-            <div class="portfolio-item">
-                <a href="/portfolio/smartvitale.html" class="image-button">
-                    <div class="image-container">
-                        <img src="../img/projects/smart_vitale/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Smart' Vitale : Automated disinfection of health insurance cards</span>
-                    </div>
-                </a>
-            </div>
-    
-            <div class="portfolio-item">
-                <a href="/portfolio/tipe.html" class="image-button">
-                    <div class="image-container">
-                        <img src="../img/projects/tipe/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Engineering project: Inductive charging system for electric vehicles</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="portfolio-item">
-                <a href="/portfolio/ionospheric-propagation.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/propagation_ionospherique/background.jpg" alt="Description de l'image">
-                        <span class="text-over-image">Reflection of electromagnetic waves in ionosphere</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="portfolio-item">
-                <a href="/portfolio/capacitive-sensor.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/capacitive_sensor/capacitive_sensor.png" alt="Description de l'image">
-                        <span class="text-over-image">Capacitive Sensor: Design of a Variable Distance Keypad</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="portfolio-item">
-                <a href="/portfolio/oled-matrix.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/matrice_oled/background.png" alt="Description de l'image">
-                        <span class="text-over-image">OLEDs Matrix Design</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="portfolio-item">
-                <a href="/portfolio/oled-matrix.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/electrodes-ecg/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Design of Electrodes for Electrocardiogram (ECG)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="portfolio-item">
-                <a href="/portfolio/concrete-sensor.html" class="image-button">
-                    <div class="image-container">
-                        <img src="/img/projects/capteur-beton/background.png" alt="Description de l'image">
-                        <span class="text-over-image">Real-time concrete quality measurement sensor</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- <div class="portfolio-item">
-                <a href="/portfolio/higgs_boson/higgsboson.html" class="image-button">
-                    <div class="image-container">
-                        <img src="../img/projects/higgs_boson/background.jpg" alt="Description de l'image">
-                        <span class="text-over-image">Computer science and fundamental physics : Exploring the Higgs Boson</span>
-                    </div>
-                </a>
-            </div> -->
-        </div>
+    <section class="intro shell" id="about">
+      <div class="section-kicker">01 / ABOUT</div>
+      <div class="intro-grid"><h2>From engineering depth to business impact.</h2><div class="intro-copy"><p class="lead-copy">I am pursuing a double degree in engineering and management, combining the technical depth of Mines Saint-Etienne with the business perspective of emlyon business school.</p><p>My work focuses on making complex information more useful: automating repetitive processes, structuring data, and translating technical analysis into decisions that teams can act on.</p><a class="text-link dark-link" href="#experience">See my background <span aria-hidden="true">↘</span></a></div></div>
+      <div class="metric-grid" aria-label="Selected achievements"><div class="metric"><strong>93.7%</strong><span>semantic classification accuracy</span></div><div class="metric"><strong>40k+</strong><span>annotated descriptions processed</span></div><div class="metric"><strong>35k+</strong><span>technical mappings automated</span></div><div class="metric"><strong>1 mo.</strong><span>ahead of delivery at Stellantis</span></div></div>
     </section>
 
-    <section id="languages">
-        <h2 class="modified-h2">LANGUAGES</h2>
-        <ul class="language-list">
-            <li>
-                <span class="language-name">French</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="100%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">English</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="75%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">German</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="30%"></div>
-                </div>
-            </li>
-            <li>
-                <span class="language-name">Spanish</span>
-                <div class="progress-bar">
-                    <div class="progress" data-width="30%"></div>
-                </div>
-            </li>
-        </ul>
-    </section>
-    
-    <section id="skills">
-        <h2 class="modified-h2">SKILLS</h2>
-        <ul id="skillsList">
-            <li><img src="../img/skills/python.png" alt="Python">Python</li>
-            <li><img src="/img/skills/tensorflow.png" alt="Python">TensorFlow</li>
-            <li><img src="../img/skills/C.png" alt="C">C/C++</li>
-            <li><img src="../img/skills/matlab.png" alt="MATLAB/Simulink">MATLAB/Simulink</li>
-            <li><img src="../img/skills/solidworks.png" alt="Solidworks">Solidworks</li>
-            <li><img src="../img/skills/systemverilog.png" alt="systemverilog">SystemVerilog / VHDL</li>
-            <li><img src="../img/skills/autodesk.png" alt="Fusion / Inventor / AutoCAD">Fusion / Inventor / AutoCAD</li>
-            <li><img src="../img/skills/comsol.png" alt="Fusion / Inventor / AutoCAD">Comsol</li>
-        </ul>
-    </section>
+    <section class="experience section-soft" id="experience"><div class="shell"><div class="section-heading"><div class="section-kicker">02 / EXPERIENCE</div><h2>Where I learned to make things move.</h2></div><div class="experience-list">
+      <article class="experience-item"><div class="experience-date">Apr - Aug 2025</div><div class="experience-main"><h3>Stellantis</h3><p class="experience-role">AI & data transformation intern</p><p>Designed an internal web app for vehicle-weight benchmarking, developed an AI semantic classification model across 351 categories, and automated cross-repository component classification.</p></div><div class="experience-tag">Industry / AI</div></article>
+      <article class="experience-item"><div class="experience-date">Jan 2024</div><div class="experience-main"><h3>Conseil départemental des Hauts-de-Seine</h3><p class="experience-role">IT automation intern</p><p>Benchmarked virtual-machine deployment solutions with infrastructure, cybersecurity and traceability constraints in mind.</p></div><div class="experience-tag">IT / Process</div></article>
+      <article class="experience-item"><div class="experience-date">2023 - 2024</div><div class="experience-main"><h3>Illu-Mines</h3><p class="experience-role">Science outreach and conference association</p><p>Organized conferences and Fête de la science activities while coordinating partners, communication materials and teamwork.</p></div><div class="experience-tag">Communication</div></article>
+    </div></div></section>
 
-    <section id="contact">
-        <h2 class="modified-h2">CONTACT</h2>
-        <div class="contact-container">
-            <div class="contact-photo">
-                <img src="../img/about/me.jpg" id="profile-photo">
-            </div>
-    
-            <div class="contact-details">
-                <p><span class="contact-icon"><img src="../img/icon/mail.png" alt="Email"></span><a href="mailto:paul.guillemin@mines-saint-etienne.org">paul.guillemin@mines-saint-etienne.org</a></p>
-                <p><span class="contact-icon"><img src="../img/icon/linkedin.png" alt="LinkedIn"></span><a href="https://www.linkedin.com/in/guilleminpaul" target="_blank">www.linkedin.com/in/guilleminpaul</a></p>
-                <p><span class="contact-icon"><img src="../img/icon/github.png" alt="GitHub"></span><a href="https://github.com/PaulGuillemin" target="_blank">github.com/PaulGuillemin</a></p>
-                <p><span class="contact-icon"><img src="../img/icon/location.png" alt="Location"></span>Paris and surrounding area, France</p>
-            </div>
-        </div>
-    </section>   
-</div>
-<footer>
-    Copyright © 2026 Paul Guillemin | All Rights Reserved
-</footer>
-<script src="/js/headerAnimation.js"></script>
-<script src="/js/languagesAnimation.js"></script>
-<script src="/js/jsIndex.js"></script>
-<script src="/js/languageSwitcher.js"></script>
-<script src="/js/loadPartials.js"></script>
+    <section class="projects shell" id="projects"><div class="section-heading projects-heading"><div><div class="section-kicker">03 / SELECTED WORK</div><h2>Projects with a point of view.</h2></div><p>Selected work across AI, engineering, ethics and real-world systems.</p></div><div class="project-grid">
+      <article class="project-card project-featured"><div class="project-image"><img src="/img/projects/essai_ethique/background.png" alt="Abstract visual for an essay on responsibility in AI" loading="lazy"></div><div class="project-content"><div class="project-topline"><span>2025 / Award</span><span>01</span></div><h3>Who is responsible when AI makes a mistake?</h3><p>Professional ethics essay awarded 3rd nationally in France and 2nd regionally by Rotary.</p><a class="text-link dark-link" href="/portfolio/ethical-ai-essay.html">Read the project <span aria-hidden="true">↗</span></a></div></article>
+      <article class="project-card"><div class="project-image"><img src="/img/projects/smart_vitale/background.png" alt="Automated health card disinfection system" loading="lazy"></div><div class="project-content"><div class="project-topline"><span>2021 / Product design</span><span>02</span></div><h3>Smart' Vitale</h3><p>An automated cleaning and disinfection system for health insurance cards. 1st prize in the Versailles Academy engineering olympiad.</p><a class="text-link dark-link" href="/portfolio/smartvitale.html">Read the project <span aria-hidden="true">↗</span></a></div></article>
+      <article class="project-card"><div class="project-image"><img src="/img/projects/tipe/background.png" alt="Inductive charging system prototype" loading="lazy"></div><div class="project-content"><div class="project-topline"><span>2023 / Engineering</span><span>03</span></div><h3>Inductive charging for electric vehicles</h3><p>TIPE engineering project exploring a controlled wireless charging system and its practical constraints.</p><a class="text-link dark-link" href="/portfolio/tipe.html">Read the project <span aria-hidden="true">↗</span></a></div></article>
+      <article class="project-card project-dark-card"><div class="project-content"><div class="project-topline"><span>2026 / National finalist</span><span>04</span></div><h3>Data for better drinking-water supply.</h3><p>2nd national prize in the EY AI & Data Challenge: environmental data analysis shaped into clear recommendations.</p><span class="project-note">Case study coming soon</span></div></article>
+    </div></section>
+
+    <section class="education section-dark" id="education"><div class="shell education-grid"><div><div class="section-kicker">04 / EDUCATION</div><h2>Two schools.<br><em>One way of thinking.</em></h2></div><div class="education-list"><article><span>2025 - 2027</span><h3>emlyon business school</h3><p>Grande Ecole Programme, double degree. Strategic change, consulting methods, corporate finance and business analysis.</p></article><article><span>2023 - 2026</span><h3>Ecole Nationale Supérieure des Mines de Saint-Etienne</h3><p>Master-level engineering degree, specializing in microelectronics and computer science.</p></article><article><span>Certifications</span><h3>Yale / ESSEC / Inside LVMH</h3><p>Financial markets, professional negotiation, brand and operational excellence.</p></article></div></div></section>
+
+    <section class="contact shell" id="contact"><div class="section-kicker">05 / CONTACT</div><div class="contact-grid"><h2>Have a complex problem?<br><em>Let's talk.</em></h2><div class="contact-copy"><p>For a final-year internship, a data-driven project or simply a thoughtful exchange, you can reach me here.</p><a class="contact-email" href="mailto:paul.guillemin@edu.em-lyon.com">paul.guillemin@edu.em-lyon.com</a><div class="contact-links"><a href="https://www.linkedin.com/in/guilleminpaul" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/PaulGuillemin" target="_blank" rel="noopener">GitHub ↗</a><a href="/dl/en/Resume_Paul_GUILLEMIN.pdf">Resume ↓</a></div></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="shell"><span>Paul Guillemin</span><span>AI / Data / Transformation</span><span>© 2026</span></div></footer>
+  <script src="/js/new-site.js"></script>
 </body>
 </html>
