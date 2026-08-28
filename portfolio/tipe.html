@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/style-portoflio.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="../css/project-pages.css">
-    <link rel="icon" href="../../../img/logo/logoAlpha.png" type="image/x-icon">
+    <link rel="icon" href="../img/logo/logoAlpha.png" type="image/x-icon">
     <script src="js_tipe.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <meta name="translation-de" content="/de/portfolio/tipe/tipe.html">
@@ -52,13 +52,13 @@
     <h3>III - The Prototype</h3>
     <h4>III.1 - Block Diagram</h4>
     <div class="image">
-        <img src="../../../img/projects/tipe/schema.png" alt="Schema">
+        <img src="../img/projects/tipe/schema.png" alt="Schema">
     </div>
     <p>
         Two coils are placed on two parallel planes: one, located in the parking area, is stationary, while the other, positioned beneath the vehicle, is mobile along two perpendicular axes. In our model, both mobile axes utilize pulley-belt systems, with each pulley driven by a stepper motor.
     </p>
     <div class="image">
-        <img src="../../../img/projects/tipe/schema2.png" alt="Schema">
+        <img src="../img/projects/tipe/schema2.png" alt="Schema">
     </div>
     <p>Three main components stand out in the project: The coupling of the coils, the control of the coil positioning, and the acquisition of various signals.</p>
 
@@ -80,68 +80,68 @@
     <h4>III.2 - Coil Coupling</h4>
 <h5>III.2.1 - Experimental Setup</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/schema3.png" alt="Schema">
-    <img src="../../../img/projects/tipe/schema4.png" alt="Schema">
-    <img src="../../../img/projects/tipe/schema5.png" alt="Schema">
+    <img src="../img/projects/tipe/schema3.png" alt="Schema">
+    <img src="../img/projects/tipe/schema4.png" alt="Schema">
+    <img src="../img/projects/tipe/schema5.png" alt="Schema">
 </div>
 <h5>III.2.2 - Modeling</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/graph.png" alt="Schema">
+    <img src="../img/projects/tipe/graph.png" alt="Schema">
 </div>
 <p>We position the two coils optimally (both centers are aligned). For different frequencies, we measure the induced voltage in the receiving coil. We then plot the induced voltage against the frequency.
     It is observed that the received voltage is maximum at a frequency of 2.9 kHz, which explains the choice of this frequency for the rest of the project. However, it is important to note that this frequency depends on various intrinsic factors of coil construction (number of turns, geometry, etc.).
     The optimal frequency for the real system would likely be different.
 </p>
 <div class="image">
-    <img src="../../../img/projects/tipe/carte.png" alt="Schema">
+    <img src="../img/projects/tipe/carte.png" alt="Schema">
 </div>
 <h6 class="legend">Matlab Simulink Model</h6>
 <div class="image">
-    <img src="../../../img/projects/tipe/simulink.png" alt="Schema">
-    <img src="../../../img/projects/tipe/courbes.png" alt="Schema">
-    <img src="../../../img/projects/tipe/courbes2.png" alt="Schema">
+    <img src="../img/projects/tipe/simulink.png" alt="Schema">
+    <img src="../img/projects/tipe/courbes.png" alt="Schema">
+    <img src="../img/projects/tipe/courbes2.png" alt="Schema">
 </div>
 <p>The induced voltage is maximum when the two coil centers are aligned (distance corresponding to 0.00 cm). However, it is interesting to note that beyond a certain distance between the two coil centers, the induced voltage in the mobile coil increases again.
     This is due to the folding of magnetic field lines in the second coil more optimally when the coils are no longer superimposed.
 </p>
 <h5>III.2.3 - Conclusion</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/conclu.png" alt="Schema">
+    <img src="../img/projects/tipe/conclu.png" alt="Schema">
 </div>
 <p>The discrepancy between the model and reality is largely due to simplifications made for presentation purposes.</p>
 <h4>III.3 - Signal Acquisition</h4>
 <p>The first model did not include amplification before signal processing. The signal turned out to be extremely noisy, making the model less accurate. Therefore, we decided to include a non-inverting amplifier at the output of the receiving coil.</p>
 <h5>III.3.1 - Circuit Sizing</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/redressement.png" alt="Schema">
+    <img src="../img/projects/tipe/redressement.png" alt="Schema">
 </div>
 <div class="image">
-    <img src="../../../img/projects/tipe/resultats.png" alt="Schema">
+    <img src="../img/projects/tipe/resultats.png" alt="Schema">
 </div>
 <h4>Amplifier Implementation</h4>
 <p>We use a digital low-pass filter implemented with the Arduino board to smooth the signal.
     The final circuit used is as follows.
 </p>
 <div class="image">
-    <img src="../../../img/projects/tipe/montage.png" alt="Schema">
+    <img src="../img/projects/tipe/montage.png" alt="Schema">
 </div>
 <p>So, the Arduino board exploits 50% of its measurement range. The signal is less noisy with the non-inverting amplifier.</p>
 <div class="image">
-    <img src="../../../img/projects/tipe/resultats2.png" alt="Schema">
+    <img src="../img/projects/tipe/resultats2.png" alt="Schema">
 </div>
 <div class="image">
-    <img src="../../../img/projects/tipe/reducBruit.png" alt="Schema">
+    <img src="../img/projects/tipe/reducBruit.png" alt="Schema">
 </div>
 <p>Finally, for a coil displacement of 1 cm, the regression of the voltage change with displacement is qualitatively much more accurate.</p>
 <div class="image">
-    <img src="../../../img/projects/tipe/regression.png" alt="Schema">
+    <img src="../img/projects/tipe/regression.png" alt="Schema">
 </div>
 <h4>III.4 - Discrete Control</h4>
 <p>We measured the induced voltage in the receiving coil as a function of its position in the plane. The following graph shows the optimal coil positions.
     Also, a variation of 30 mm in the distance between the two coils results in a 27% variation in the induced voltage, demonstrating the relevance and importance of coil positioning.
 </p>
 <div class="image">
-    <img src="../../../img/projects/tipe/importancePositionnement.png" alt="Schema">
+    <img src="../img/projects/tipe/importancePositionnement.png" alt="Schema">
 </div>
 <h5>III.4.1 - Working Principle</h5>
 <p>We decide on a maximum slope (slope of induced voltage versus coil displacement): this is the setpoint for control. The controller is initially a pure gain k, determined experimentally.
@@ -149,19 +149,19 @@
     a discrete derivative implemented in the Arduino board, we obtain the slope of the induced voltage versus coil displacement. This is the feedback of the control system.
 </p>
 <div class="image">
-    <img src="../../../img/projects/tipe/schemaBloc.png" alt="Schema">
+    <img src="../img/projects/tipe/schemaBloc.png" alt="Schema">
 </div>
 <h5>III.4.2 - Practical Tests</h5>
 <h5>Step-by-Step Process</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/deroule.png" alt="Schema">
+    <img src="../img/projects/tipe/deroule.png" alt="Schema">
 </div>
 <h5>Impact of Controller Gain on System Performance</h5>
 <div class="image">
-    <img src="../../../img/projects/tipe/rapidite.png" alt="Schema">
+    <img src="../img/projects/tipe/rapidite.png" alt="Schema">
 </div>
 <div class="image">
-    <img src="../../../img/projects/tipe/precision.png" alt="Schema">
+    <img src="../img/projects/tipe/precision.png" alt="Schema">
 </div>
 
 <h3>IV - Conclusion</h3>
