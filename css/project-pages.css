@@ -236,6 +236,10 @@ a {
   text-align: left;
 }
 
+.presentation .project-diamond {
+  color: var(--project-accent) !important;
+}
+
 .espace-titre {
   height: 58px;
   margin: 0;
