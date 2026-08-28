@@ -10,6 +10,7 @@
 .education-list article{position:relative;padding-right:220px}
 .logo-frame{display:inline-flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:0;background:transparent;color:inherit;border-radius:0}
 .logo-frame img{display:block;max-width:302px;max-height:109px;width:auto;height:auto;object-fit:contain}
+.institution-logo .logo-frame img{width:auto;height:109px;max-width:132px;max-height:109px}
 .experience-logo .logo-frame img{max-width:312px;max-height:101px}
 .experience-logo img[src*="stellantis"],.experience-logo img[src*="hauts-de-seine"]{mix-blend-mode:multiply}
 .certification-item img[src*="yale"],.certification-item img[src*="essec"]{filter:brightness(0) invert(1)}
