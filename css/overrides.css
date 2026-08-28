@@ -37,3 +37,14 @@
 .distinction-rank{justify-self:end;color:var(--ink);font-size:28px;font-weight:700;letter-spacing:-.06em}
 @media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.certifications-grid{grid-template-columns:1fr;gap:44px}}
 @media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-rank{justify-self:start}}
+
+.project-tools{display:flex;flex-direction:column;align-items:flex-end;gap:18px;max-width:510px}
+.project-tools>p{margin:0;color:#696d66;font-size:13px;max-width:320px}
+.project-filters{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.project-filter{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 12px;font:inherit;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.project-filter:hover,.project-filter:focus-visible{border-color:var(--ink);background:var(--ink);color:var(--white)}
+.project-filter.is-active{border-color:var(--ink);background:var(--ink);color:var(--white)}
+.project-filter-status{color:#767a72;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.project-card[hidden]{display:none}
+@media (max-width:900px){.project-tools{align-items:flex-start;max-width:none}.project-filters{justify-content:flex-start}}
+@media (max-width:620px){.project-filters{gap:6px}.project-filter{padding:8px 10px;font-size:10px}}
