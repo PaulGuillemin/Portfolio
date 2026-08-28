@@ -448,6 +448,37 @@ footer {
   text-align: center;
 }
 
+/* Keep every article heading and visual centered, including older page variants. */
+.presentation h1,
+.presentation h2,
+.presentation h3,
+.presentation h4,
+.presentation h5,
+.presentation h6,
+.presentation .legend,
+.presentation figcaption {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center !important;
+}
+
+.presentation .image,
+.presentation .media,
+.presentation figure {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.presentation img,
+.presentation .image img,
+.presentation .media img,
+.presentation figure img {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @media (max-width: 950px) {
   #header nav {
     width: min(calc(100% - 32px), var(--project-max));
