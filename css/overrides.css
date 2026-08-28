@@ -45,6 +45,15 @@
 .project-filter:hover,.project-filter:focus-visible{border-color:var(--ink);background:var(--ink);color:var(--white)}
 .project-filter.is-active{border-color:var(--ink);background:var(--ink);color:var(--white)}
 .project-filter-status{color:#767a72;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.project-filter[data-filter="featured"]{display:none}
 .project-card[hidden]{display:none}
+.project-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:54px 24px}
+.project-card{transition:opacity .32s ease,transform .32s cubic-bezier(.22,.61,.36,1)}
+.project-card.is-filtering-out{opacity:0;transform:translateY(14px);pointer-events:none}
+.project-card.is-filtering-in{opacity:0;transform:translateY(14px)}
+.project-filter{transition:background-color .32s ease,color .32s ease,border-color .32s ease,transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease}
+.project-filter:hover,.project-filter:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,18,16,.12)}
+.project-filter:active{transform:translateY(0) scale(.98);box-shadow:none}
+@media (max-width:900px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.project-tools{align-items:flex-start;max-width:none}.project-filters{justify-content:flex-start}}
-@media (max-width:620px){.project-filters{gap:6px}.project-filter{padding:8px 10px;font-size:10px}}
+@media (max-width:620px){.project-grid{grid-template-columns:1fr}.project-filters{gap:6px}.project-filter{padding:8px 10px;font-size:10px}}

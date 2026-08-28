@@ -18,12 +18,31 @@
   const projectCards = [...projectSection.querySelectorAll('.project-card[data-type]')];
   const filterStatus = projectSection.querySelector('.project-filter-status');
   const isFrench = document.documentElement.lang === 'fr';
-  const updateProjectFilter = filter => {
+  const updateProjectFilter = (filter, initial = false) => {
     let visibleCount = 0;
     projectCards.forEach(card => {
       const visible = filter === 'all' || (filter === 'featured' ? card.dataset.featured === 'true' : card.dataset.type === filter);
-      card.hidden = !visible;
-      if (visible) visibleCount += 1;
+      if (visible) {
+        window.clearTimeout(card._filterHideTimer);
+        card.hidden = false;
+        card.classList.remove('is-filtering-out');
+        if (!initial) {
+          card.classList.add('is-filtering-in');
+          window.requestAnimationFrame(() => window.requestAnimationFrame(() => card.classList.remove('is-filtering-in')));
+        } else {
+          card.classList.remove('is-filtering-in');
+        }
+        visibleCount += 1;
+      } else if (initial) {
+        card.classList.remove('is-filtering-in', 'is-filtering-out');
+        card.hidden = true;
+      } else {
+        card.classList.remove('is-filtering-in');
+        card.classList.add('is-filtering-out');
+        card._filterHideTimer = window.setTimeout(() => {
+          if (card.classList.contains('is-filtering-out')) card.hidden = true;
+        }, 340);
+      }
     });
     filterButtons.forEach(button => {
       const active = button.dataset.filter === filter;
@@ -37,5 +56,5 @@
     }
   };
   filterButtons.forEach(button => button.addEventListener('click', () => updateProjectFilter(button.dataset.filter)));
-  updateProjectFilter('featured');
+  updateProjectFilter('featured', true);
 })();
