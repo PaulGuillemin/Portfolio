@@ -1,0 +1,558 @@
+/* Shared visual system for project detail pages.
+   This file changes presentation only: article copy remains in each HTML file. */
+
+@font-face {
+  font-family: "Mont Project";
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mont Project";
+  src: url("../fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --project-ink: #101210;
+  --project-ink-soft: #30332f;
+  --project-paper: #f2f0ea;
+  --project-paper-soft: #e8e6df;
+  --project-white: #ffffff;
+  --project-line: rgba(16, 18, 16, 0.17);
+  --project-accent: #cfff44;
+  --project-max: 1240px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--project-paper);
+  color: var(--project-ink);
+  font-family: "Mont Project", Montserrat, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+body::selection {
+  background: var(--project-accent);
+  color: var(--project-ink);
+}
+
+a {
+  color: inherit;
+}
+
+/* Legacy partial header, brought into the same visual language as the home page. */
+#header {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 78px;
+  background: var(--project-ink);
+  color: var(--project-white);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+#header nav {
+  width: min(calc(100% - 48px), var(--project-max));
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+#header nav > a:first-child {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+#siteLogo {
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  object-fit: contain;
+  filter: none;
+}
+
+#headerTitle {
+  margin: 0 auto 0 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+#navLinks {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+#navLinks a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity 180ms ease, color 180ms ease;
+}
+
+#navLinks a:hover,
+#navLinks a:focus-visible {
+  color: var(--project-accent);
+  opacity: 1;
+}
+
+#burger {
+  display: none;
+  padding: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+#burger img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.languageSelector {
+  position: relative;
+  display: inline-flex;
+  margin-left: 5px;
+}
+
+#languageButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+#languageButton:hover,
+#languageButton:focus-visible {
+  border-color: var(--project-accent);
+  color: var(--project-accent);
+}
+
+#languageButton img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 145px;
+  padding: 6px;
+  border: 1px solid var(--project-line);
+  background: var(--project-white);
+  box-shadow: 0 14px 30px rgba(16, 18, 16, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.language-menu.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.language-menu.hide {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+.language-menu a {
+  display: block;
+  padding: 9px 10px;
+  color: var(--project-ink);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.language-menu a:hover,
+.language-menu a:focus-visible {
+  background: var(--project-paper-soft);
+}
+
+/* Article shell */
+.presentation {
+  width: min(calc(100% - 48px), var(--project-max));
+  margin: 0 auto;
+  padding: 164px 0 110px;
+}
+
+.presentation > h1:first-child {
+  max-width: 1060px;
+  margin: 0;
+  padding: 0 0 30px;
+  border-bottom: 1px solid var(--project-line);
+  color: var(--project-ink);
+  font-size: clamp(42px, 7vw, 92px);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+  text-align: left;
+}
+
+.presentation > h1 + h2 {
+  max-width: 760px;
+  margin: 23px 0 0;
+  color: var(--project-ink-soft);
+  font-size: clamp(19px, 2.4vw, 30px);
+  font-weight: 450;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.espace-titre {
+  height: 58px;
+  margin: 0;
+}
+
+.presentation h3,
+.presentation h4,
+.presentation h5,
+.presentation h6 {
+  color: var(--project-ink);
+  text-align: left;
+}
+
+.presentation h3 {
+  max-width: 980px;
+  margin: 82px 0 25px;
+  padding-top: 23px;
+  border-top: 1px solid var(--project-line);
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.presentation h4 {
+  max-width: 900px;
+  margin: 48px 0 18px;
+  font-size: clamp(19px, 2vw, 28px);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.presentation h5 {
+  max-width: 840px;
+  margin: 34px 0 12px;
+  color: #646960;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.presentation h6 {
+  margin: 0 0 9px;
+  color: var(--project-ink);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.presentation p,
+.presentation li {
+  max-width: 820px;
+  color: var(--project-ink-soft);
+  font-size: 16px;
+  line-height: 1.78;
+  text-align: left;
+}
+
+.presentation p {
+  margin: 0 0 22px;
+}
+
+.presentation ul,
+.presentation ol {
+  max-width: 860px;
+  margin: 20px 0 30px;
+  padding-left: 24px;
+}
+
+.presentation li {
+  margin: 0 0 12px;
+  padding-left: 5px;
+}
+
+.presentation li p {
+  margin: 0 0 14px;
+}
+
+.presentation .listeTimeline,
+.presentation .dl_list {
+  padding-left: 26px;
+}
+
+.presentation .listeTimeline li,
+.presentation .dl_list li {
+  margin-bottom: 17px;
+}
+
+.presentation .legend {
+  max-width: 720px;
+  margin: -8px auto 30px;
+  color: #6d726a;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Figures and embedded media */
+.presentation .image,
+.presentation .media,
+.presentation figure {
+  width: 100%;
+  max-width: 980px;
+  margin: 42px auto 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.presentation .image img,
+.presentation .media img,
+.presentation figure img,
+.presentation > img {
+  width: auto;
+  max-width: 100%;
+  max-height: 620px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.presentation .image img[src*="schema"],
+.presentation .image img[src*="Schema"],
+.presentation .media img {
+  max-width: min(100%, 900px);
+}
+
+.presentation .svg_image {
+  display: block;
+  width: min(100%, 980px);
+  height: auto;
+  margin: 36px auto 44px;
+}
+
+.presentation figcaption {
+  max-width: 720px;
+  color: #6d726a;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Code and math blocks stay legible without changing their contents. */
+.presentation pre {
+  width: min(100%, 980px);
+  margin: 30px 0 38px;
+  padding: 22px 24px;
+  overflow-x: auto;
+  background: #1c211e;
+  color: #eff5e9;
+  border-left: 3px solid var(--project-accent);
+  font-size: 13px;
+  line-height: 1.65;
+  tab-size: 2;
+}
+
+.presentation code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.presentation :not(pre) > code {
+  padding: 2px 5px;
+  background: var(--project-paper-soft);
+  color: var(--project-ink);
+  font-size: 0.9em;
+}
+
+.presentation .hljs {
+  background: #1c211e;
+  color: #eff5e9;
+}
+
+.presentation .text-blue-600,
+.presentation a[href] {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.presentation a[href]:hover,
+.presentation a[href]:focus-visible {
+  color: #496600;
+}
+
+footer {
+  margin: 0;
+  padding: 28px 24px;
+  background: var(--project-ink);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 950px) {
+  #header nav {
+    width: min(calc(100% - 32px), var(--project-max));
+  }
+
+  #burger {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  #navLinks {
+    position: absolute;
+    top: 78px;
+    right: 16px;
+    display: flex;
+    width: min(250px, calc(100vw - 32px));
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--project-white);
+    box-shadow: 0 14px 30px rgba(16, 18, 16, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  #navLinks.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  #navLinks.closing {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+  }
+
+  #navLinks li a {
+    display: block;
+    padding: 11px 12px;
+    color: var(--project-ink);
+    opacity: 1;
+  }
+
+  #navLinks li a:hover,
+  #navLinks li a:focus-visible {
+    background: var(--project-paper-soft);
+    color: var(--project-ink);
+  }
+
+  .languageSelector {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  #headerTitle {
+    font-size: 14px;
+  }
+
+  .languageSelector {
+    margin-left: auto;
+  }
+
+  #languageButton span {
+    display: none;
+  }
+
+  .presentation {
+    width: min(calc(100% - 32px), var(--project-max));
+    padding-top: 132px;
+    padding-bottom: 72px;
+  }
+
+  .presentation > h1:first-child {
+    padding-bottom: 22px;
+    font-size: clamp(38px, 12vw, 66px);
+  }
+
+  .presentation > h1 + h2 {
+    font-size: 20px;
+  }
+
+  .espace-titre {
+    height: 28px;
+  }
+
+  .presentation h3 {
+    margin-top: 58px;
+    padding-top: 18px;
+    font-size: 30px;
+  }
+
+  .presentation h4 {
+    margin-top: 34px;
+    font-size: 22px;
+  }
+
+  .presentation p,
+  .presentation li {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .presentation .image,
+  .presentation .media,
+  .presentation figure {
+    margin: 30px auto 36px;
+  }
+
+  .presentation pre {
+    padding: 16px;
+    font-size: 12px;
+  }
+}
