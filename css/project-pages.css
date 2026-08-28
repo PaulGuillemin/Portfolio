@@ -237,7 +237,7 @@ a {
 }
 
 .presentation .project-diamond {
-  color: var(--project-accent) !important;
+  color: #000000 !important;
 }
 
 .espace-titre {
