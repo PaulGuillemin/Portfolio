@@ -56,5 +56,5 @@
     }
   };
   filterButtons.forEach(button => button.addEventListener('click', () => updateProjectFilter(button.dataset.filter)));
-  updateProjectFilter('ai-data', true);
+  updateProjectFilter('featured', true);
 })();
