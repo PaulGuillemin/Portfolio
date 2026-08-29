@@ -2,7 +2,7 @@
 .brand-logo{display:block;width:38px;height:38px;object-fit:contain;filter:invert(1)}
 .site-header.is-scrolled .brand-logo{filter:none}
 .education-subsection{padding:23px 0;border-bottom:1px solid rgba(255,255,255,.25)}
-.experience-item{grid-template-columns:1.15fr 3fr}
+.experience-item{grid-template-columns:1.15fr minmax(0,3fr) auto}
 .experience-meta{display:flex;flex-direction:column;align-items:center;gap:18px}
 .experience-meta .experience-date{text-align:center}
 .experience-logo{display:flex;justify-content:center;align-items:center;width:100%;min-height:54px;padding-top:0}
@@ -15,6 +15,9 @@
 .experience-logo .logo-frame img{width:100%;max-width:218px;max-height:71px;height:auto}
 .experience-logo img[src*="logo.svg"]{width:218px;height:71px;object-fit:contain}
 .experience-logo img[src*="Stellantis.svg"],.experience-logo img[src*="Logo_Hauts_Seine"]{mix-blend-mode:multiply}
+.experience-text-logo{font-size:24px;font-weight:800;letter-spacing:-.08em;color:var(--ink)}
+.experience-link{justify-self:end;align-self:end;white-space:nowrap;border:1px solid var(--ink);padding:10px 14px;transition:background .2s,color .2s,transform .2s}
+.experience-link:hover,.experience-link:focus-visible{background:var(--ink);color:var(--white);transform:translateY(-2px)}
 .certification-item img[src*="Yale_University_logo"],.certification-item img[src*="Logo_essec"]{filter:brightness(0) invert(1)}
 .certification-item img[src*="LVMH_logo"]{filter:invert(1);mix-blend-mode:screen}
 .logo-placeholder{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:0;border:0;color:#62665f;font-size:10px;text-transform:uppercase;letter-spacing:.08em;text-align:center}
@@ -40,8 +43,15 @@
 .distinction-logo img[src*="EY"]{max-width:74px;max-height:74px}
 .distinction-logo img[src*="Rotary"]{max-width:170px;max-height:58px}
 .distinction-logo img[src*="UPSTI"]{max-width:170px;max-height:44px}
-@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.certifications-grid{grid-template-columns:1fr;gap:44px}.distinction-item{grid-template-columns:100px minmax(0,1fr) 140px;gap:20px}}
-@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-logo{justify-content:flex-start;min-height:0;margin-top:10px}}
+@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.experience-item{grid-template-columns:1fr minmax(0,3fr) auto;gap:20px}.certifications-grid{grid-template-columns:1fr;gap:44px}.distinction-item{grid-template-columns:100px minmax(0,1fr) 140px;gap:20px}}
+@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-logo{justify-content:flex-start;min-height:0;margin-top:10px}.experience-link{display:inline-flex;justify-self:start;margin-top:22px}}
+
+.experience-soon{min-height:100vh;padding:180px 0 100px;display:flex;align-items:center}
+.experience-soon-copy{max-width:720px}
+.experience-soon h1{margin:0 0 28px;font-size:clamp(54px,8vw,110px);line-height:.92;letter-spacing:-.075em;font-weight:600}
+.experience-soon h1 em{font-family:Georgia,serif;font-weight:400;letter-spacing:-.08em}
+.experience-soon p{max-width:520px;margin:0 0 36px;color:rgba(255,255,255,.7);font-size:18px}
+.experience-soon .button{background:var(--accent);color:var(--ink)}
 
 .project-tools{display:flex;flex-direction:column;align-items:flex-end;gap:18px;max-width:510px}
 .project-tools>p{margin:0;color:#696d66;font-size:13px;max-width:320px}
