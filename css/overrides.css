@@ -41,8 +41,7 @@
 .distinction-logo{display:flex;justify-content:flex-end;align-items:center;min-height:64px}
 .distinction-logo img{display:block;width:auto;max-width:160px;max-height:64px;height:auto;object-fit:contain}
 .distinction-logo img[src*="EY"]{max-width:74px;max-height:74px}
-.distinction-logo img[src*="Rotary"]{max-width:170px;max-height:58px}
-.distinction-logo img[src*="UPSTI"]{max-width:170px;max-height:44px}
+.distinction-logo img[src*="Rotary"],.distinction-logo img[src*="UPSTI"]{width:170px;max-width:170px;max-height:81px;height:auto}
 @media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.experience-item{grid-template-columns:1fr minmax(0,3fr) auto;gap:20px}.certifications-grid{grid-template-columns:1fr;gap:44px}.distinction-item{grid-template-columns:100px minmax(0,1fr) 140px;gap:20px}}
 @media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-logo{justify-content:flex-start;min-height:0;margin-top:10px}.experience-link{display:inline-flex;justify-self:start;margin-top:22px}}
 
