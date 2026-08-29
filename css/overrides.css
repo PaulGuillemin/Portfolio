@@ -30,13 +30,18 @@
 .certification-item p{color:rgba(255,255,255,.62);font-size:14px;margin:0}
 .distinctions{padding:140px 0;background:var(--paper-soft)}
 .distinction-list{border-top:1px solid var(--line)}
-.distinction-item{display:grid;grid-template-columns:120px 1fr 70px;gap:30px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
+.distinction-item{display:grid;grid-template-columns:120px minmax(0,1fr) 170px;gap:30px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
 .distinction-item>span{color:#71756d;font-size:12px;padding-top:8px}
 .distinction-item h3{margin:0 0 6px;font-size:25px;letter-spacing:-.04em}
 .distinction-item p{max-width:650px;color:var(--ink-soft);margin:0;font-size:14px}
-.distinction-rank{justify-self:end;color:var(--ink);font-size:28px;font-weight:700;letter-spacing:-.06em}
-@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.certifications-grid{grid-template-columns:1fr;gap:44px}}
-@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-rank{justify-self:start}}
+.distinction-rank-text{display:inline-block;color:var(--ink);font-weight:800;letter-spacing:-.02em}
+.distinction-logo{display:flex;justify-content:flex-end;align-items:center;min-height:64px}
+.distinction-logo img{display:block;width:auto;max-width:160px;max-height:64px;height:auto;object-fit:contain}
+.distinction-logo img[src*="EY"]{max-width:74px;max-height:74px}
+.distinction-logo img[src*="Rotary"]{max-width:170px;max-height:58px}
+.distinction-logo img[src*="UPSTI"]{max-width:170px;max-height:44px}
+@media (max-width:900px){.institution-logo{position:static;margin-bottom:18px}.education-list article{padding-right:0}.experience-meta{align-items:flex-start}.experience-logo{justify-content:flex-start;margin-top:0}.certifications-grid{grid-template-columns:1fr;gap:44px}.distinction-item{grid-template-columns:100px minmax(0,1fr) 140px;gap:20px}}
+@media (max-width:620px){.certifications{padding:88px 0}.certification-item{grid-template-columns:1fr;gap:16px}.certification-item h3{font-size:21px}.distinctions{padding:88px 0}.distinction-item{grid-template-columns:1fr;gap:8px}.distinction-logo{justify-content:flex-start;min-height:0;margin-top:10px}}
 
 .project-tools{display:flex;flex-direction:column;align-items:flex-end;gap:18px;max-width:510px}
 .project-tools>p{margin:0;color:#696d66;font-size:13px;max-width:320px}
