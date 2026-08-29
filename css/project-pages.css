@@ -399,7 +399,7 @@ a {
 /* Code and math blocks stay legible without changing their contents. */
 .presentation pre {
   width: min(100%, 980px);
-  margin: 30px 0 38px;
+  margin: 30px auto 38px;
   padding: 22px 24px;
   overflow-x: auto;
   background: #1c211e;
@@ -407,11 +407,17 @@ a {
   border-left: 3px solid var(--project-accent);
   font-size: 13px;
   line-height: 1.65;
+  text-align: left;
   tab-size: 2;
 }
 
 .presentation code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.presentation pre code {
+  display: block;
+  text-align: left;
 }
 
 .presentation :not(pre) > code {
