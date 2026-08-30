@@ -55,6 +55,7 @@
 .project-tools{display:flex;flex-direction:column;align-items:flex-end;gap:18px;max-width:510px}
 .project-topline{display:none}
 .project-content h3{margin-top:0}
+.project-note{display:inline-block;color:#767a72;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .project-tools>p{margin:0;color:#696d66;font-size:13px;max-width:320px}
 .project-filters{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px}
 .project-filter{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 12px;font:inherit;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
