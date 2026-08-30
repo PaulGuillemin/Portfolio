@@ -31,6 +31,10 @@
 .certificate-logo .logo-frame img{display:block;width:150px;max-width:150px;max-height:65px;height:auto;object-fit:contain}
 .certification-item h3{margin:0 0 5px;font-size:23px;letter-spacing:-.04em}
 .certification-item p{color:rgba(255,255,255,.62);font-size:14px;margin:0}
+.certification-link,.certification-status{display:inline-flex;align-items:center;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.certification-link{color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:3px;transition:opacity .2s,transform .2s}
+.certification-link:hover,.certification-link:focus-visible{opacity:.78;transform:translateY(-1px)}
+.certification-status{color:rgba(255,255,255,.45)}
 .distinctions{padding:140px 0;background:var(--paper-soft)}
 .distinction-list{border-top:1px solid var(--line)}
 .distinction-item{display:grid;grid-template-columns:120px minmax(0,1fr) 170px;gap:30px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
